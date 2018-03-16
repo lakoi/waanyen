@@ -20,7 +20,7 @@ class Register_model extends CI_Model {
 
 					$data = array(
 							'Email' => $this->input->post('Email'),
-							// 'slug' => $slug,
+							'slug' => $slug,
 							'Password' => md5($this->input->post('Password')),
 							'Name' => $this->input->post('Name')
 			);

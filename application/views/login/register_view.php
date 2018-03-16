@@ -19,7 +19,7 @@
     <div class="row blockquote text-center">
       <div class="col-sm-12">
         <div class="btn btn-disabled">
-        <span> &nbsp;Email</span>
+        <span class="col-sm-4"> &nbsp;Email</span>
         <input class="form-control btn btn-outline-light bg-white glyphicon form-control-feedback" name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><?php echo form_error('Email');?>
           <div>
         <span> &nbsp;Password</span>
