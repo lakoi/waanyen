@@ -83,7 +83,7 @@ class Register extends CI_Controller{
   $data['title'] = $data['news_item']['title'];
 
   $this->load->view('templates/header', $data);
-  $this->load->view('login/index', $data);
+  $this->load->view('login', $data);
   $this->load->view('templates/footer');
   }
   public function create()

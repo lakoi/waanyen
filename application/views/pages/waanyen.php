@@ -5,9 +5,9 @@
 				<div><!-- <div class="panel panel-default"> -->
 					<form id="" action="" method="post">
 					<div class="row">
-						<div class="col-sm-3">
+						<div class="col-sm-12">
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="col-sm-12">
 									<div class="input-group">
 										<span class="input-group-btn">
 											<button class="btn btn-primary disabled" type="button">เลือกประเภทสินค้า</button>

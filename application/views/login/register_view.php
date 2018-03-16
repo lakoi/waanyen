@@ -16,26 +16,28 @@
 <?php echo form_open('register_view'); ?>-->
 <form method="POST" class="form-horizontal">
   <h4>Register<h4> <br>
-    <div class="row blockquote text-center">
+    <div class="row">
       <div class="col-sm-12">
-        <div class="btn btn-disabled">
-        <span class="col-sm-4"> &nbsp;Email</span>
-        <input class="form-control btn btn-outline-light bg-white glyphicon form-control-feedback" name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><?php echo form_error('Email');?>
-          <div>
+        <div class="row">
+          <div class="col-sm-4 offset-4">
+            <div class="blockquote text-left text-primary">
+        <span> &nbsp;Email</span>
+        <input class="form-control btn btn-outline-light bg-white " name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><?php echo form_error('Email');?>
+
         <span> &nbsp;Password</span>
         <input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
-          </div>
-          <div>
+
         <span> &nbsp;Confirm Password</span>
         <input class="form-control btn btn-outline-light bg-white" name="ConPassword" type="password" id="txtConPassword" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
-          </div>
-          <div>
+
         <span>&nbsp;Name</span>
         <input class="form-control btn btn-outline-light bg-white" name="Name" type="text" id="txtName" size="35" placeholder="ใส่ชื่อ..." ><?php echo form_error('Name');?>
+            </div>
           </div>
         </div>
+        </div>
       </div>
-</div>
+
   <br>
   <div>
   <input class="btn btn-outline-success" type="submit" name="Submit" value="Save">

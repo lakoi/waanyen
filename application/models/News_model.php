@@ -18,7 +18,7 @@ class News_model extends CI_Model {
         {
                 $this->load->helper('url');
                 $mock_data = array(
-                  $this->db->find('member')
+                  $this->db->find('member',array('Email'))
 
                 );
 

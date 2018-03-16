@@ -5,7 +5,7 @@
 				<div><!-- <div class="panel panel-default"> -->
 					<form id="" action="" method="post">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-1">
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="input-group">
