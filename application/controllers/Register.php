@@ -63,8 +63,8 @@ class Register extends CI_Controller{
 
   public function index()
 {
-  $data['register'] = $this->register_model->get_register();
-  $data['title'] = 'News archive';
+  // $data['register'] = $this->register_model->get_register();
+  // $data['title'] = 'User';
 
   $this->load->view('templates/header', $data);
   $this->load->view('login/register_view', $data);
@@ -85,18 +85,18 @@ class Register extends CI_Controller{
   $this->load->view('templates/header', $data);
   $this->load->view('login', $data);
   $this->load->view('templates/footer');
+
   }
   public function create()
 {
 
 
-  $data['title'] = 'Create a news item';
+  $data['title'] = 'validate';
 
   $this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email');
   $this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[8]');
   $this->form_validation->set_rules('ConPassword', 'ConPassword', 'trim|required|matches[Password]');
   $this->form_validation->set_rules('Name', 'Name', 'required');
-  // $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
   if ($this->form_validation->run() === FALSE)
   {
         $this->load->view('templates/header', $data);
@@ -107,7 +107,7 @@ class Register extends CI_Controller{
     else
     {
         $this->register_model->create_register();
-        $this->load->view('login/success');
+        // $this->load->view('login/success');
     }
 }
 }

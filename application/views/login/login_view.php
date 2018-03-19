@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +11,9 @@
 <title>Waanyen</title>
 </head>
 <body class="blockquote text-center bg-light">
-<form>
+  <?php echo validation_errors();?>
+  <?php echo form_open('login'); ?>
+<form method="post" >
   <h4 class="blockquote text-center">Login</h4><br>
 <div class="row">
   <div class="col-sm-12">
@@ -21,11 +24,11 @@
             <tbody>
               <tr>
                 <td> &nbsp;Email</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="txtUsername" type="text" id="txtUsername"></td>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="Email" id="txtUsername"></td><?php echo form_error('Email');?>
               </tr>
               <tr>
                 <td> &nbsp;Password</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="txtPassword" type="password" id="txtPassword"></td>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword"></td><?php echo form_error('Password');?>
               </tr>
             </tbody>
           </table>

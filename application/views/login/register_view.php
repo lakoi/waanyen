@@ -12,9 +12,9 @@
   </head>
   <body class="blockquote text-center bg-light">
 
-<!--<?php echo validation_errors();?>
-<?php echo form_open('register_view'); ?>-->
-<form method="POST" class="form-horizontal">
+<!-- <?php echo validation_errors();?> -->
+<?php echo form_open('register'); ?>
+<form method="post" class="form-horizontal table-bordered table-components">
   <h4>Register<h4> <br>
     <div class="row">
       <div class="col-sm-12">
@@ -22,16 +22,24 @@
           <div class="col-sm-4 offset-4">
             <div class="blockquote text-left text-primary">
         <span> &nbsp;Email</span>
-        <input class="form-control btn btn-outline-light bg-white " name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><?php echo form_error('Email');?>
+        <input class="form-control btn btn-outline-light bg-white " aria-hidden="true" name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><?php echo form_error('Email');?>
 
         <span> &nbsp;Password</span>
-        <input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
+        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="Password" type="password" id="txtPassword" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
 
         <span> &nbsp;Confirm Password</span>
-        <input class="form-control btn btn-outline-light bg-white" name="ConPassword" type="password" id="txtConPassword" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
+        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="ConPassword" type="password" id="txtConPassword" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
 
         <span>&nbsp;Name</span>
-        <input class="form-control btn btn-outline-light bg-white" name="Name" type="text" id="txtName" size="35" placeholder="ใส่ชื่อ..." ><?php echo form_error('Name');?>
+        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="Name" type="text" id="txtName" size="35" placeholder="ใส่ชื่อ..." ><?php echo form_error('Name');?>
+
+        <div class="col-sm-4 offset-8">
+        <span>Status</span>
+        <select class="form-control btn btn-outline-dark" name="Status" id="Status" >
+          <option value="ADMIN">ADMIN</option>
+          <option value="USER">USER</option>
+        </select>
+      </div>
             </div>
           </div>
         </div>
@@ -61,14 +69,14 @@
 <style>
 .form-control{color:#0066ff !important}
 </style>
-<script>
+<!-- <script>
  $.validate({
  modules: 'security, file',
  onModulesLoaded: function () {
  $('input[name="pass_confirmation"]').displayPasswordStrength();
  }
  });
- </script>
+ </script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
