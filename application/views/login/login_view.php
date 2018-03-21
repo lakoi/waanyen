@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,9 +10,8 @@
 <title>Waanyen</title>
 </head>
 <body class="blockquote text-center bg-light">
-  <?php echo validation_errors();?>
-  <?php echo form_open('login'); ?>
-<form method="post" >
+  <?php echo form_open('login/login_valid'); ?>
+<form method="post" action="<?php echo base_url(); ?>Login/login_valid" >
   <h4 class="blockquote text-center">Login</h4><br>
 <div class="row">
   <div class="col-sm-12">
@@ -24,11 +22,11 @@
             <tbody>
               <tr>
                 <td> &nbsp;Email</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="Email" id="txtUsername"></td><?php echo form_error('Email');?>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="email" id="txtUsername"></td><td><?php echo form_error('Email');?></td>
               </tr>
               <tr>
                 <td> &nbsp;Password</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword"></td><?php echo form_error('Password');?>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword"></td><td><?php echo form_error('Password');?></td>
               </tr>
             </tbody>
           </table>
@@ -44,9 +42,15 @@
       </label>
     </div>
   <br>
+  <div>
   <input class="btn btn-outline-success" type="submit" name="submit" value="LOGIN">
-
+  <label class="text-danger"><?php echo $this->session->flashdata("error"); ?></label>
+</div>
+<br>
+<div>
   <a class="btn btn-outline-primary " href="register" role="button">Register</a>
+</div>
+  <a class="btn btn-outline-primary " href="<?php echo base_url();?>" role="button">home</a>
 </form>
 <style>
 .form-control{color:#0066ff !important}
