@@ -14,8 +14,8 @@
   <table class="table">
     <thead>
     <th><div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-  <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="education">Education</a></button>
-  <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="interest">Interest</a></button>
+  <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="education">Education</a></button>/
+  <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="interest">Interest</a></button>/
   <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="job">Job</a></button>
 </div></th>
 </thead>

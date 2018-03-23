@@ -16,10 +16,10 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="education">Education</a></button>
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="interest">Interest</a></button>
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="job">Job</a></button>
-    
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/education';?>">Education</a></button>/
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/interest';?>">Interest</a></button>/
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/job';?>">Job</a></button>
+
             </div>
           </th>
         </thead>
@@ -35,19 +35,38 @@
           <tr>
             <th><center>id</center></th>
             <th><center>title</center></th>
+            <th><center>edit</center></th>
+            <th><center>delete</center></th>
           </tr>
         </thead>
       <tbody>
-      <?php foreach($query as $r):?>
+        <?php
+        foreach($query as $r){
+            echo "<tr>";
+                echo "<td>".$r->id."</td>";
+
+                echo "<td>".$r->title."</td>";
+
+                echo "<td><a href='".base_url()."login/edit_education/".$r->id."' class='btn btn-warning'>Edit</a></td>";
+
+                echo "<td><a href='".base_url()."index.php/customer/delete_customer/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>";
+
+            echo "</tr>";
+        }
+    ?>
+      <!-- <?php foreach($query as $r):?>
       <tr align="center">
         <td><?php echo $r->id; ?></td>
         <td><?php echo $r->title; ?></td>
+        <td><a href="<?php echo "base_url().'login/edit_education/'$r->id";?>" class='btn btn-warning'>Edit</a></td>
+        <td><a href="<?php echo base_url().'login/edit_education';?>" onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>
       </tr>
 
-      <?php endforeach; ?>
+      <?php endforeach; ?> -->
 
       </tbody>
       </table>
+      <a href="<?php echo base_url().'login/add_education';?>" class="btn btn-info">add</a>
       <?php endif; ?>
     </div>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -16,9 +16,9 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="education">Education</a></button>
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="interest">Interest</a></button>
-              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="job">Job</a></button>
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/education';?>">Education</a></button>/
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/interest';?>">Interest</a></button>/
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/job';?>">Job</a></button>
             </div>
           </th>
         </thead>
@@ -34,6 +34,8 @@
           <tr>
             <th><center>id</center></th>
             <th><center>title</center></th>
+            <th><center>edit</center></th>
+            <th><center>delete</center></th>
           </tr>
         </thead>
       <tbody>
@@ -41,12 +43,15 @@
       <tr align="center">
         <td><?php echo $r->id; ?></td>
         <td><?php echo $r->title; ?></td>
+        <td><a href='".base_url()."index.php/customer/edit_customer_form/".$r->id."' class='btn btn-warning'>Edit</a></td>
+        <td><a href='".base_url()."index.php/customer/delete_customer/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>
       </tr>
 
       <?php endforeach; ?>
 
       </tbody>
       </table>
+    <a href="<?php echo base_url().'login/add_interest';?>" class="btn btn-info">add</a>
       <?php endif; ?>
     </div>
 
