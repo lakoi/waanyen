@@ -16,17 +16,20 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="row">
-      <div class="col-sm-4 col-sm-12">
+      <div class="col-sm-6 col-sm-12">
         <div class="btn btn-disabled">
           <table class="blockquote text-center">
             <tbody>
               <tr>
+                <label class="text-danger"><?php echo $this->session->flashdata("error"); ?></label>
                 <td> &nbsp;Email</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="email" id="txtUsername"></td><td><?php echo form_error('Email');?></td>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="email" id="txtUsername"></td></tr>
+                <tr><td></td><td><?php echo form_error('Email');?></td></tr>
               </tr>
               <tr>
                 <td> &nbsp;Password</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword"></td><td><?php echo form_error('Password');?></td>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Password" type="password" id="txtPassword"></td></tr>
+                <tr><td></td><td><?php echo form_error('Password');?></td></tr>
               </tr>
             </tbody>
           </table>
@@ -44,7 +47,6 @@
   <br>
   <div>
   <input class="btn btn-outline-success" type="submit" name="submit" value="LOGIN">
-  <label class="text-danger"><?php echo $this->session->flashdata("error"); ?></label>
 </div>
 <br>
 <div>

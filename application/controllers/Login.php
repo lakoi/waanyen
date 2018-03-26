@@ -28,6 +28,7 @@ class Login extends CI_Controller
 				{
 					$email = $this->input->post('Email');
 					$password = $this->input->post('Password');
+
 					$this->load->model('login_model');
 					if($this->login_model->can_login($email, $password))
 					{
@@ -55,9 +56,9 @@ class Login extends CI_Controller
  	{
 	 		if($this->session->userdata('Email') != '')
 	 		{
-				echo '<div align="right"><label><a href="'.base_url().'login/logout">Logout</a></label></div>';
+				$this->load->view('templates/menu');
 				$this->load->view('templates/header');
-				$this->load->view('login/view_list');
+				$this->load->view('login/list_view');
 				$this->load->view('templates/footer');
 			}
 	 		else

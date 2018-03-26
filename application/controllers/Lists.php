@@ -13,20 +13,19 @@ class Lists extends CI_Controller
 
   public function index()
   {
-      $data['title']='lise';
+      $data['title']='list';
       $this->load->view('templates/header', $data);
-      $this->load->view('login/view_list');
+      $this->load->view('login/list_view');
       $this->load->view('templates/footer');
   }
-
+                                                      // ***Education***
   public function edu()
   {
-
       $data ['query'] = $this->list_model->edu_model();
+      $this->load->view('templates/menu');
       $this->load->view('templates/header');
       $this->load->view('login/list_education', $data);
       $this->load->view('templates/footer');
-      echo '<div align="right"><label class="btn btn-outline-danger btn-lg"><a href="'.base_url().'login/logout">Logout</a></label></div>';
   }
 
   public function add_edu()
@@ -50,7 +49,7 @@ class Lists extends CI_Controller
 
   public function edit_edu()
   {
-  		$id = $this->uri->segment('2');
+  		$id = $this->uri->segment('3');
   		$data['query'] = $this->list_model->edit_edu_model($id);
   		$this->load->view('templates/header');
       $this->load->view('login/edit_education', $data);
@@ -67,13 +66,20 @@ class Lists extends CI_Controller
 		  $this->edu();
 	}
 
+  public function delete_edu()
+  {
+      $id = $this->uri->segment('3');
+      $this->list_model->delete_edu_model($id);
+      $this->edu();
+  }
+                                                      // ***interest***
   public function int()
   {
       $data ['query'] = $this->list_model->int_model();
+      $this->load->view('templates/menu');
       $this->load->view('templates/header');
       $this->load->view('login/list_interest', $data);
       $this->load->view('templates/footer');
-      echo '<div align="right"><label class="btn btn-outline-danger btn-lg"><a href="'.base_url().'login/logout">Logout</a></label></div>';
   }
 
   public function add_int()
@@ -95,13 +101,39 @@ class Lists extends CI_Controller
       	$this->int();
   }
 
+  public function edit_int()
+  {
+  		$id = $this->uri->segment('3');
+  		$data['query'] = $this->list_model->edit_int_model($id);
+  		$this->load->view('templates/header');
+      $this->load->view('login/edit_interest', $data);
+  		$this->load->view('templates/footer');
+	}
+
+	public function save_edit_int()
+  {
+	    $data = array(
+      'title' => $this->input->post('title')
+      );
+		  $id = $this->input->post('id');
+      $this->list_model->save_edit_int_model($data,$id);
+		  $this->int();
+  }
+
+  public function delete_int()
+  {
+      $id = $this->uri->segment('3');
+      $this->list_model->delete_int_model($id);
+      $this->int();
+  }
+                                                      // ***job***
   public function j()
   {
         $data ['query'] = $this->list_model->j_model();
+        $this->load->view('templates/menu');
         $this->load->view('templates/header');
         $this->load->view('login/list_job', $data);
         $this->load->view('templates/footer');
-        echo '<div align="right"><label class="btn btn-outline-danger btn-lg"><a href="'.base_url().'login/logout">Logout</a></label></div>';
   }
 
   public function add_j()
@@ -121,6 +153,32 @@ class Lists extends CI_Controller
         );
         $this->list_model->addj_model($data);
       	$this->j();
+  }
+
+  public function edit_j()
+  {
+  		$id = $this->uri->segment('3');
+  		$data['query'] = $this->list_model->edit_j_model($id);
+  		$this->load->view('templates/header');
+      $this->load->view('login/edit_job', $data);
+  		$this->load->view('templates/footer');
+	}
+
+	public function save_edit_j()
+  {
+	    $data = array(
+      'title' => $this->input->post('title')
+      );
+		  $id = $this->input->post('id');
+      $this->list_model->save_edit_j_model($data,$id);
+		  $this->j();
+  }
+
+  public function delete_j()
+  {
+      $id = $this->uri->segment('3');
+      $this->list_model->delete_j_model($id);
+      $this->j();
   }
 
 }

@@ -16,6 +16,7 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
+              <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/list_view';?>">Home</a></button>/
               <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/education';?>">Education</a></button>/
               <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/interest';?>">Interest</a></button>/
               <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="<?php echo base_url().'login/job';?>">Job</a></button>
@@ -29,17 +30,27 @@
       <h3>Job</h3>
         <div class="col-sm-6 offset-3 ">
       <?php if (isset($query)): ?>
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th><center>id</center></th>
+            <!-- <th><center>id</center></th> -->
             <th><center>title</center></th>
             <th><center>edit</center></th>
             <th><center>delete</center></th>
           </tr>
         </thead>
       <tbody>
-      <?php foreach($query as $r):?>
+        <?php
+        foreach($query as $r){
+            echo "<tr>";
+                // echo "<td>".$r->id."</td>";
+                echo "<td>".$r->title."</td>";
+                echo "<td><a href='".base_url()."login/edit_job/".$r->id."' class='btn btn-warning'>Edit</a></td>";
+                echo "<td><a href='".base_url()."lists/delete_j/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>";
+            echo "</tr>";
+        }
+    ?>
+      <!-- <?php foreach($query as $r):?>
       <tr align="center">
         <td><?php echo $r->id; ?></td>
         <td><?php echo $r->title; ?></td>
@@ -47,11 +58,11 @@
         <td><a href='".base_url()."index.php/customer/delete_customer/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>
       </tr>
 
-      <?php endforeach; ?>
+      <?php endforeach; ?> -->
 
       </tbody>
       </table>
-      <a href="<?php echo base_url().'login/add_job';?>" class="btn btn-info">add</a>
+      <a href="<?php echo base_url().'login/add_job';?>" class="btn btn-info btn-block">add</a>
       <?php endif; ?>
     </div>
 

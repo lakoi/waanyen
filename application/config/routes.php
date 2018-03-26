@@ -49,17 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['login/login'] = 'login/index/$1';
 $route['login/register'] = 'Register/create/$1';
 $route['register'] = 'Register/create/$1';
-$route['login/edit_education'] = 'Lists/edit_edu/$1';
-$route['login/edit_interest'] = 'Lists/edit_int/$1';
-$route['login/edit_job'] = 'Lists/edit_j/$1';
+$route['login/list_view'] = 'login/enter/$1';
+$route['login/profile'] = 'Profiles/index/$1';
+
+$route['login/change_name'] = 'Profiles/change_name/$1';
+$route['login/change_password'] = 'Profiles/change_pass/$1';
+
 $route['login/add_education'] = 'Lists/add_edu/$1';
 $route['login/add_interest'] = 'Lists/add_int/$1';
 $route['login/add_job'] = 'Lists/add_j/$1';
+
 $route['login/education'] = 'Lists/edu/$1';
 $route['login/interest'] = 'Lists/int/$1';
 $route['login/job'] = 'Lists/j/$1';
-$route['login/login'] = 'login/index/$1';
+
 $route['login/edit_education/(:num)'] = 'Lists/edit_edu/$1';
+$route['login/edit_interest/(:num)'] = 'Lists/edit_int/$1';
+$route['login/edit_job/(:num)'] = 'Lists/edit_j/$1';
+
 $route['default_controller'] = 'pages/view';
