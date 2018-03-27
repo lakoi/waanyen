@@ -14,7 +14,7 @@ class Profiles extends CI_Controller
 
   	public function index()
   	{
-      $data ['query'] = $this->profile_model->change_name_model();
+      $data ['query'] = 'hi';
       $this->load->view('templates/menu');
   		$this->load->view('templates/header');
   		$this->load->view('login/profile_view', $data);
@@ -24,7 +24,7 @@ class Profiles extends CI_Controller
     public function change_name()
     {
       $id = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_name_model();
+  		$data['query'] = $this->profile_model->change_name_model($id);
       $this->load->view('templates/header');
       $this->load->view('login/change_name_view', $data);
       $this->load->view('templates/footer');
@@ -33,18 +33,18 @@ class Profiles extends CI_Controller
 
     public function save_change_name()
     {
-        $data = 'Name' =>
-
-        $this->profile_model->save_change_name_model($data);
-        $this->index();
+      $data = array(
+      'Name' => $this->input->post('Name')
+      );
+		  $id = $this->input->post('userID');
+      $this->list_model->save_edit_edu_model($data,$id);
+		  $this->edu();
     }
 
     public function change_pass()
     {
-      // $query = $this->db->get("member");
-      // $data['result'] = $query->result();
       $id = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_pass_model();
+  		$data['query'] = $this->profile_model->change_pass_model($id);
       $this->load->view('templates/header');
       $this->load->view('login/change_password_view', $data);
       $this->load->view('templates/footer');
@@ -56,6 +56,14 @@ class Profiles extends CI_Controller
         'Password' => $this->input->post('Password')
         );
         $this->profile_model->save_change_pass_model($data);
+        if($this->profile_model->save_change_pass_model($data)==true)
+        {
+
         $this->index();
+        }
+        else {
+          $this->change_pass();
+        }
     }
+
 }

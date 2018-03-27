@@ -11,7 +11,8 @@ class Login extends CI_Controller
 					$this->load->library('form_validation');
 					// $this->load->library('session');
 	}
-	public function index(){
+	public function index()
+	{
 					$data['title'] = 'Welcome';
 					$this->load->view('templates/header');
 					$this->load->view('login/login_view', $data);
@@ -21,6 +22,8 @@ class Login extends CI_Controller
 
  	public function login_valid()
  	{
+					$query = $this->db->query("select * from member where Name");
+					$name = $query->result();
 
 				 	$this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email');
 					$this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[8]');
@@ -32,9 +35,12 @@ class Login extends CI_Controller
 					$this->load->model('login_model');
 					if($this->login_model->can_login($email, $password))
 					{
+
 						$session_data = array(
-							'Email' => $email
-						);
+							'Email' => $email,
+							'Password' => $password,
+							'Name' => $name
+							);
 						$this->session->set_userdata($session_data);
 						$this->enter();
 						// redirect(base_url() . 'login/enter');
@@ -57,6 +63,7 @@ class Login extends CI_Controller
 	 		if($this->session->userdata('Email') != '')
 	 		{
 				$this->load->view('templates/menu');
+				$this->load->view('templates/admin');
 				$this->load->view('templates/header');
 				$this->load->view('login/list_view');
 				$this->load->view('templates/footer');
@@ -70,7 +77,8 @@ class Login extends CI_Controller
 
 	public function logout()
 	{
-		 $this->session->unset_userdata('Email');
+		 // $this->session->unset_userdata('Email');
+		 session_destroy();
 		 redirect(base_url() . 'login/index');
 	}
 

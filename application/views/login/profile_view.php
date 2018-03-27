@@ -12,7 +12,9 @@
   <body class="text-center bg-light">
     <h4>Profile</h4>
     <div class="col-sm-6 offset-3">
+    <?php if (isset($query)): ?>
     <table class="table">
+      <input type="hidden" name="id" value="<?php echo ("$query[0]->UserID");?>"></input>
         <tr>
           <td>
         <label>Email</label>
@@ -26,22 +28,25 @@
         <label> Password</label>
       </td>
       <td>
-        <span><?php echo $this->session->userdata('Password'); ?></span>
+        <input type="password" readonly class="form-control-plaintext" value="<?php echo $this->session->userdata('Password'); ?>"></input>
         <a class="btn btn-warning" href="<?php echo base_url(). 'login/change_password';?>"> change password</a>
         </td>
       </tr>
         <tr>
           <td>
         <label>Name</label>
-      </td>
-      <td>
-        <span><?php echo $this->session->userdata('Name'); ?></span>
-        <a class="btn btn-warning" href="<?php echo base_url(). 'login/change_name';?>"> change password</a>
+      </td><th>. . .</th>
+</tr><tr><th></th><td>
+      <!-- <?php print_r($query[0]->Name);?> -->
+      <!-- <?php print_r($_SESSION); ?> -->
+        <!-- <span><?php echo $this->session->userdata('Name'); ?></span> -->
+        <a class="btn btn-warning" href="<?php echo base_url(). 'login/change_name';?>"> change name</a>
       </td>
     </tr>
   </div>
   </tr>
   </table>
+  <?php endif; ?>
   </div>
 
 

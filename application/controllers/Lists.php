@@ -18,6 +18,54 @@ class Lists extends CI_Controller
       $this->load->view('login/list_view');
       $this->load->view('templates/footer');
   }
+                                                      // ***Admin***
+  public function admin()
+  {
+      $data ['query'] = $this->list_model->admin_model();
+      $this->load->view('templates/menu');
+      $this->load->view('templates/admin');
+      $this->load->view('templates/header');
+      $this->load->view('login/list_admin', $data);
+      $this->load->view('templates/footer');
+    }
+
+    public function edit_name_ad()
+    {
+    		$UserID = $this->uri->segment('3');
+    		$data['query'] = $this->list_model->edit_name_ad_model($UserID);
+    		$this->load->view('templates/header');
+        $this->load->view('login/edit_name_admin', $data);
+    		$this->load->view('templates/footer');
+  	}
+
+  	public function save_edit_name_ad()
+    {
+  	    $data = array(
+        'Name' => $this->input->post('Name')
+        );
+  		  $UserID = $this->input->post('UserID');
+        $this->list_model->save_edit_name_ad_model($data,$UserID);
+  		  $this->admin();
+  	}
+
+    public function edit_status_ad()
+    {
+    		$UserID = $this->uri->segment('3');
+    		$data['query'] = $this->list_model->edit_status_ad_model($UserID);
+    		$this->load->view('templates/header');
+        $this->load->view('login/edit_status_admin', $data);
+    		$this->load->view('templates/footer');
+  	}
+
+  	public function save_edit_status_ad()
+    {
+  	    $data = array(
+        'Status' => $this->input->post('Status')
+        );
+  		  $UserID = $this->input->post('UserID');
+        $this->list_model->save_edit_status_ad_model($data,$UserID);
+  		  $this->admin();
+  	}
                                                       // ***Education***
   public function edu()
   {

@@ -31,7 +31,6 @@ class Register_model extends CI_Model
 							'Status' => $this->input->post('Status')
 							);
 
-
 							return $this->db->insert('member', $data);
 					}
 	}

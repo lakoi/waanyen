@@ -4,7 +4,7 @@
 <div class="dropdown-menu dropdown-menu-right">
 <a class="dropdown-item" href="<?php echo base_url().'login/list_view';?>">Home</a>
 <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
-<a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">จัดการผู้ใช้</a>
+<a class="dropdown-item" href="<?php echo base_url(). 'login/list_admin';?>">จัดการผู้ใช้</a>
 <div class="dropdown-divider"></div>
 <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
 </div>

@@ -11,7 +11,6 @@ class Login_model extends CI_Model
   }
   public function can_login($email, $password)
   {
-
       $this->db->where('Email', $email);
       $this->db->where('Password', md5($password));
       $query = $this->db->get('member');

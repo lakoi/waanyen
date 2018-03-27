@@ -14,13 +14,13 @@
           <table class="table">
             <thead>
               <th><div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-                <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="education">Education</a></button>/
-                <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="interest">Interest</a></button>/
-                <button href="#" type="button" class="btn btn-outline-secondary border-0 text-primary"><a href="job">Job</a></button>
+                <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>/
+                <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>/
+                <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>
               </div></th>
             </thead>
           </table>
-          <marquee scrollamount="20"><h4> * * * Hello Word * * *</h4></marquee>
+          <marquee scrollamount="20"><blink><h4> * * * Hello Word * * *</h4></blink></marquee>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

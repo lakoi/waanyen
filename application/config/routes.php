@@ -55,6 +55,11 @@ $route['register'] = 'Register/create/$1';
 $route['login/list_view'] = 'login/enter/$1';
 $route['login/profile'] = 'Profiles/index/$1';
 
+$route['login/list_admin'] = 'Lists/admin/$1';
+$route['login/edit_name_admin/(:num)'] = 'Lists/edit_name_ad/$1';
+$route['login/edit_status_admin/(:num)'] = 'Lists/edit_status_ad/$1';
+
+
 $route['login/change_name'] = 'Profiles/change_name/$1';
 $route['login/change_password'] = 'Profiles/change_pass/$1';
 

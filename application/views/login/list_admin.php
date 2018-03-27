@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>"Education"</title>
+    <title>"Admin"</title>
   </head>
     <body class="blockquote text-center bg-light">
 
@@ -16,10 +16,10 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <a href="<?php echo base_url().'login/list_view';?>" class="btn btn-outline-primary border-0">Home</a>/
-              <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>/
-              <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>/
-              <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>
+              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/list_view';?>">Home</a></button>/
+              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/education';?>">Education</a></button>/
+              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/interest';?>">Interest</a></button>/
+              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/job';?>">Job</a></button>
 
             </div>
           </th>
@@ -28,16 +28,19 @@
 
       <br>
 
-      <h3>Education</h3>
+      <h3>Admin</h3>
         <div class="col-sm-6 offset-3 ">
       <?php if (isset($query)): ?>
       <table class="table table-hover" >
         <thead>
           <tr>
             <!-- <th><center>id</center></th> -->
-            <th><center>title</center></th>
-            <th><center>edit</center></th>
-            <th><center>delete</center></th>
+            <th><center>Email</center></th>
+            <th><center>Name</center></th>
+            <th><center>Status</center></th>
+            <th><center>Edit Name</center></th>
+            <th><center>Edit Status</center></th>
+            <th><center>Delete User</center></th>
           </tr>
         </thead>
       <tbody>
@@ -45,9 +48,12 @@
         foreach($query as $r){
             echo "<tr>";
                 // echo "<td>".$r->id."</td>";
-                echo "<td>".$r->title."</td>";
-                echo "<td><center><a href='".base_url()."login/edit_education/".$r->id."' class='btn btn-warning'>Edit</a></center></td>";
-                echo "<td><center><a href='".base_url()."lists/delete_edu/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></center></td>";
+                echo "<td>".$r->Email."</td>";
+                echo "<td>".$r->Name."</td>";
+                echo "<td>".$r->Status."</td>";
+                echo "<td><center><a href='".base_url()."login/edit_name_admin/".$r->UserID."' class='btn btn-warning'>Edit</a></center></td>";
+                echo "<td><center><a href='".base_url()."login/edit_status_admin/".$r->UserID."' class='btn btn-warning'>Edit</a></center></td>";
+                echo "<td><center><a href='".base_url()."lists/delete_edu/".$r->UserID."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></center></td>";
             echo "</tr>";
         }
     ?>
