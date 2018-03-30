@@ -22,7 +22,6 @@ class Lists extends CI_Controller
   public function admin()
   {
       $data ['query'] = $this->list_model->admin_model();
-      $this->load->view('templates/menu');
       $this->load->view('templates/admin');
       $this->load->view('templates/header');
       $this->load->view('login/list_admin', $data);
@@ -66,14 +65,31 @@ class Lists extends CI_Controller
         $this->list_model->save_edit_status_ad_model($data,$UserID);
   		  $this->admin();
   	}
+
+    public function delete_user()
+    {
+        $UserID = $this->uri->segment('3');
+        $this->list_model->delete_user_model($UserID);
+        $this->admin();
+    }
                                                       // ***Education***
   public function edu()
   {
-      $data ['query'] = $this->list_model->edu_model();
+    $data ['query'] = $this->list_model->edu_model();
+    if($this->session->userdata('Status') == "ADMIN")
+    {
+      $this->load->view('templates/admin');
+      $this->load->view('templates/header');
+      $this->load->view('login/list_education', $data);
+      $this->load->view('templates/footer');
+    }
+    else
+    {
       $this->load->view('templates/menu');
       $this->load->view('templates/header');
       $this->load->view('login/list_education', $data);
       $this->load->view('templates/footer');
+    }
   }
 
   public function add_edu()
@@ -123,11 +139,21 @@ class Lists extends CI_Controller
                                                       // ***interest***
   public function int()
   {
-      $data ['query'] = $this->list_model->int_model();
+    $data ['query'] = $this->list_model->int_model();
+    if($this->session->userdata('Status') == "ADMIN")
+    {
+      $this->load->view('templates/admin');
+      $this->load->view('templates/header');
+      $this->load->view('login/list_interest', $data);
+      $this->load->view('templates/footer');
+    }
+    else
+    {
       $this->load->view('templates/menu');
       $this->load->view('templates/header');
       $this->load->view('login/list_interest', $data);
       $this->load->view('templates/footer');
+    }
   }
 
   public function add_int()
@@ -177,11 +203,21 @@ class Lists extends CI_Controller
                                                       // ***job***
   public function j()
   {
-        $data ['query'] = $this->list_model->j_model();
+      $data ['query'] = $this->list_model->j_model();
+      if($this->session->userdata('Status') == "ADMIN")
+      {
+        $this->load->view('templates/admin');
+        $this->load->view('templates/header');
+        $this->load->view('login/list_job', $data);
+        $this->load->view('templates/footer');
+      }
+      else
+      {
         $this->load->view('templates/menu');
         $this->load->view('templates/header');
         $this->load->view('login/list_job', $data);
         $this->load->view('templates/footer');
+      }
   }
 
   public function add_j()

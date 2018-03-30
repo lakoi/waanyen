@@ -47,7 +47,7 @@
                 // echo "<td>".$r->id."</td>";
                 echo "<td>".$r->title."</td>";
                 echo "<td><center><a href='".base_url()."login/edit_education/".$r->id."' class='btn btn-warning'>Edit</a></center></td>";
-                echo "<td><center><a href='".base_url()."lists/delete_edu/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></center></td>";
+                echo "<td><center><a href='".base_url()."lists/delete_edu/".$r->id."' onclick='return confirm(\"Confirm Delete $r->title\")' class='btn btn-danger'>Delete</a></center></td>";
             echo "</tr>";
         }
     ?>

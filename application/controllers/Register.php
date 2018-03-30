@@ -19,10 +19,10 @@ class Register extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('login/register_view', $data);
         $this->load->view('templates/footer');
-}
+  }
 
   public function create()
-{
+  {
 
 
         $data['title'] = 'validate';
@@ -42,5 +42,5 @@ class Register extends CI_Controller
             $this->index();
 
         }
-}
+  }
 }

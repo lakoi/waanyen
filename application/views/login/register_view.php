@@ -35,8 +35,8 @@
 
         <div class="col-sm-4 offset-8">
         <span>Status</span>
-        <select class="form-control btn btn-outline-dark" name="Status" id="Status" >
-        
+        <select class="form-control btn btn-outline-primary" name="Status" id="Status" >
+
           <option value="USER">USER</option>
         </select>
       </div>

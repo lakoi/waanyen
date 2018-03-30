@@ -14,17 +14,19 @@ class Profiles extends CI_Controller
 
   	public function index()
   	{
-      $data ['query'] = 'hi';
+      $data ['query'] = $this->profile_model->pro_model();
       $this->load->view('templates/menu');
   		$this->load->view('templates/header');
   		$this->load->view('login/profile_view', $data);
   		$this->load->view('templates/footer');
   	}
 
+
+
     public function change_name()
     {
-      $id = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_name_model($id);
+      $UserID = $this->uri->segment('3');
+  		$data['query'] = $this->profile_model->change_name_model($UserID);
       $this->load->view('templates/header');
       $this->load->view('login/change_name_view', $data);
       $this->load->view('templates/footer');
@@ -35,16 +37,18 @@ class Profiles extends CI_Controller
     {
       $data = array(
       'Name' => $this->input->post('Name')
-      );
-		  $id = $this->input->post('userID');
-      $this->list_model->save_edit_edu_model($data,$id);
-		  $this->edu();
+    );
+      $name = $this->input->post('Name');
+      $this->session->set_userdata('Name', $name);
+		  $UserID = $this->input->post('UserID');
+      $this->profile_model->save_change_name_model($data,$UserID);
+		  $this->index();
     }
 
     public function change_pass()
     {
-      $id = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_pass_model($id);
+      $UserID = $this->uri->segment('3');
+  		$data['query'] = $this->profile_model->change_pass_model($UserID);
       $this->load->view('templates/header');
       $this->load->view('login/change_password_view', $data);
       $this->load->view('templates/footer');
@@ -52,18 +56,14 @@ class Profiles extends CI_Controller
 
     public function save_change_pass()
     {
-        $data = array(
-        'Password' => $this->input->post('Password')
-        );
-        $this->profile_model->save_change_pass_model($data);
-        if($this->profile_model->save_change_pass_model($data)==true)
-        {
-
-        $this->index();
-        }
-        else {
-          $this->change_pass();
-        }
+      $password = $this->input->post('Password');
+      $data = array(
+      'Password' => md5($password)
+      );
+      $this->session->set_userdata('Password', $password);
+		  $UserID = $this->input->post('UserID');
+      $this->profile_model->save_change_pass_model($data, $UserID);
+		  $this->index();
     }
 
 }

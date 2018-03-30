@@ -9,22 +9,28 @@ class Profile_model extends CI_Model
       $this->load->helper('form');
   }
 
+  public function pro_model()
+  {
+      $query = $this->db->get('member');
+      return $query->result();
+  }
+
   public function name_model()
   {
       $query = $this->db->get('member');
       return $query->result();
   }
-  public function change_name_model($id)
+  public function change_name_model($UserID)
   {
-        $query = $this->db->get_where("member",array("UserID"=>$id));
+        $query = $this->db->get_where("member",array("UserID"=>$UserID));
         $data = $query->result();
         return $data;
   }
 
-  public function save_change_name_model($data,$id)
+  public function save_change_name_model($data,$UserID)
   {
         $this->db->set($data);
-        $this->db->where("UserID", $id);
+        $this->db->where("UserID", $UserID);
         $this->db->update("member");
   }
 
@@ -34,17 +40,17 @@ class Profile_model extends CI_Model
       return $query->result();
   }
 
-  public function change_pass_model()
+  public function change_pass_model($UserID)
   {
-    $query = $this->db->get_where('member');
+    $query = $this->db->get_where("member",array("UserID"=>$UserID));
     $data = $query->result();
     return $data;
   }
 
-  public function save_change_pass_model($data)
+  public function save_change_pass_model($data,$UserID)
   {
-        $this->db->set($data);
-        $this->db->where('Password');
-        $this->db->update('member');
+    $this->db->set($data);
+    $this->db->where("UserID", $UserID);
+    $this->db->update("member");
   }
 }

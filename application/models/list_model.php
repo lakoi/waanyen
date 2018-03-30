@@ -42,6 +42,14 @@ class List_model extends CI_Model
         $this->db->where("UserID", $UserID);
         $this->db->update("member");
   }
+
+  public function delete_user_model($UserID)
+  {
+        if ($this->db->delete("member", "UserID = ".$UserID))
+        {
+           return true;
+        }
+  }
                                                           //* * *EDUCATION* * *
   public function edu_model()
   {

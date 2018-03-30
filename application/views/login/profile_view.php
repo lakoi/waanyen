@@ -12,42 +12,29 @@
   <body class="text-center bg-light">
     <h4>Profile</h4>
     <div class="col-sm-6 offset-3">
+      <form method="post">
     <?php if (isset($query)): ?>
-    <table class="table">
-      <input type="hidden" name="id" value="<?php echo ("$query[0]->UserID");?>"></input>
+    <table class="table border-0">
+      <input type="hidden" name="UserID" value="<?php echo $query[0]->UserID ;?>"></input>
         <tr>
-          <td>
-        <label>Email</label>
-      </td>
-      <td>
-        <span><?php echo $this->session->userdata('Email'); ?></span>
-      </td>
-    </tr>
+          <th><label>Email</label></th>
+          <td><span><?php echo $this->session->userdata('Email'); ?></span></td>
+        </tr>
         <tr>
-          <td>
-        <label> Password</label>
-      </td>
-      <td>
-        <input type="password" readonly class="form-control-plaintext" value="<?php echo $this->session->userdata('Password'); ?>"></input>
-        <a class="btn btn-warning" href="<?php echo base_url(). 'login/change_password';?>"> change password</a>
-        </td>
-      </tr>
+          <th><label> Password</label></th>
+          <td><input type="password" readonly class="form-control-plaintext" value="<?php echo $this->session->userdata('Password'); ?>"></td>
+          <td><a class="btn btn-warning" href="<?php echo base_url(). 'login/change_password';?>"> change password</a></td>
+        </tr>
         <tr>
-          <td>
-        <label>Name</label>
-      </td><th>. . .</th>
-</tr><tr><th></th><td>
-      <!-- <?php print_r($query[0]->Name);?> -->
-      <!-- <?php print_r($_SESSION); ?> -->
-        <!-- <span><?php echo $this->session->userdata('Name'); ?></span> -->
-        <a class="btn btn-warning" href="<?php echo base_url(). 'login/change_name';?>"> change name</a>
-      </td>
-    </tr>
-  </div>
-  </tr>
-  </table>
-  <?php endif; ?>
-  </div>
+          <th><label>Name</label></th>
+          <td><?php echo $this->session->userdata('Name');?></td>
+          <td><a class="btn btn-warning" href="<?php echo base_url(). 'login/change_name';?>"> change name</a></td>
+        </tr>
+
+      </table>
+        <?php endif; ?>
+      </form>
+    </div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -9,7 +9,7 @@ class Login extends CI_Controller
 					$this->load->database();
 					$this->load->helper('form');
 					$this->load->library('form_validation');
-					// $this->load->library('session');
+					$this->load->library('session');
 	}
 	public function index()
 	{
@@ -22,9 +22,6 @@ class Login extends CI_Controller
 
  	public function login_valid()
  	{
-					$query = $this->db->query("select * from member where Name");
-					$name = $query->result();
-
 				 	$this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email');
 					$this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[8]');
 				if ($this->form_validation->run())
@@ -35,15 +32,18 @@ class Login extends CI_Controller
 					$this->load->model('login_model');
 					if($this->login_model->can_login($email, $password))
 					{
+						$query = $this->db->query("select * from member where Email = '$email'");
 
-						$session_data = array(
-							'Email' => $email,
-							'Password' => $password,
-							'Name' => $name
+							foreach ($query->result_array() as $row)
+								$userdata = array(
+								'UserID' => $row['UserID'],
+								'Email' => $row['Email'],
+								'Password' => $password,
+								'Name' => $row['Name'],
+								'Status' => $row['Status']
 							);
-						$this->session->set_userdata($session_data);
-						$this->enter();
-						// redirect(base_url() . 'login/enter');
+							$this->session->set_userdata($userdata);
+							$this->enter();
 					}
 					else
 					{
@@ -60,9 +60,8 @@ class Login extends CI_Controller
 
  	public function enter()
  	{
-	 		if($this->session->userdata('Email') != '')
+	 		if($this->session->userdata('Status') == "ADMIN")
 	 		{
-				$this->load->view('templates/menu');
 				$this->load->view('templates/admin');
 				$this->load->view('templates/header');
 				$this->load->view('login/list_view');
@@ -70,7 +69,11 @@ class Login extends CI_Controller
 			}
 	 		else
 	 		{
-				$this->index();
+				$this->load->view('templates/menu');
+				$this->load->view('templates/header');
+				$this->load->view('login/list_view');
+				$this->load->view('templates/footer');
+				// $this->index();
 				// redirect(base_url() . 'login/index');
 			}
  	}
@@ -79,7 +82,7 @@ class Login extends CI_Controller
 	{
 		 // $this->session->unset_userdata('Email');
 		 session_destroy();
-		 redirect(base_url() . 'login/index');
+		 redirect(base_url() . 'login');
 	}
 
 }

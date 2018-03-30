@@ -23,4 +23,16 @@ class Login_model extends CI_Model
         return false;
       }
   }
+    // public function ses_login($email, $password)
+    // {
+    //   $query = $this->db->query("select * from member where Email like '$email' and Password like '".md5($password)."'");
+    //   if($query->num_rows()>0)
+    //   {
+    //     return true;
+    //   }
+    //   else
+    //   {
+    //     return false;
+    //   }
+    // }
 }
