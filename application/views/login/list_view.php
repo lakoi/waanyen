@@ -14,9 +14,11 @@
           <table class="table">
             <thead>
               <th><div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-                <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>/
-                <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>/
-                <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>
+                <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>|
+                <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>|
+                <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>|
+                <a href="<?php echo base_url().'login/domain';?>" class="btn btn-outline-primary border-0">Domain</a>|
+                <a href="<?php echo base_url().'login/popup';?>" class="btn btn-outline-primary border-0">popup</a>
               </div></th>
             </thead>
           </table>

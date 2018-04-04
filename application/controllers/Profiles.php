@@ -6,6 +6,7 @@ class Profiles extends CI_Controller
   {
 	     parent::__construct();
   		$this->load->model('profile_model');
+      $this->load->model('login_model');
   		$this->load->helper('url_helper');
   		$this->load->database();
   		$this->load->helper('form');
@@ -14,23 +15,22 @@ class Profiles extends CI_Controller
 
   	public function index()
   	{
+      $this->login_model->checker();
       $data ['query'] = $this->profile_model->pro_model();
-      $this->load->view('templates/menu');
-  		$this->load->view('templates/header');
-  		$this->load->view('login/profile_view', $data);
-  		$this->load->view('templates/footer');
-  	}
-
-
+        $this->login_model->check_status();
+      		$this->load->view('templates/header');
+      		$this->load->view('login/profile_view', $data);
+      		$this->load->view('templates/footer');
+    }
 
     public function change_name()
     {
-      $UserID = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_name_model($UserID);
-      $this->load->view('templates/header');
-      $this->load->view('login/change_name_view', $data);
-      $this->load->view('templates/footer');
-      // if()
+        $this->login_model->checker();
+        $UserID = $this->uri->segment('3');
+    		$data['query'] = $this->profile_model->change_name_model($UserID);
+          $this->load->view('templates/header');
+          $this->load->view('login/change_name_view', $data);
+          $this->load->view('templates/footer');
     }
 
     public function save_change_name()
@@ -47,11 +47,12 @@ class Profiles extends CI_Controller
 
     public function change_pass()
     {
-      $UserID = $this->uri->segment('3');
-  		$data['query'] = $this->profile_model->change_pass_model($UserID);
-      $this->load->view('templates/header');
-      $this->load->view('login/change_password_view', $data);
-      $this->load->view('templates/footer');
+        $this->login_model->checker();
+        $UserID = $this->uri->segment('3');
+    		$data['query'] = $this->profile_model->change_pass_model($UserID);
+          $this->load->view('templates/header');
+          $this->load->view('login/change_password_view', $data);
+          $this->load->view('templates/footer');
     }
 
     public function save_change_pass()

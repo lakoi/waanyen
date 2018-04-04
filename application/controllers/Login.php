@@ -10,13 +10,15 @@ class Login extends CI_Controller
 					$this->load->helper('form');
 					$this->load->library('form_validation');
 					$this->load->library('session');
+					$this->load->helper('date');
 	}
 	public function index()
 	{
-					$data['title'] = 'Welcome';
-					$this->load->view('templates/header');
-					$this->load->view('login/login_view', $data);
-					$this->load->view('templates/footer');
+
+			$data['title'] = 'Welcome';
+			$this->load->view('templates/header');
+			$this->load->view('login/login_view', $data);
+			$this->load->view('templates/footer');
 
 	}
 
@@ -60,22 +62,11 @@ class Login extends CI_Controller
 
  	public function enter()
  	{
-	 		if($this->session->userdata('Status') == "ADMIN")
-	 		{
-				$this->load->view('templates/admin');
+				$this->login_model->check_status();
+				echo date("Y-m-d H:i:s");
 				$this->load->view('templates/header');
 				$this->load->view('login/list_view');
 				$this->load->view('templates/footer');
-			}
-	 		else
-	 		{
-				$this->load->view('templates/menu');
-				$this->load->view('templates/header');
-				$this->load->view('login/list_view');
-				$this->load->view('templates/footer');
-				// $this->index();
-				// redirect(base_url() . 'login/index');
-			}
  	}
 
 	public function logout()

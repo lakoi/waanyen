@@ -22,16 +22,16 @@
           <div class="col-sm-4 offset-4">
             <div class="blockquote text-left text-primary">
         <span> &nbsp;Email</span>
-        <input class="form-control btn btn-outline-light bg-white " aria-hidden="true" name="Email" type="email" id="txtUsername" size="40" placeholder="ใส่ Email..."><span><?php echo form_error('Email');?></span>
+        <input class="form-control btn btn-outline-light bg-white " name="Email" type="email" size="40" placeholder="ใส่ Email..." value="<?php echo $this->input->post('Email');?>"><?php echo form_error('Email');?>
 
         <span> &nbsp;Password</span>
-        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="Password" type="password" id="txtPassword" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
+        <input class="form-control btn btn-outline-light bg-white" name="Password" type="password" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
 
         <span> &nbsp;Confirm Password</span>
-        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="ConPassword" type="password" id="txtConPassword" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
+        <input class="form-control btn btn-outline-light bg-white" name="ConPassword" type="password" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
 
         <span>&nbsp;Name</span>
-        <input class="form-control btn btn-outline-light bg-white" aria-hidden="true" name="Name" type="text" id="txtName" size="35" placeholder="ใส่ชื่อ..." ><?php echo form_error('Name');?>
+        <input class="form-control btn btn-outline-light bg-white" name="Name" type="text" size="35" placeholder="ใส่ชื่อ..." value="<?php echo $this->input->post('Name');?>"><?php echo form_error('Name');?>
 
         <div class="col-sm-4 offset-8">
         <span>Status</span>

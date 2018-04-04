@@ -52,14 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['login/login'] = 'login/index/$1';
 $route['login/register'] = 'Register/create/$1';
 $route['register'] = 'Register/create/$1';
-$route['login/list_view'] = 'login/enter/$1';
-$route['login/profile'] = 'Profiles/index/$1';
 
-$route['login/list_admin'] = 'Lists/admin/$1';
-$route['login/edit_name_admin/(:num)'] = 'Lists/edit_name_ad/$1';
-$route['login/save_edit_name_admin/(:num)'] = 'Lists/save_edit_name_ad/$1';
-$route['login/edit_status_admin/(:num)'] = 'Lists/edit_status_ad/$1';
+$route['login/search_domain'] = 'Lists/search_do/$1';
 
+$route['login/admin'] = 'Admins/admin/$1';
+$route['login/edit_name_admin/(:num)'] = 'Admins/edit_name_ad/$1';
+$route['login/save_edit_name_admin/(:num)'] = 'Admins/save_edit_name_ad/$1';
+$route['login/edit_status_admin/(:num)'] = 'Admins/edit_status_ad/$1';
 
 $route['login/change_name'] = 'Profiles/change_name/$1';
 $route['login/change_password'] = 'Profiles/change_pass/$1';
@@ -67,10 +66,15 @@ $route['login/change_password'] = 'Profiles/change_pass/$1';
 $route['login/add_education'] = 'Lists/add_edu/$1';
 $route['login/add_interest'] = 'Lists/add_int/$1';
 $route['login/add_job'] = 'Lists/add_j/$1';
+$route['login/add_domain'] = 'Lists/add_do/$1';
 
+$route['login/home'] = 'login/enter/$1';
+$route['login/profile'] = 'Profiles/index/$1';
 $route['login/education'] = 'Lists/edu/$1';
 $route['login/interest'] = 'Lists/int/$1';
 $route['login/job'] = 'Lists/j/$1';
+$route['login/popup'] = 'Lists/popup/$1';
+$route['login/domain'] = 'Lists/domain/$1';
 
 $route['login/edit_education/(:num)'] = 'Lists/edit_edu/$1';
 $route['login/edit_interest/(:num)'] = 'Lists/edit_int/$1';

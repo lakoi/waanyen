@@ -16,10 +16,11 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <a href="<?php echo base_url().'login/list_view';?>" class="btn btn-outline-primary border-0">Home</a>/
-              <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>/
-              <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>/
-              <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>
+              <a href="<?php echo base_url().'login/home';?>" class="btn btn-outline-primary border-0">Home</a>|
+              <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>|
+              <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>|
+              <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>|
+              <a href="<?php echo base_url().'login/domain';?>" class="btn btn-outline-primary border-0">Domain</a>
             </div>
           </th>
         </thead>
@@ -28,7 +29,7 @@
       <br>
 
       <h3>Job</h3>
-        <div class="col-sm-6 offset-3 ">
+        <div class="col-sm-8 offset-2 ">
       <?php if (isset($query)): ?>
       <table class="table table-hover">
         <thead>

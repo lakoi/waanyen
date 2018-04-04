@@ -11,7 +11,7 @@
   </head>
     <body class="blockquote bg-light">
 
-  <form action="<?php echo base_url(). 'Lists/save_edit_status_ad' ;?>" method="post" accept-charset="utf-8">
+  <form action="<?php echo base_url(). 'Admins/save_edit_status_ad' ;?>" method="post" accept-charset="utf-8">
     <input type="hidden" name="UserID" value="<?php echo $query[0]->UserID ;?>">
     <br>
     <label>Status</label>
@@ -23,7 +23,7 @@
     <span>your status <?php echo $query[0]->Status ;?></span>
     <br><br>
     <input class="btn btn-warning" type="submit" id="submit" value="Save Edit">
-    <a class="btn" href="<?php echo base_url(). 'login/list_admin' ;?>">Back</a>
+    <a class="btn" href="<?php echo base_url(). 'login/admin' ;?>">Back</a>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -8,48 +8,6 @@ class List_model extends CI_Model
       $this->load->database();
       $this->load->helper('form');
   }
-                                                          //* * *ADMIN* * *
-  public function admin_model()
-  {
-      $query = $this->db->get('member');
-      return $query->result();
-  }
-
-  public function edit_name_ad_model($UserID)
-  {
-        $query = $this->db->get_where("member",array("UserID"=>$UserID));
-        $data = $query->result();
-        return $data;
-  }
-
-  public function save_edit_name_ad_model($data,$UserID)
-  {
-        $this->db->set($data);
-        $this->db->where("UserID", $UserID);
-        $this->db->update("member");
-  }
-
-  public function edit_status_ad_model($UserID)
-  {
-        $query = $this->db->get_where("member",array("UserID"=>$UserID));
-        $data = $query->result();
-        return $data;
-  }
-
-  public function save_edit_status_ad_model($data,$UserID)
-  {
-        $this->db->set($data);
-        $this->db->where("UserID", $UserID);
-        $this->db->update("member");
-  }
-
-  public function delete_user_model($UserID)
-  {
-        if ($this->db->delete("member", "UserID = ".$UserID))
-        {
-           return true;
-        }
-  }
                                                           //* * *EDUCATION* * *
   public function edu_model()
   {
@@ -157,5 +115,39 @@ class List_model extends CI_Model
         {
           return true;
         }
+  }
+                                                          //* * *DOMAIN* * *
+  public function domain_model()
+  {
+      $query = $this->db->get('domain');
+      return $query->result();
+  }
+
+  public function add_do_model($data)
+  {
+      if ($this->db->insert("domain", $data))
+      {
+        return true;
+      }
+  }
+
+  public function search_do_model($email, $package, $username)
+  {
+    $query = $this->db->query("select * from domain where  (email like '%$email%' and username like '%$username%' and package like '%$package%') ");
+    return $query->result();
+  }
+
+  public function popup_model()
+  {
+      $query = $this->db->get('popup');
+      return $query->result();
+  }
+
+  public function save_popup_model($data)
+  {
+      if ($this->db->insert("popup", $data))
+      {
+        return true;
+      }
   }
 }

@@ -9,6 +9,29 @@ class Login_model extends CI_Model
       $this->load->helper('form');
       $this->load->library('form_validation');
   }
+
+  public function checker()
+  {
+
+    if($this->session->userdata('Email')=='')
+    {
+      redirect(base_url(). 'login');
+      exit();
+    }
+  }
+
+  public function check_status()
+  {
+    if($this->session->userdata('Status')=="ADMIN")
+    {
+      $this->load->view('templates/admin');
+    }
+    else
+    {
+      $this->load->view('templates/menu');
+    }
+  }
+
   public function can_login($email, $password)
   {
       $this->db->where('Email', $email);
@@ -23,16 +46,5 @@ class Login_model extends CI_Model
         return false;
       }
   }
-    // public function ses_login($email, $password)
-    // {
-    //   $query = $this->db->query("select * from member where Email like '$email' and Password like '".md5($password)."'");
-    //   if($query->num_rows()>0)
-    //   {
-    //     return true;
-    //   }
-    //   else
-    //   {
-    //     return false;
-    //   }
-    // }
+
 }

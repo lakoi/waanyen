@@ -16,10 +16,11 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/list_view';?>">Home</a></button>/
-              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/education';?>">Education</a></button>/
-              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/interest';?>">Interest</a></button>/
-              <button href="#" type="button" class="btn btn-outline-light border-0 text-primary"><a href="<?php echo base_url().'login/job';?>">Job</a></button>
+              <a href="<?php echo base_url().'login/home';?>" class="btn btn-outline-primary border-0">Home</a></button>|
+              <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a></button>|
+              <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a></button>|
+              <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a></button>|
+              <a href="<?php echo base_url().'login/domain';?>" class="btn btn-outline-primary border-0">Domain</a>
 
             </div>
           </th>

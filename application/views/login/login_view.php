@@ -23,7 +23,7 @@
               <tr>
                 <label class="text-danger"><?php echo $this->session->flashdata("error"); ?></label>
                 <td> &nbsp;Email</td>
-                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="email" id="txtUsername"></td></tr>
+                <td><input class="form-control btn btn-outline-light bg-white" name="Email" type="email" id="txtUsername" value="<?php echo $this->input->post('Email');?>"></td></tr>
                 <tr><td></td><td><?php echo form_error('Email');?></td></tr>
               </tr>
               <tr>
