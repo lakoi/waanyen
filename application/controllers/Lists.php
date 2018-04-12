@@ -177,9 +177,9 @@ class Lists extends CI_Controller
                                                       // ***delete_job***
   public function delete_j()
   {
-      $id = $this->uri->segment('3');
-      $this->list_model->delete_j_model($id);
-      $this->j();
+    $id = $this->uri->segment('3');
+    $this->list_model->delete_j_model($id);
+    $this->j();
   }
                                                       // ***Domain***
   public function domain()
@@ -194,39 +194,38 @@ class Lists extends CI_Controller
 
   public function add_do()
   {
-      $this->login_model->checker();
-      $query = $this->db->get("domain");
-      $data['result'] = $query->result();
-        $this->load->view('templates/header');
-        $this->load->view('login/add_domain', $data);
-        $this->load->view('templates/footer');
+    $this->login_model->checker();
+    $query = $this->db->get("domain");
+    $data['result'] = $query->result();
+      $this->load->view('templates/header');
+      $this->load->view('login/add_domain', $data);
+      $this->load->view('templates/footer');
   }
 
   public function save_do()
   {
-      	$data = array(
-        'domain' => $this->input->post('domain'),
-        'username' => $this->input->post('username'),
-        'email' => $this->input->post('email'),
-        'package' => $this->input->post('package'),
-        'date_reg' => time()
-        );
-        $this->list_model->add_do_model($data);
-      	redirect(base_url(). 'login/domain');
+  	$data = array(
+      'domain' => $this->input->post('domain'),
+      'username' => $this->input->post('username'),
+      'email' => $this->input->post('email'),
+      'package' => $this->input->post('package'),
+      'date_reg' => time()
+    );
+    $this->list_model->add_do_model($data);
+  	redirect(base_url(). 'login/domain');
   }
 
   public function search_do()
   {
-        $this->login_model->checker();
-        $email = $this->input->get('email');
-        $username = $this->input->get('username');
-        $package = $this->input->get('package');
-        $data ['query'] = $this->list_model->search_do_model($email, $package, $username);
-
-        $this->login_model->check_status();
-        $this->load->view('templates/header');
-        $this->load->view('login/search_domain', $data);
-        $this->load->view('templates/footer');
+    $this->login_model->checker();
+    $email = $this->input->get('email');
+    $username = $this->input->get('username');
+    $package = $this->input->get('package');
+    $data ['query'] = $this->list_model->search_do_model($email, $package, $username);
+    $this->login_model->check_status();
+      $this->load->view('templates/header');
+      $this->load->view('login/search_domain', $data);
+      $this->load->view('templates/footer');
   }
 
   public function popup()
@@ -241,30 +240,71 @@ class Lists extends CI_Controller
 
   public function save_popup()
   {
-
-    $config['upload_path'] = 'C:/xampp/htdocs/waanyen/img/';
-    $config['allowed_types'] = '*';
-    $config['max_size'] = '10240';
-    $config['max_width'] = '10240';
-    $config['max_height'] = '10240';
-    $config['remove_spaces'] = TRUE;
-
-    $this->load->library("upload",$config);
-    if ( ! $this->upload->do_upload('photo'))
-    {
-      $errors = $this->upload->display_errors();
-      echo $errors;
-      $this->popup();
-    }
-    else
-    {
-      $data = array(
-        'title' => $this->input->post('title'),
-        'photo' => $this->upload->data('photo')
-      );
-      $this->list_model->save_popup_model($data);
-      $this->popup();
-    }
+    $config['upload_path']   = 'img/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 0;
+    $config['max_width']     = 0;
+    $config['max_height']    = 0;
+    $config['file_name']  = date(d_m_Y_H_i_s);
+      $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('photo'))
+      {
+        $error = array('error' => $this->upload->display_errors());
+        $this->load->view('login/list_popup', $error);
+      }
+      else
+      {
+        $data = array(
+          'title' => $this->input->post('title'),
+          'photo' => $this->upload->data('file_name'),
+        );
+        $this->list_model->save_popup_model($data);
+        redirect(base_url(). 'login/popup');
+      }
   }
+
+  public function edit_pop()
+  {
+    $this->login_model->checker();
+    $this->login_model->check_status();
+    $id = $this->uri->segment('3');
+    $data['query'] = $this->list_model->edit_popup_model($id);
+    $this->load->view('templates/header');
+    $this->load->view('login/list_popup', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function save_edit_popup()
+  {
+    $config['upload_path']   = 'img/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 0;
+    $config['max_width']     = 0;
+    $config['max_height']    = 0;
+    $config['file_name']  = date(d_m_Y_H_i_s);
+      $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('photo'))
+      {
+        $photo = $this->input->post('old_image');
+        echo "no save";
+      }else
+      {
+        $photo = $this->upload->data('file_name');
+      }
+        $data = array(
+          'title' => $this->input->post('title'),
+          'photo' => $photo,
+        );
+        $id = $this->input->post('id');
+        $this->list_model->save_edit_popup_model($data,$id);
+        redirect(base_url(). 'Lists/popup');
+    }
+
+    public function delete_popup()
+    {
+      $id = $this->uri->segment('3');
+      $this->list_model->delete_popup_model($id);
+      redirect(base_url(). 'Lists/popup');
+    }
 
 }

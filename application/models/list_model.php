@@ -7,6 +7,7 @@ class List_model extends CI_Model
       $this->load->helper('url_helper');
       $this->load->database();
       $this->load->helper('form');
+      $this->load->helper('html');
   }
                                                           //* * *EDUCATION* * *
   public function edu_model()
@@ -150,4 +151,27 @@ class List_model extends CI_Model
         return true;
       }
   }
+
+  public function edit_popup_model($id)
+  {
+        $query = $this->db->get_where("popup",array("id"=>$id));
+        $data = $query->result();
+        return $data;
+  }
+
+  public function save_edit_popup_model($data,$id)
+  {
+        $this->db->set($data);
+        $this->db->where("id", $id);
+        $this->db->update("popup");
+  }
+
+  public function delete_popup_model($id)
+  {
+        if ($this->db->delete("popup", "id =".$id))
+        {
+          return true;
+        }
+  }
+
 }

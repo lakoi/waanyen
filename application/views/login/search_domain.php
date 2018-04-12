@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <style>
+      .btn
+      {
+          border: none;
+          color: white;
+          padding: 14px 28px;
+          font-size: 16px;
+          cursor: pointer;
+      }
+      .primary {background-color: #f8f9fa; color: #007bff;} /* Green */
+      .primary:hover {background-color: #f8f9fa; color: #000;}
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,11 +28,11 @@
         <thead>
           <th>
             <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <a href="<?php echo base_url().'login/home';?>" class="btn btn-outline-primary border-0">Home</a>|
-              <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>|
-              <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>|
-              <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>|
-              <a href="<?php echo base_url().'login/domain';?>" class="btn btn-outline-primary border-0">Domain</a>
+              <a href="<?php echo base_url().'login/home';?>" class="btn primary">Home</a>|
+              <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
+              <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
+              <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
+              <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>
 
             </div>
           </th>

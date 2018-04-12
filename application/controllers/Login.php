@@ -63,7 +63,6 @@ class Login extends CI_Controller
  	public function enter()
  	{
 				$this->login_model->check_status();
-				echo date("Y-m-d H:i:s");
 				$this->load->view('templates/header');
 				$this->load->view('login/list_view');
 				$this->load->view('templates/footer');
@@ -71,7 +70,6 @@ class Login extends CI_Controller
 
 	public function logout()
 	{
-		 // $this->session->unset_userdata('Email');
 		 session_destroy();
 		 redirect(base_url() . 'login');
 	}

@@ -1,6 +1,31 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <SCRIPT LANGUAGE="JavaScript">
+      function showFilled(Value) {
+      return (Value > 9) ? "" + Value : "0" + Value;
+      }
+      function StartClock24() {
+      TheTime = new Date;
+      document.clock.showTime.value = showFilled(TheTime.getHours()) + ":" +
+      showFilled(TheTime.getMinutes()) + ":" + showFilled(TheTime.getSeconds());
+      setTimeout("StartClock24()",1000)
+      }
+    </script>
+    <style type="text/css">
+      .input { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;border-style: none }
+
+        .btn
+        {
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .primary {background-color: #f8f9fa; color: #007bff;} /* Green */
+        .primary:hover {background-color: #f8f9fa; color: #000;}
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,16 +34,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>"Waanyen"</title>
   </head>
-        <body class="blockquote text-center bg-light">
+        <body class="blockquote text-center bg-light" onload="StartClock24()">
+          <form name="clock">
+            <input type="text" name="showTime" size="6" class="input bg-light" >
+          </form>
           <?php echo "ยินดีต้อนรับ คุณ",$this->session->userdata('Email'); ?><br>
           <table class="table">
             <thead>
               <th><div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-                <a href="<?php echo base_url().'login/education';?>" class="btn btn-outline-primary border-0">Education</a>|
-                <a href="<?php echo base_url().'login/interest';?>" class="btn btn-outline-primary border-0">Interest</a>|
-                <a href="<?php echo base_url().'login/job';?>" class="btn btn-outline-primary border-0">Job</a>|
-                <a href="<?php echo base_url().'login/domain';?>" class="btn btn-outline-primary border-0">Domain</a>|
-                <a href="<?php echo base_url().'login/popup';?>" class="btn btn-outline-primary border-0">popup</a>
+                <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
+                <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
+                <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
+                <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>|
+                <a href="<?php echo base_url().'login/popup';?>" class="btn primary">popup</a>
               </div></th>
             </thead>
           </table>
