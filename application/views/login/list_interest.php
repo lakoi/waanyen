@@ -22,8 +22,6 @@
     <title>"Interest"</title>
   </head>
     <body class="blockquote text-center bg-light">
-
-      <?php echo $this->session->userdata('Email'); ?><br>
       <table class="table">
         <thead>
           <th>
@@ -37,16 +35,13 @@
           </th>
         </thead>
       </table>
-
       <br>
-
-      <h3>Interest</h3>
         <div class="col-sm-8 offset-2 ">
+          <h3>Interest</h3>
       <?php if (isset($query)): ?>
       <table class="table table-hover">
         <thead>
           <tr>
-            <!-- <th><center>id</center></th> -->
             <th><center>title</center></th>
             <th><center>edit</center></th>
             <th><center>delete</center></th>
@@ -63,16 +58,6 @@
             echo "</tr>";
         }
     ?>
-      <!-- <?php foreach($query as $r):?>
-      <tr align="center">
-        <td><?php echo $r->id; ?></td>
-        <td><?php echo $r->title; ?></td>
-        <td><a href='".base_url()."index.php/customer/edit_customer_form/".$r->id."' class='btn btn-warning'>Edit</a></td>
-        <td><a href='".base_url()."index.php/customer/delete_customer/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>
-      </tr>
-
-      <?php endforeach; ?> -->
-
       </tbody>
       </table>
     <a href="<?php echo base_url().'login/add_interest';?>" class="btn btn-info btn-block">add</a>

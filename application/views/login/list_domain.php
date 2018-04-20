@@ -22,8 +22,6 @@
     <title>"Education"</title>
   </head>
     <body class="blockquote text-center bg-light">
-
-      <?php echo $this->session->userdata('Email'); ?><br>
       <table class="table">
         <thead>
           <th>
@@ -86,8 +84,8 @@
     </div>
   </form>
 
-      <h3>Domain</h3>
         <div class="col-sm-8 offset-2 ">
+          <h3>Domain</h3>
       <?php if (isset($query)): ?>
       <table class="table table-hover" >
         <thead>

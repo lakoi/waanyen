@@ -4,9 +4,10 @@ class Lists extends CI_Controller
   public function __construct()
   {
 	     parent::__construct();
+      $this->load->model('popup_model', 'm');
   		$this->load->model('list_model');
       $this->load->model('login_model');
-  		$this->load->helper('url_helper');
+  		$this->load->helper('url');
   		$this->load->database();
   		$this->load->helper('form');
       $this->load->helper('html');
@@ -234,8 +235,94 @@ class Lists extends CI_Controller
     $data ['query'] = $this->list_model->popup_model();
       $this->login_model->check_status();
       $this->load->view('templates/header');
-      $this->load->view('login/list_popup', $data);
+      $this->load->view('login/list_popup',$data);
       $this->load->view('templates/footer');
+  }
+
+  public function showAllEmployee()
+  {
+    $datapopup = $result = $this->m->showAllEmployee('popup')->result();
+    echo json_encode($datapopup);
+  }
+
+  public function uploaddata()
+  {
+
+
+        $photo = $this->input->post('photo');
+        $title = $this->input->post('title');
+
+        if($photo=='')
+        {
+          $result['not']="add photo";
+        }
+        else if($title=='')
+        {
+          $result['not']="add title";
+        }
+        else
+        {
+          $result['not']="";
+
+          $config['upload_path']   = 'img/';
+          $config['allowed_types'] = 'gif|jpg|png';
+          $config['max_size']      = 0;
+          $config['max_width']     = 0;
+          $config['max_height']    = 0;
+          // $config['file_name']  = date(d_m_Y_H_i_s);
+          $this->load->library('upload', $config);
+          if ( ! $this->upload->do_upload('photo'))
+          {
+            echo $this->upload->display_errors();
+          }
+          else
+          {
+
+            $data = array(
+            'photo' => $this->upload->data('file_name'),
+            'title' => $title,
+          );
+          $this->m->uploaddata($data, 'popup');
+        }
+      }
+
+    echo json_encode($result);
+  }
+
+  public function updatedata()
+  {
+    $id = $this->input->post('id');
+    $where = array('id' => $id);
+    $dataupdate = $this->m->updatedata('popup',$where)->result();
+    echo json_encode($dataupdate);
+  }
+
+  public function editdata()
+  {
+        $id = $this->input->post('id');
+        $photo = $this->input->post('photo');
+        $title = $this->input->post('title');
+
+        if($title=='')
+        {
+          $result['not']="add title";
+        }
+        elseif($photo=='')
+        {
+          $result['not']="add photo";
+        }
+        else
+        {
+          $result['not']="";
+
+          $where = array('id' => $id);
+          $data = array(
+            'photo'=>$photo,
+            'title'=>$title,
+          );
+          $this->m->editdata($where,$data, 'popup');
+        }
+        echo json_encode($result);
   }
 
   public function save_popup()
@@ -250,7 +337,7 @@ class Lists extends CI_Controller
       if ( ! $this->upload->do_upload('photo'))
       {
         $error = array('error' => $this->upload->display_errors());
-        $this->load->view('login/list_popup', $error);
+        redirect(base_url(). 'login/popup', $error);
       }
       else
       {

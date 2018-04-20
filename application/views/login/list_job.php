@@ -22,8 +22,6 @@
     <title>"Job"</title>
   </head>
     <body class="blockquote text-center bg-light">
-
-      <?php echo $this->session->userdata('Email'); ?><br>
       <table class="table">
         <thead>
           <th>
@@ -40,13 +38,12 @@
 
       <br>
 
-      <h3>Job</h3>
         <div class="col-sm-8 offset-2 ">
+          <h3>Job</h3>
       <?php if (isset($query)): ?>
       <table class="table table-hover">
         <thead>
           <tr>
-            <!-- <th><center>id</center></th> -->
             <th><center>title</center></th>
             <th><center>edit</center></th>
             <th><center>delete</center></th>
@@ -56,23 +53,12 @@
         <?php
         foreach($query as $r){
             echo "<tr>";
-                // echo "<td>".$r->id."</td>";
                 echo "<td>".$r->title."</td>";
                 echo "<td><a href='".base_url()."login/edit_job/".$r->id."' class='btn btn-warning'>Edit</a></td>";
                 echo "<td><a href='".base_url()."lists/delete_j/".$r->id."' onclick='return confirm(\"Confirm Delete $r->title\")' class='btn btn-danger'>Delete</a></td>";
             echo "</tr>";
         }
     ?>
-      <!-- <?php foreach($query as $r):?>
-      <tr align="center">
-        <td><?php echo $r->id; ?></td>
-        <td><?php echo $r->title; ?></td>
-        <td><a href='".base_url()."index.php/customer/edit_customer_form/".$r->id."' class='btn btn-warning'>Edit</a></td>
-        <td><a href='".base_url()."index.php/customer/delete_customer/".$r->id."' onclick='return confirm(\"Confirm Delete Item\")' class='btn btn-danger'>Delete</a></td>
-      </tr>
-
-      <?php endforeach; ?> -->
-
       </tbody>
       </table>
       <a href="<?php echo base_url().'login/add_job';?>" class="btn btn-info btn-block">add</a>

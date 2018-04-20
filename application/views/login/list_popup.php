@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <style>
       .btn
@@ -14,21 +17,142 @@
       .primary {background-color: #f8f9fa; color: #007bff;}
       .primary:hover {background-color: #f8f9fa; color: #000;}
     </style>
-    <!-- Required meta tags -->
+
+    <script type="text/javascript">
+        showAllEmployee();
+        function showAllEmployee()
+        {
+          $.ajax({
+                  type: 'POST',
+                  url: '<?php echo base_url(). "lists/showAllEmployee";?>',
+                  dataType: 'json',
+                  success: function(data)
+                  {
+                    var html = '';
+                    var i;
+                    for(i=0; i<data.length; i++)
+                    {
+                      html +='<tr>'+
+                              '<td>'+data[i].id+'</td>'+
+                              // '<td>'+data[i].photo+'</td>'+
+                              '<td><img src="<?php echo base_url().'img/';?>'+data[i].photo+'" width="80" hight="80"/></td>'+
+                              '<td>'+data[i].title+'</td>'+
+                              '<td><a href="#myModal" data-toggle="modal" class="btn btn-warning" onclick="submit('+data[i].id+')">Edit</a></td>'+
+                              '<td><a href="javascript:;" class="btn btn-danger">Delete</a></td>'+
+                            '</tr>';
+                    }
+                    $('#showdata').html(html);
+                  },
+                  error: function()
+                  {
+                    alert('not get database');
+                  }
+                });
+        }
+        function uploaddata()
+        {
+          var photo = $("[name='photo']").val();
+          var title = $("[name='title']").val();
+
+          $.ajax({
+                  type: 'POST',
+                  data: 'photo='+photo+'&title='+title,
+                  url: '<?php echo base_url(). "lists/uploaddata";?>',
+                  // contentType: false,
+                  // cacha: false,
+                  // processData: false,
+                  dataType: 'json',
+                  success: function(data)
+                  {
+                    console.log(data);
+                    $("#not").html(data.not);
+                    if(data.not=='')
+                    {
+                      $('#myModal').modal('hide');
+                      showAllEmployee();
+
+                      $("[name='photo']").val('');
+                      $("[name='title']").val('');
+                    }
+                  },
+                  error: function(request)
+                  {
+                    alert(request.responseText);
+                  }
+                });
+        }
+        function submit(x)
+        {
+          if(x=='upload')
+          {
+            $('#btn-upload').show();
+            $('#btn-update').hide();
+            $('#btn-img').hide();
+          }
+          else
+          {
+            $('#btn-upload').hide();
+            $('#btn-update').show();
+            $('#btn-img').show();
+
+            $.ajax({
+                    type: 'POST',
+                    data: 'id='+x,
+                    url: '<?php echo base_url(). "lists/updatedata";?>',
+                    dataType: 'json',
+                    success: function(data)
+                    {
+                      // $('[name="photo"]').val(data[0].photo);
+                      $('[name="title"]').val(data[0].title);
+                      $('[name="id"]').val(data[0].id);
+                    },
+                    error: function()
+                    {
+                      alert('not submit');
+                    }
+                  });
+          }
+        }
+        function editdata()
+        {
+          // var id = $("[name='id']").val();
+          var photo = $("[name='photo']").val();
+          var title = $("[name='title']").val();
+          $.ajax({
+                  type: 'POST',
+                  data: 'photo='+photo+'&title='+title,
+                  url: '<?php echo base_url(). "lists/editdata";?>',
+                  dataType: 'json',
+                  success: function(data)
+                  {
+                    console.log(data);
+                    $("#not").html(data.not);
+                    if(data.not=='')
+                    {
+                      $('#myModal').modal('hide');
+                      showAllEmployee();
+
+                      $("[name='photo']").val('');
+                      $("[name='title']").val('');
+                    }
+                  },
+                  error: function()
+                  {
+                    alert('not update file');
+                  }
+                });
+        }
+      </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>"Waanyen"</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
   </head>
-    <body class="blockquote text-center bg-light">
-      <?php echo "ยินดีต้อนรับ คุณ",$this->session->userdata('Email'); ?><br>
-        <table class="table">
-          <thead>
-            <th>
-              <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
+    <body class="blockquote bg-light">
+
+              <div class="btn-group-lg text-left offset-1" role="group" aria-label="Basic example">
                 <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
                 <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
                 <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
@@ -36,142 +160,70 @@
                 <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>|
                 <a href="<?php echo base_url().'login/popup';?>" class="btn primary">popup</a>
               </div>
-            </th>
-          </thead>
-        </table>
+                <hr>
 
-          <h3>Popup</h3>
-            <div class="col-sm-8 offset-2 ">
-              <?php if (isset($query)): ?>
-              <div class="col-sm-1" ><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add</button></div>
-                <table class="table table-hover" >
-                  <thead>
-                    <tr>
-                      <th><center>no</center></th>
-                      <th><center>photo</center></th>
-                      <th><center>title</center></th>
-                      <th><center>edit</center></th>
-                      <th><center>delete</center></th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                      <?php $n="0";?>
-                      <?php  foreach($query as $r)
-                      {
-                        // echo base_url(). 'img/'.$query[$n]->photo;
-                      ?>
-                      <tr>
-                        <td>
-                          <button><p>Off</p> <p style="display: none">On</p></button>
-                        </td>
-                        <td>
-                        <?php
-                        $image_properties = array(
-                                'src'   => 'img/'.$r->photo,
-                                'class' => 'post_images',
-                                'width' => '80',
-                                'height'=> '60',
-                        );
-                        echo img($image_properties);?>
-                        </td>
-                        <td><?php echo $r->title;?></td>
-                        <?php echo base_url(). 'img/'.$r->photo;?>
-                        <!-- /.dropdown <?php echo base_url().'Lists/edit_pop/'.$r->id;?>-->
-                        <td><a data-toggle="modal" href="#editModal" class="btn btn-warning text-center edit"
-                              data-title="<?php echo $r->title; ?>"
-                              data-photo="<?php echo $r->photo;?>"
-                              data-id="<?php echo $r->id; ?>" >Edit</a></td>
-                        <td><a href="<?php echo base_url().'Lists/delete_popup/'.$r->id;?>" onclick="return confirm('Confirm Delete Item <?php echo $r->title;?>')" class='btn btn-danger'>Delete</a></td>
-                      </tr>
-                        <?php
-                      $n++;}
-                      ?>
-                    </form>
-                    </tbody>
-                  </table>
-              <?php endif; ?>
+          <div class="container box">
+            <h2>Popup</h2>
+              <button data-target="#myModal" data-toggle="modal" type="button" class="btn btn-primary" onclick="submit('upload')" >Add</button>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th><center>no</center></th>
+                  <th><center>photo</center></th>
+                  <th><center>title</center></th>
+                  <th><center>edit</center></th>
+                  <th><center>delete</center></th>
+                </tr>
+              </thead>
+                <tbody id="showdata">
+
+                </tbody>
+              </table>
             </div>
 
-            <!-- AddModal -->
-            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+            <div class="modal fade" id="myModal" role="dialog" >
+              <div class="modal-dialog modal-dialog-centered">
+                <form method="post" id="popup_form" enctype="multipart/form-data">
+                  <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add file</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form enctype="multipart/form-data" method="post" action="<?php echo base_url(). 'Lists/save_popup';?>">
-                    <input type="file" class="btn primary" name="photo" id="featured">
-
-                    <div class="text-left">title</div>
-                    <input type="text" class="form-control text-center" name="title">
-                  </div>
-                  <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="upload">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </form>
-                  </div>
+                    <h1>Data</h1>
+                    <p id="not"></p>
                 </div>
+                <div class="modal-body">
+                <table class="table">
+                  <tr>
+                    <td></td>
+                    <td><img src name="img" id="img" class="post_images" width="200" height="200"/></td>
+                  </tr>
+                  <tr>
+                    <td>photo</td>
+                    <td><input type="file" name="photo" id="photo" class="form-control" value=""/></td>
+                    <input type="hidden" name="id" id="id" value=""/>
+                    <span class="user_upload_image"></span>
+                  </tr>
+                  <tr>
+                    <td>title</td>
+                    <td><input type="text" name="title" id="btn-title" class="form-control" value=""/></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <button type="button" id="btn-upload" onclick="uploaddata()" class="btn btn-success" >upload</button>
+                      <button type="button" id="btn-update" onclick="editdata()" class="btn btn-success" >update</button>
+                      <button type="button" data-dismiss="modal" class="btn btn-danger" >back</button>
+                    </td>
+                  </tr>
+                </table>
               </div>
-            </div>
-
-            <!-- Edit Modal -->
-            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-
-                  <div>
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit file</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                <form enctype="multipart/form-data" method="post" action="<?php echo base_url(). 'Lists/save_edit_popup';?>">
-                  <div class="modal-body">
-                    <input type="hidden" name="id" id="id">
-                      <!-- <input type="hidden" name="id" id="id">
-                      <input type="hidden" name="old_image" id="photo"> -->
-                      <img src id="photo" class="post_images" width="200" height="200"/>
-                    <input type="file" class="btn primary post_images" name="photo" value="">
-                    <div class="text-left">title</div>
-                    <input type="text" class="form-control text-center" name="title" id="title" >
-                  </div>
-
-                  <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="upload">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
+                </div>
                 </form>
-                  </div>
-                </div>
               </div>
             </div>
 
 
-            <script>
-            $( "button" ).click(function() {
-              $( "p" ).toggle();
-            });
-            </script>
 
-            <script type="text/javascript">
-            $('.edit').click(function(){
-              // get data from edit btn
-              var id = $(this).attr('data-id');
-              var title = $(this).attr('data-title');
-              var photo = $(this).attr('data-photo');
-              // set value to modal
-              $("#id").val(id);
-              $("#title").val(title);
-              $("#photo").val(photo);
-              });
-          </script>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>

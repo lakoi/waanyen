@@ -79,6 +79,8 @@ $route['login/edit_job/(:num)'] = 'Lists/edit_j/$1';
 
 $route['login/popup'] = 'Lists/save_popup/$1';
 $route['Lists/save_edit_popup'] = 'Lists/save_edit_popup/$1';
+// $route['login/showAllEmployee'] = 'Lists/showAllEmployee/$1';
+
 // $route['login/edit_pop/(:num)'] = 'Lists/edit_pop/$1';
 
 $route['login/home'] = 'login/enter/$1';

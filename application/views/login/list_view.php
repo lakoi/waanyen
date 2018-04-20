@@ -35,10 +35,9 @@
     <title>"Waanyen"</title>
   </head>
         <body class="blockquote text-center bg-light" onload="StartClock24()">
-          <form name="clock">
+          <form name="clock" class="text-center">
             <input type="text" name="showTime" size="6" class="input bg-light" >
           </form>
-          <?php echo "ยินดีต้อนรับ คุณ",$this->session->userdata('Email'); ?><br>
           <table class="table">
             <thead>
               <th><div class="btn-group-lg text-left" role="group" aria-label="Basic example">
