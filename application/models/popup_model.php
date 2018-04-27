@@ -23,4 +23,10 @@ class Popup_model extends CI_Model
     $this->db->where($where);
     $this->db->update($table,$data);
   }
+
+  public function save_data($data1)
+  {
+    $this->db->insert('popup', $data1);
+         return $this->db->insert();
+  }
 }

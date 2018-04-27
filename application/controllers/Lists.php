@@ -5,6 +5,7 @@ class Lists extends CI_Controller
   {
 	     parent::__construct();
       $this->load->model('popup_model', 'm');
+      $this->load->model('popup_model');
   		$this->load->model('list_model');
       $this->load->model('login_model');
   		$this->load->helper('url');
@@ -247,47 +248,62 @@ class Lists extends CI_Controller
 
   public function uploaddata()
   {
-
-
-        $photo = $this->input->post('photo');
-        $title = $this->input->post('title');
-
-        if($photo=='')
+    if($_POST["action"] == "upload")
+    {
+    $config['upload_path']   = 'img/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 0;
+    $config['max_width']     = 0;
+    $config['max_height']    = 0;
+    $config['file_name']  = date(d_m_Y_H_i_s);
+      $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('photo'))
+      {
+        return false;
+      }
+      else
+      {
+        $data = array(
+          'title' => $this->input->post('title'),
+          'photo' => $this->upload->data('file_name'),
+        );
+        $this->list_model->save_popup_model($data);
+        return true;
+      }
+    }
+    if($_POST["action"] == "update")
+    {
+      $config['upload_path']   = 'img/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size']      = 0;
+      $config['max_width']     = 0;
+      $config['max_height']    = 0;
+      $config['file_name']  = date(d_m_Y_H_i_s);
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('photo'))
         {
-          $result['not']="add photo";
-        }
-        else if($title=='')
-        {
-          $result['not']="add title";
+          return false;
         }
         else
         {
-          $result['not']="";
-
-          $config['upload_path']   = 'img/';
-          $config['allowed_types'] = 'gif|jpg|png';
-          $config['max_size']      = 0;
-          $config['max_width']     = 0;
-          $config['max_height']    = 0;
-          // $config['file_name']  = date(d_m_Y_H_i_s);
-          $this->load->library('upload', $config);
-          if ( ! $this->upload->do_upload('photo'))
-          {
-            echo $this->upload->display_errors();
-          }
-          else
-          {
-
-            $data = array(
-            'photo' => $this->upload->data('file_name'),
-            'title' => $title,
-          );
-          $this->m->uploaddata($data, 'popup');
+          $photo = $this->upload->data('file_name');
         }
-      }
+          $data = array(
+            'title' => $this->input->post('title'),
+            'photo' => $photo,
+          );
+          $id = $this->input->post('id');
+          $this->list_model->save_edit_popup_model($data,$id);
+          return true;
+    }
+    if($_POST["action"] == "delete")
+    {
+      $id = $this->input->post("id");
+      $this->list_model->delete_popup_model($id);
+      return true;
+    }
 
-    echo json_encode($result);
-  }
+    }
 
   public function updatedata()
   {
@@ -297,101 +313,23 @@ class Lists extends CI_Controller
     echo json_encode($dataupdate);
   }
 
-  public function editdata()
+  public function editstatus()
   {
-        $id = $this->input->post('id');
-        $photo = $this->input->post('photo');
-        $title = $this->input->post('title');
-
-        if($title=='')
-        {
-          $result['not']="add title";
-        }
-        elseif($photo=='')
-        {
-          $result['not']="add photo";
-        }
-        else
-        {
-          $result['not']="";
-
-          $where = array('id' => $id);
-          $data = array(
-            'photo'=>$photo,
-            'title'=>$title,
-          );
-          $this->m->editdata($where,$data, 'popup');
-        }
-        echo json_encode($result);
-  }
-
-  public function save_popup()
-  {
-    $config['upload_path']   = 'img/';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size']      = 0;
-    $config['max_width']     = 0;
-    $config['max_height']    = 0;
-    $config['file_name']  = date(d_m_Y_H_i_s);
-      $this->load->library('upload', $config);
-      if ( ! $this->upload->do_upload('photo'))
-      {
-        $error = array('error' => $this->upload->display_errors());
-        redirect(base_url(). 'login/popup', $error);
-      }
-      else
-      {
-        $data = array(
-          'title' => $this->input->post('title'),
-          'photo' => $this->upload->data('file_name'),
-        );
-        $this->list_model->save_popup_model($data);
-        redirect(base_url(). 'login/popup');
-      }
-  }
-
-  public function edit_pop()
-  {
-    $this->login_model->checker();
-    $this->login_model->check_status();
-    $id = $this->uri->segment('3');
-    $data['query'] = $this->list_model->edit_popup_model($id);
-    $this->load->view('templates/header');
-    $this->load->view('login/list_popup', $data);
-    $this->load->view('templates/footer');
-  }
-
-  public function save_edit_popup()
-  {
-    $config['upload_path']   = 'img/';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size']      = 0;
-    $config['max_width']     = 0;
-    $config['max_height']    = 0;
-    $config['file_name']  = date(d_m_Y_H_i_s);
-      $this->load->library('upload', $config);
-      if ( ! $this->upload->do_upload('photo'))
-      {
-        $photo = $this->input->post('old_image');
-        echo "no save";
-      }else
-      {
-        $photo = $this->upload->data('file_name');
-      }
-        $data = array(
-          'title' => $this->input->post('title'),
-          'photo' => $photo,
-        );
-        $id = $this->input->post('id');
-        $this->list_model->save_edit_popup_model($data,$id);
-        redirect(base_url(). 'Lists/popup');
-    }
-
-    public function delete_popup()
+    if($_POST["status"] == 1)
     {
-      $id = $this->uri->segment('3');
-      $this->list_model->delete_popup_model($id);
-      redirect(base_url(). 'Lists/popup');
+      $status = "1";
     }
+    else
+    {
+      $status = "0";
+    }
+      $data = array(
+      'status' => $status
+      );
+      $id = $_POST["id"];
+      $statusedit =  $this->list_model->editstatus($data,$id);
+      echo json_encode($statusedit);
+      // return true;
+  }
 
 }

@@ -10,8 +10,9 @@
     <title>"Profiles"</title>
   </head>
   <body class="text-center bg-light">
-    <h4>Profile</h4>
+
     <div class="col-sm-6 offset-3">
+      <h4>Profile</h4>
       <form method="post">
     <?php if (isset($query)): ?>
     <table class="table border-0">

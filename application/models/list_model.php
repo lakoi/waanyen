@@ -176,4 +176,12 @@ class List_model extends CI_Model
         }
   }
 
+  public function editstatus($data,$id)
+  {
+        $this->db->set($data);
+        $this->db->where("id", $id);
+        $this->db->update("popup");
+        return true;
+  }
+
 }

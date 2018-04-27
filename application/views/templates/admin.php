@@ -1,4 +1,48 @@
 <style>
+    .fa
+    {
+      position: fixed;
+      top: 0;
+      z-index: 2;
+    }
+    .dropbtn {
+    background-color: #f8f9fa;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    }
+
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    z-index: 1;
+    }
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #f8f9fa; color: #007bff;}
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+    background-color: #f8f9fa;
+    }
   .btn
   {
       border: none;
@@ -7,14 +51,16 @@
       font-size: 16px;
       cursor: pointer;
   }
-  .primary {background-color: #f8f9fa; color: #007bff;}
-  .primary:hover {background-color: #f8f9fa; color: #000;}
+  .primary {background-color: #f8f9fa; color: #000;}
+  .primary:hover {background-color: #f8f9fa; color: #007bff;}
 </style>
 
-<div class="col-sm-3 offset-10">
-<div class="btn-group">
-<button type="button" class="btn primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('Email'); ?></button>
-<div class="dropdown-menu dropdown-menu-right">
+<!-- <div class=""> -->
+<div class="dropdown col-sm-3 offset-10">
+  <div class="fa">
+<button type="button" href="<?php echo base_url(). 'login/profile';?>" class="btn primary btn-lg dropbtn dropdown-toggle"><?php echo $this->session->userdata('Email'); ?></button>
+
+<div class="dropdown-content">
 <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
 <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
 <a class="dropdown-item" href="<?php echo base_url(). 'login/admin';?>">จัดการผู้ใช้</a>
@@ -23,3 +69,5 @@
 </div>
 </div>
 </div>
+
+<!-- </div> -->
