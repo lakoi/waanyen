@@ -14,40 +14,21 @@
     </style>
 
 <script type="text/javascript">
-  showAllEmployee();
 
-  function showAllEmployee()
-  {
-    $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url(). "lists/showAllEmployee";?>',
-            dataType: 'json',
-            success: function(data)
-            {
-              var html = '';
-              var i;
-              for(i=0; i<data.length; i++)
-              {
-                html +='<form method="post" id="status_form"><tr>'+
-                        '<td><input class="form-check-input status" type="radio" name='+data[i].id+' id="status" value="1">1<br><input class="form-check-input status" type="radio" name='+data[i].id+' id="status" value="0" >0<br><p id='+data[i].id+' class="up_s">'+data[i].status+'</p></td>'+
-
-                        '<td><img src="<?php echo base_url().'img/';?>'+data[i].photo+'" width="80" hight="80" id="show_profile"/></td>'+
-
-                        '<td>'+data[i].title+'</td>'+
-
-                        '<td><a id='+data[i].id+' class="btn btn-warning update" onclick="submit('+data[i].id+')">Edit</a></td>'+
-
-                        '<td><a id='+data[i].id+' class="btn btn-danger delete">Delete</a></td>'+
-                      '</tr></form>';
-              }
-              $('#showdata').html(html);
-            },
-            error: function()
-            {
-              alert('not get database');
-            }
-          });
-  }
+  // $(function(){
+  //   setInterval(function(){ // เขียนฟังก์ชัน javascript ให้ทำงานทุก ๆ 30 วินาที
+  //       // 1 วินาที่ เท่า 1000
+  //       // คำสั่งที่ต้องการให้ทำงาน ทุก ๆ 3 วินาที
+  //       var getData=$.ajax({ // ใช้ ajax ด้วย jQuery ดึงข้อมูลจากฐานข้อมูล
+  //               url:'<?php echo base_url(). "lists/popup";?>',
+  //               data:"rev=1",
+  //               async:false,
+  //               success:function(data){
+  //
+  //               }
+  //       }).responseText;
+  //   },100);
+  // });
   function submit(x)
   {
     if(x=='upload')
@@ -125,9 +106,10 @@
                 url: "<?php echo base_url(). "lists/uploaddata";?>",
                 method: 'POST',
                 data:{id:id, action:action},
+                dataType: 'json',
                 success: function(data)
                 {
-                  showAllEmployee();
+                  // location.reload();
                 }
               });
       }
@@ -166,9 +148,11 @@
                     data:  new FormData(this),
                     contentType: false,
                     processData:false,
+                    dataType: 'json',
                     success: function(data)
                     {
-                      showAllEmployee();
+                      alert($u_load);
+                      // location.reload();
                       $('#myModal').modal('hide');
                       $("[name='photo']").val('');
                       $("[name='title']").val('');
@@ -184,8 +168,7 @@
     }));
     $('.status').change('click',function()
     {
-        $( '#result' ).html( $( "input:checked" ).val() + " is checked!" );
-      // showAllEmployee();
+
       // $('#up_s').html() == $(this).val();
       // $('#result').html( "id : " + $(this).attr('id')  );
 
@@ -193,7 +176,7 @@
         {
           // var status = $("#status:checked").length;
           // alert( "you checked status = "+status );
-          var id = $(this).attr('name');
+          var id = $(this).attr('id');
           var status = $(this).val();
 
       $.ajax({
@@ -203,14 +186,15 @@
               dataType: 'json',
               success: function(data)
               {
-                alert(id);
+                alert($data,data);
+                // $( '.up_s' ).attr('id').val(data);
                 // $('.up_s').attr('id', id).val(status);
                 // showAllEmployee();
                 // location.reload();
               },
-              error: function()
+              error: function(request, status, error)
               {
-                alert("n");
+                 alert(request.responseText);
               }
             });
           }
@@ -220,7 +204,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
       <title>"Waanyen"</title>
 
   </head>
@@ -240,6 +223,7 @@
         <h2>Popup</h2>
         <div id="result"></div>
           <button id="add" type="button" class="btn btn-primary" onclick="submit('upload')" >Add</button>
+          <?php if (isset($query)): ?>
         <table class="table table-hover" id="table_popup">
           <thead>
             <tr>
@@ -251,8 +235,26 @@
             </tr>
           </thead>
             <tbody id="showdata">
+              <?php
+              foreach($query as $r){
+                echo "<tr>";
+                        echo "<td><input class='form-check-input status' type='radio' name='status' id='$r->id' value='1'>1<br>";
+                          echo  "<input class='form-check-input status' type='radio' name='status' id='$r->id' value='0'>0<br>";
+                            echo  "<p id='$r->id' class='up_s'>$r->status</p></td>";
+
+                      echo  "<td><img src=" .base_url()."img/".$r->photo." width='80' hight='80' id='show_profile'/></td>";
+
+                      echo  "<td>".$r->title."</td>";
+
+                      echo  "<td><a id='$r->id' class='btn btn-warning update' onclick='submit($r->id)'>Edit</a></td>";
+
+                      echo  "<td><a id='$r->id' class='btn btn-danger delete'>Delete</a></td>";
+                    echo  "</tr>";
+                  }
+              ?>
             </tbody>
           </table>
+          <?php endif; ?>
         </div>
 
         <div class="modal fade" id="myModal" role="dialog" >

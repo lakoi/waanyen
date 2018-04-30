@@ -240,11 +240,11 @@ class Lists extends CI_Controller
       $this->load->view('templates/footer');
   }
 
-  public function showAllEmployee()
-  {
-    $datapopup = $result = $this->m->showAllEmployee('popup')->result();
-    echo json_encode($datapopup);
-  }
+  // public function showAllEmployee()
+  // {
+  //   $datapopup = $result = $this->m->showAllEmployee('popup')->result();
+  //   echo json_encode($datapopup);
+  // }
 
   public function uploaddata()
   {
@@ -267,8 +267,8 @@ class Lists extends CI_Controller
           'title' => $this->input->post('title'),
           'photo' => $this->upload->data('file_name'),
         );
-        $this->list_model->save_popup_model($data);
-        return true;
+        $u_load = $this->list_model->save_popup_model($data);
+        echo json_encode($data);
       }
     }
     if($_POST["action"] == "update")
@@ -293,14 +293,14 @@ class Lists extends CI_Controller
             'photo' => $photo,
           );
           $id = $this->input->post('id');
-          $this->list_model->save_edit_popup_model($data,$id);
-          return true;
+          $u_date = $this->list_model->save_edit_popup_model($data,$id);
+          echo json_encode($data);
     }
     if($_POST["action"] == "delete")
     {
       $id = $this->input->post("id");
-      $this->list_model->delete_popup_model($id);
-      return true;
+      $del = $this->list_model->delete_popup_model($id);
+      echo json_encode($data);
     }
 
     }
@@ -310,25 +310,39 @@ class Lists extends CI_Controller
     $id = $this->input->post('id');
     $where = array('id' => $id);
     $dataupdate = $this->m->updatedata('popup',$where)->result();
-    echo json_encode($dataupdate);
+    echo json_encode($data);
   }
 
   public function editstatus()
   {
-    if($_POST["status"] == 1)
-    {
-      $status = "1";
-    }
-    else
+    if($_POST["status"] != '')
     {
       $status = "0";
     }
       $data = array(
       'status' => $status
       );
-      $id = $_POST["id"];
-      $statusedit =  $this->list_model->editstatus($data,$id);
-      echo json_encode($statusedit);
+      // $id = $_POST["id"];
+      $statusedit =  $this->list_model->editstatus($data);
+      if($statusedit != '')
+      {
+        if($_POST["status"] == "1")
+        {
+          $statuss = "1";
+        }
+        else
+        {
+          $statuss = "0";
+        }
+        $data = array(
+        'status' => $statuss
+        );
+        $id = $_POST["id"];
+        $statussedit =  $this->list_model->editstatuss($data,$id);
+        echo json_encode($data);
+        // return true;
+      }
+      //
       // return true;
   }
 

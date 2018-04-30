@@ -17,46 +17,48 @@
   </style>
 
   <script>
-$(document).ready(function(){
+  // showAllEmployee();
 
- $("#btn1").click(function(){
-  $("p").append(" <b>Appended text</b>.");
- });
-
- $("#btn2").click(function(){
-  $("ol").append("<li>Appended item</li>");
- });
-
- $("#btn3").click(function(){
-  $("ol").prepend("<b>Prepended text</b>. ");
- });
-
- $("#btn4").click(function(){
-  $("img").before("<b>Before</b>");
- });
-
- $("#btn5").click(function(){
-  $("img").after("<i>After</i>");
- });
-
-});
+  // function showAllEmployee()
+  // {
+  //   $.ajax({
+  //           type: 'POST',
+  //           url: '<?php echo base_url(). "lists/showAllEmployee";?>',
+  //           dataType: 'json',
+  //           success: function(data)
+  //           {
+  //             var html = '';
+  //             var i;
+  //             for(i=0; i<data.length; i++)
+  //             {
+  //               html +='<form method="post" id="status_form"><tr>'+
+  //                       '<td><input class="form-check-input status" type="radio" name="status" id='+data[i].id+' value="1">1<br><input class="form-check-input status" type="radio" name="status" id='+data[i].id+' value="0" >0<br><p id='+data[i].id+' class="up_s">'+data[i].status+'</p></td>'+
+  //
+  //                       '<td><img src="<?php echo base_url().'img/';?>'+data[i].photo+'" width="80" hight="80" id="show_profile"/></td>'+
+  //
+  //                       '<td>'+data[i].title+'</td>'+
+  //
+  //                       '<td><a id='+data[i].id+' class="btn btn-warning update" onclick="submit('+data[i].id+')">Edit</a></td>'+
+  //
+  //                       '<td><a id='+data[i].id+' class="btn btn-danger delete">Delete</a></td>'+
+  //                     '</tr></form>';
+  //             }
+  //
+  //
+  //
+  //             $('#showdata').html(html);
+  //           },
+  //           error: function()
+  //           {
+  //             alert('not get database');
+  //           }
+  //         });
+  // }
 </script>
 </head>
 
 <body>
-<p>This is a paragraph.</p>
-<p>This is another paragraph.</p>
-<ol>
- <li>List item 1</li>
- <li>List item 2</li>
- <li>List item 3</li>
-</ol>
 
-<button id="btn1">Append text</button>
-<button id="btn2">Append list items</button>
-<button id="btn3">Prepend text</button>
-<button id="btn4">Insert before</button>
-<button id="btn5">Insert after</button>
 
 </body>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
