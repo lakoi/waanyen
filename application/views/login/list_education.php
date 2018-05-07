@@ -1,37 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- <style>
-      .btn
-      {
-          border: none;
-          color: white;
-          padding: 14px 28px;
-          font-size: 16px;
-          cursor: pointer;
-      }
-      .primary {background-color: #f8f9fa; color: #007bff;}
-      .primary:hover {background-color: #f8f9fa; color: #000;}
-        }
-    </style> -->
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>"Education"</title>
   </head>
     <body class="blockquote text-center bg-light">
-      <div class="btn-group-lg text-left offset-1" role="group" aria-label="Basic example">
-        <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
-        <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
-        <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
-        <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
-        <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>|
-        <a href="<?php echo base_url().'login/popup';?>" class="btn primary">popup</a>
-      </div>
-        <hr>
 
       <br>
 

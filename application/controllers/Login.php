@@ -16,7 +16,7 @@ class Login extends CI_Controller
 	{
 
 			$data['title'] = 'Welcome';
-			$this->load->view('templates/header');
+			// $this->load->view('templates/header');
 			$this->load->view('login/login_view', $data);
 			$this->load->view('templates/footer');
 
@@ -61,7 +61,7 @@ class Login extends CI_Controller
 	}
 
  	public function enter()
- 	{
+ 	{			
 				$this->login_model->check_status();
 				$this->load->view('templates/header');
 				$this->load->view('login/list_view');

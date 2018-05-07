@@ -2,222 +2,17 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <style>
     p
     {
       color: red;
     }
-
     </style>
-
-<script type="text/javascript">
-
-  // $(function(){
-  //   setInterval(function(){ // เขียนฟังก์ชัน javascript ให้ทำงานทุก ๆ 30 วินาที
-  //       // 1 วินาที่ เท่า 1000
-  //       // คำสั่งที่ต้องการให้ทำงาน ทุก ๆ 3 วินาที
-  //       var getData=$.ajax({ // ใช้ ajax ด้วย jQuery ดึงข้อมูลจากฐานข้อมูล
-  //               url:'<?php echo base_url(). "lists/popup";?>',
-  //               data:"rev=1",
-  //               async:false,
-  //               success:function(data){
-  //
-  //               }
-  //       }).responseText;
-  //   },100);
-  // });
-  function submit(x)
-  {
-    if(x=='upload')
-    {
-      $('#img').show();
-      $('[name="img"]').attr("src",'<?php echo base_url(). 'img/show_photo.png';?>');
-      $("[name='photo']").val('');
-      $("[name='title']").val('');
-      $('#not').html('');
-    }
-    else
-    {
-      $('#img').show();
-      $("[name='photo']").val('');
-      $('#not').html('');
-
-      $.ajax({
-              type: 'POST',
-              data: 'id='+x,
-              url: '<?php echo base_url(). "lists/updatedata";?>',
-              dataType: 'json',
-              success: function(data)
-              {
-                $('[name="img"]').attr("src",'<?php echo base_url(). 'img/';?>'+data[0].photo);
-                $('[name="title"]').val(data[0].title);
-                $('[name="id"]').val(data[0].id);
-              },
-              error: function()
-              {
-                alert('not submit');
-              }
-            });
-    }
-  }
-  function readURL(input)
-  {
-    if (input.files && input.files[0])
-    {
-       var reader = new FileReader();
-       reader.onload = function (e)
-       {
-           $('#img').attr('src', e.target.result);
-       }
-       reader.readAsDataURL(input.files[0]);
-    }
-
-  }
-
-  $(document).ready(function (e)
-  {
-    $('#add').click(function()
-    {
-      $('#myModal').modal('show');
-      $('#popup_form')[0].reset();
-      $('.modal-title').text("add Image");
-      $('#id').val('');
-      $('#action').val('upload');
-      $('#upload').val("Upload");
-    });
-    $('.update').on('click', function()
-    {
-        $('#id').val($(this).attr("id"));
-        $('#action').val("update");
-        $('.modal-title').text("update image");
-        $('#upload').val("Update");
-        $('#myModal').modal("show");
-    });
-    $('.delete').on('click', function()
-    {
-      var id = $(this).attr("id");
-      var action = "delete";
-      if(confirm("Are you sure delete data?"))
-      {
-        $.ajax({
-                url: "<?php echo base_url(). "lists/uploaddata";?>",
-                method: 'POST',
-                data:{id:id, action:action},
-                dataType: 'json',
-                success: function(data)
-                {
-                  // location.reload();
-                }
-              });
-      }
-    });
-    $("#popup_form").on('submit',(function(e)
-    {
-      e.preventDefault();
-      var image_name = $('#photo').val();
-      if(image_name == '')
-      {
-        $('#not').html("add photo");
-        return false;
-      }
-      else
-      {
-        var title = $('#title').val();
-        if(title == '')
-        {
-          $('#not').html("add title");
-          return false;
-        }
-        else
-        {
-          var extension = $('#photo').val().split('.').pop().toLowerCase();
-          if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-          {
-            alert("add a image");
-            $('#photo').val('');
-            return false;
-          }
-          else
-          {
-            $.ajax({
-                    url: "<?php echo base_url(). "lists/uploaddata";?>",
-                    type: "POST",
-                    data:  new FormData(this),
-                    contentType: false,
-                    processData:false,
-                    dataType: 'json',
-                    success: function(data)
-                    {
-                      alert($u_load);
-                      // location.reload();
-                      $('#myModal').modal('hide');
-                      $("[name='photo']").val('');
-                      $("[name='title']").val('');
-                    },
-                    error: function()
-                    {
-                      alert("not upload");
-                    }
-                  });
-          }
-        }
-      }
-    }));
-    $('.status').change('click',function()
-    {
-
-      // $('#up_s').html() == $(this).val();
-      // $('#result').html( "id : " + $(this).attr('id')  );
-
-        if(confirm("Are you change status?"))
-        {
-          // var status = $("#status:checked").length;
-          // alert( "you checked status = "+status );
-          var id = $(this).attr('id');
-          var status = $(this).val();
-
-      $.ajax({
-              url: "<?php echo base_url(). "lists/editstatus";?>",
-              method: 'POST',
-              data:{id:id, status:status},
-              dataType: 'json',
-              success: function(data)
-              {
-                alert($data,data);
-                // $( '.up_s' ).attr('id').val(data);
-                // $('.up_s').attr('id', id).val(status);
-                // showAllEmployee();
-                // location.reload();
-              },
-              error: function(request, status, error)
-              {
-                 alert(request.responseText);
-              }
-            });
-          }
-    });
-  });
-</script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>"Waanyen"</title>
-
   </head>
-  <body class="blockquote bg-light">
-
-      <div class="btn-group-lg   text-left offset-1   " role="group" aria-label="Basic example">
-        <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
-        <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
-        <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
-        <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
-        <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>|
-        <a href="<?php echo base_url().'login/popup';?>" class="btn primary">popup</a>
-        <hr>
-      </div>
+  <body class="blockquote bg-light request">
 
       <div class="container box">
         <h2>Popup</h2>
@@ -237,20 +32,36 @@
             <tbody id="showdata">
               <?php
               foreach($query as $r){
+                $uncheck = "";
+                $check = "";
+                if($r->status == 1)
+                {
+                  $uncheck = "checked";
+                  $check = "";
+                }
+                else
+                {
+                  $uncheck = "";
+                  $check = "checked";
+                }
+
                 echo "<tr>";
-                        echo "<td><input class='form-check-input status' type='radio' name='status' id='$r->id' value='1'>1<br>";
-                          echo  "<input class='form-check-input status' type='radio' name='status' id='$r->id' value='0'>0<br>";
-                            echo  "<p id='$r->id' class='up_s'>$r->status</p></td>";
 
-                      echo  "<td><img src=" .base_url()."img/".$r->photo." width='80' hight='80' id='show_profile'/></td>";
+                        echo "<td><input class='form-check-input status' type='radio' name='status$r->id' id='$r->id' value='1' $uncheck/>ON<br>";
+                          echo  "<input class='form-check-input status' type='radio' name='status$r->id' id='$r->id' value='0' $check/>OFF<br>";
+                            echo  "<input id='status$r->id' name='statuss' type='hidden' class='up_s form-control' value='$r->status'>";
+                            echo  "<p id='status$r->id' name='status'class='up_s' >$r->status</p></td>";
 
-                      echo  "<td>".$r->title."</td>";
+                      echo  "<td><img src=" .base_url()."img/".$r->photo." width='80' hight='80' id='photo$r->id'/></td>";
+
+                      echo  "<td id='title$r->id'>".$r->title."</td>";
 
                       echo  "<td><a id='$r->id' class='btn btn-warning update' onclick='submit($r->id)'>Edit</a></td>";
 
                       echo  "<td><a id='$r->id' class='btn btn-danger delete'>Delete</a></td>";
+
                     echo  "</tr>";
-                  }
+                }
               ?>
             </tbody>
           </table>
@@ -282,7 +93,7 @@
               </tr>
               <tr>
                 <td>title</td>
-                <td><input type="text" name="title" id="title" class="form-control" value=""/></td>
+                <td><input type="text" name="title" id="title" class="form-control" /></td>
               </tr>
               <tr>
                 <td></td>
@@ -298,7 +109,203 @@
           </div>
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+          function submit(x)
+          {
+            if(x=='upload')
+            {
+              $('#img').show();
+              $('[name="img"]').attr("src",'<?php echo base_url(). 'img/show_photo.png';?>');
+              $("[name='photo']").val('');
+              $("[name='title']").val('');
+              $('#not').html('');
+            }
+            else
+            {
+              $('#img').show();
+              $("[name='photo']").val('');
+              $('#not').html('');
+
+              $.ajax({
+                      type: 'POST',
+                      data: 'id='+x,
+                      url: '<?php echo base_url(). "lists/updatedata";?>',
+                      dataType: 'json',
+                      success: function(data)
+                      {
+                        $('[name="img"]').attr("src",'<?php echo base_url(). 'img/';?>'+data[0].photo);
+                        $('[name="title"]').val(data[0].title);
+                        $('[name="id"]').val(data[0].id);
+                      },
+                      error: function()
+                      {
+                        alert('not submit');
+                      }
+                    });
+            }
+          }
+          function readURL(input)
+          {
+            if (input.files && input.files[0])
+            {
+               var reader = new FileReader();
+               reader.onload = function (e)
+               {
+                   $('#img').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+            }
+          }
+
+          function popup_re()
+          {
+            $.ajax({
+                  method: 'POST',
+                  url: '<?php echo base_url(). "lists/popup_re";?>',
+                  dataType: 'json',
+                  success: function(data)
+                  {
+                    $.each(data.query, function(key, val) {
+                      var id = val["id"];
+                      var title = val["title"];
+                      var status = val["status"];
+                      var photo = val["photo"];
+
+
+                      $('#status'+id).html(status);
+                      $('#title'+id).html(title);
+                      $('#photo'+id).attr('src','<?php echo base_url(). 'img/';?>'+photo);
+                   });
+                  }
+                });
+          }
+
+          $(document).ready(function (e)
+          {
+            $('#add').click(function()
+            {
+              $('#myModal').modal('show');
+              $('#popup_form')[0].reset();
+              $('.modal-title').text("add Image");
+              $('#id').val('');
+              $('#action').val('upload');
+              $('#upload').val("Upload");
+            });
+            $('.update').on('click', function()
+            {
+                $('#id').val($(this).attr("id"));
+                $('#action').val("update");
+                $('.modal-title').text("update image");
+                $('#upload').val("Update");
+                $('#myModal').modal("show");
+            });
+            $('.delete').on('click', function()
+            {
+              var id = $(this).attr("id");
+              var action = "delete";
+              if(confirm("Are you sure delete data?"))
+              {
+                $.ajax({
+                        url: "<?php echo base_url(). "lists/uploaddata";?>",
+                        method: 'POST',
+                        data:{id:id, action:action},
+                        // dataType: 'json',
+                        success: function(data)
+                        {
+                          location.reload();
+                          // popup_re();
+                        },
+                        error: function()
+                        {
+                          alert("don't delete");
+                        }
+                      });
+              }
+            });
+            $("#popup_form").on('submit',(function(e)
+            {
+              e.preventDefault();
+              var image_name = $('#photo').val();
+              if(image_name == '')
+              {
+                $('#not').html("add photo");
+                return false;
+              }
+              else
+              {
+                var title = $('#title').val();
+                if(title == '')
+                {
+                  $('#not').html("add title");
+                  return false;
+                }
+                else
+                {
+                  var extension = $('#photo').val().split('.').pop().toLowerCase();
+                  if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
+                  {
+                    alert("add image");
+                    $('#photo').val('');
+                    return false;
+                  }
+                  else
+                  {
+                    $.ajax({
+                            url: "<?php echo base_url(). "lists/uploaddata";?>",
+                            method: "POST",
+                            data:  new FormData(this),
+                            contentType: false,
+                            processData:false,
+                            // dataType: 'json',
+                            success: function(data)
+                            {
+                              location.reload();
+                              // popup_re()
+                              $('#myModal').modal('hide');
+                              $("[name='photo']").val('');
+                              $("[name='title']").val('');
+                            },
+                            error: function(request, status, error)
+                            {
+                              alert(request.responseText);
+                            }
+                          });
+                  }
+                }
+              }
+            }));
+
+            $('.status').change('click',function()
+            {
+                if(confirm("Are you change status?"))
+                {
+                  var id = $(this).attr('id');
+                  var status = $(this).val();
+
+              $.ajax({
+                      url: "<?php echo base_url(). "lists/editstatus";?>",
+                      method: 'POST',
+                      data:{id:id, status:status},
+                      dataType: 'json',
+                      success: function(data)
+                      {
+                        // popup_re();
+                        location.reload();
+                      },
+                      error: function(request, status, error)
+                      {
+                         alert(request.responseText);
+                      }
+                    });
+                  }
+            });
+
+          });
+        </script>
   </body>
 </html>

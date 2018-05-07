@@ -240,11 +240,17 @@ class Lists extends CI_Controller
       $this->load->view('templates/footer');
   }
 
-  // public function showAllEmployee()
-  // {
-  //   $datapopup = $result = $this->m->showAllEmployee('popup')->result();
-  //   echo json_encode($datapopup);
-  // }
+  public function popup_re()
+  {
+  $data ['query'] = $this->list_model->popup_model();
+    echo json_encode($data);
+  }
+
+  public function showAllEmployee()
+  {
+    $datapopup = $result = $this->m->showAllEmployee('popup')->result();
+    echo json_encode($datapopup);
+  }
 
   public function uploaddata()
   {
@@ -268,7 +274,8 @@ class Lists extends CI_Controller
           'photo' => $this->upload->data('file_name'),
         );
         $u_load = $this->list_model->save_popup_model($data);
-        echo json_encode($data);
+        return true;
+        // echo json_encode($u_load);
       }
     }
     if($_POST["action"] == "update")
@@ -294,13 +301,15 @@ class Lists extends CI_Controller
           );
           $id = $this->input->post('id');
           $u_date = $this->list_model->save_edit_popup_model($data,$id);
-          echo json_encode($data);
+          return true;
+          // echo json_encode($u_date);
     }
     if($_POST["action"] == "delete")
     {
       $id = $this->input->post("id");
       $del = $this->list_model->delete_popup_model($id);
-      echo json_encode($data);
+      return true;
+      echo json_encode($del);
     }
 
     }
@@ -310,7 +319,7 @@ class Lists extends CI_Controller
     $id = $this->input->post('id');
     $where = array('id' => $id);
     $dataupdate = $this->m->updatedata('popup',$where)->result();
-    echo json_encode($data);
+    echo json_encode($dataupdate);
   }
 
   public function editstatus()

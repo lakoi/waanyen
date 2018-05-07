@@ -10,36 +10,44 @@
 
     <title>Register</title>
   </head>
-  <body class="blockquote text-center bg-light">
-
+  <body class="blockquote bg-light">
+    <div>
+      <h1 class="text-primary offset-1">Wannyen</h1>
+    </div>
 <!-- <?php echo validation_errors();?> -->
 <?php echo form_open('register'); ?>
 <form method="post" class="form-horizontal table-bordered table-components"  >
-  <h4>Register<h4> <br>
+
     <div class="row">
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-4 offset-4">
+            <h4 class="text-center">Register<h4> <br>
             <div class="blockquote text-left text-primary">
         <span> &nbsp;Email</span>
-        <input class="form-control btn btn-outline-light bg-white " name="Email" type="email" size="40" placeholder="ใส่ Email..." value="<?php echo $this->input->post('Email');?>"><?php echo form_error('Email');?>
+        <input class="form-control btn btn-outline-light bg-white border" name="Email" type="email" size="40" placeholder="ใส่ Email..." value="<?php echo $this->input->post('Email');?>"><?php echo form_error('Email');?>
 
         <span> &nbsp;Password</span>
-        <input class="form-control btn btn-outline-light bg-white" name="Password" type="password" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
+        <input class="form-control btn btn-outline-light bg-white border" name="Password" type="password" placeholder="ใส่ Password..."><?php echo form_error('Password');?>
 
         <span> &nbsp;Confirm Password</span>
-        <input class="form-control btn btn-outline-light bg-white" name="ConPassword" type="password" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
+        <input class="form-control btn btn-outline-light bg-white border" name="ConPassword" type="password" placeholder="ยืนยัน Password..." ><?php echo form_error('ConPassword');?>
 
         <span>&nbsp;Name</span>
-        <input class="form-control btn btn-outline-light bg-white" name="Name" type="text" size="35" placeholder="ใส่ชื่อ..." value="<?php echo $this->input->post('Name');?>"><?php echo form_error('Name');?>
+        <input class="form-control btn btn-outline-light bg-white border" name="Name" type="text" size="35" placeholder="ใส่ชื่อ..." value="<?php echo $this->input->post('Name');?>"><?php echo form_error('Name');?>
 
         <div class="col-sm-4 offset-8">
         <span>Status</span>
-        <select class="form-control btn btn-outline-primary" name="Status" id="Status" >
+        <select class="form-control btn btn-outline border" name="Status" id="Status" >
 
           <option value="USER">USER</option>
         </select>
       </div>
+      <br/>
+      <div class="text-right">
+      <input class="btn btn-outline-success" type="submit" name="Submit" value="Save">
+      <a class="btn btn-outline-primary " href="login" role="button">Back</a>
+    </div>
             </div>
           </div>
         </div>
@@ -47,10 +55,7 @@
       </div>
 
   <br>
-  <div>
-  <input class="btn btn-outline-success" type="submit" name="Submit" value="Save">
-  <a class="btn btn-outline-primary " href="login" role="button">Back</a>
-</div>
+
 </form>
 <!-- <div class="row" style="margin-bottom:8px;">
   <div class="col-md-12">

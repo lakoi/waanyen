@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <style>
-      .btn
-      {
-          border: none;
-          color: white;
-          padding: 14px 28px;
-          font-size: 16px;
-          cursor: pointer;
-      }
-      .primary {background-color: #f8f9fa; color: #007bff;} /* Green */
-      .primary:hover {background-color: #f8f9fa; color: #000;}
-    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,22 +11,6 @@
   </head>
     <body class="blockquote text-center bg-light">
 
-      <?php echo $this->session->userdata('Email'); ?><br>
-      <table class="table">
-        <thead>
-          <th>
-            <div class="btn-group-lg text-left" role="group" aria-label="Basic example">
-              <a href="<?php echo base_url().'login/home';?>" class="btn primary">Home</a>|
-              <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
-              <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
-              <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
-              <a href="<?php echo base_url().'login/domain';?>" class="btn primary">Domain</a>
-
-            </div>
-          </th>
-        </thead>
-      </table>
-
       <br>
 
       <form method="get" action="<?php echo base_url(). 'login/search_domain';?>">
@@ -47,10 +19,10 @@
             <div class="input-group-prepend">
           <input class="btn btn-outline-primary" type="submit" value="Search">
         </div>
-          <input type="text" class="form-control" name="email" value="<?php echo $this->input->get('email');?>" aria-label="" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" name="email" value="<?php echo $this->input->get('email');?>" placeholder="search email . . ." aria-label="" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-4 col-sm-4">
-          <input type="text" class="form-control" name="username" value="<?php echo $this->input->get('username');?>" aria-label="" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" name="username" value="<?php echo $this->input->get('username');?>" placeholder="search username . . ." aria-label="" aria-describedby="basic-addon1">
         </div>
       </div>
 
@@ -85,12 +57,10 @@
           </table>
         </div>
       </form>
-          <?php echo $this->input->get('email');?>
-            <?php echo $this->input->get('package');?>
-            <?php echo $this->input->get('username');?>
-              <?php echo $this->input->get('search');?>
-      <h3>Domain</h3>
+
         <div class="col-sm-8 offset-2 ">
+          <h3>Domain</h3>
+          <a href="<?php echo base_url().'login/add_domain';?>" class="btn btn-info">add</a>
       <?php if (isset($query)): ?>
       <table class="table table-hover" >
         <thead>
@@ -116,6 +86,7 @@
     ?>
       </tbody>
       </table>
+      <a href="<?php echo base_url().'login/add_domain';?>" class="btn btn-info btn-block">add</a>
       <?php endif; ?>
     </div>
     <style>
