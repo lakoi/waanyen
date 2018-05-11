@@ -5,6 +5,7 @@ class Login extends CI_Controller
 
 					parent::__construct();
 					$this->load->model('login_model');
+					$this->load->model('list_model');
 					$this->load->helper('url_helper');
 					$this->load->database();
 					$this->load->helper('form');
@@ -16,7 +17,7 @@ class Login extends CI_Controller
 	{
 
 			$data['title'] = 'Welcome';
-			// $this->load->view('templates/header');
+			$this->load->view('templates/header');
 			$this->load->view('login/login_view', $data);
 			$this->load->view('templates/footer');
 
@@ -61,11 +62,11 @@ class Login extends CI_Controller
 	}
 
  	public function enter()
- 	{			
+ 	{
 				$this->login_model->check_status();
-				$this->load->view('templates/header');
+				$this->load->view('templates/back_header');
 				$this->load->view('login/list_view');
-				$this->load->view('templates/footer');
+				$this->load->view('templates/back_footer');
  	}
 
 	public function logout()

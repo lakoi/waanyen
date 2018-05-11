@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,10 +8,59 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>waanyen</title>
+    <style>
+      .centre-img1
+        {
+          margin: 10px 5px ;
+          /* background-color: #999; */
+          width: 330px;
+          height: 270px;
+          background-repeat : no-repeat;
+          background-position: top center;
+          border: 10px 0;
+          position: relative;
+        }
+        .centre-txt1
+        {
+          z-index: 1;
+          position: relative;
+          border: 10px 0;
+          width: 290px;
+          height: 230px;
+          display:table;
+          /* top:50%;
+          left:50%; */
+          margin: 20px;
+        }
+        .centre-txt1:hover
+        {
+          /* color: #FF6600; */
+          opacity: 0.8;
+          background-color: #4495ff;
+        }
+        .centre-mid
+        {
+          z-index: 2;
+          position: relative;
+          display:table-cell;
+          vertical-align:middle;
+        }
+        .centre-mid:hover
+        {
+          opacity: 1;
+
+        }
+        .centre-pto
+        {
+          position: absolute;
+          left: 0; top: 0;
+          z-index: 0;
+        }
+    </style>
   </head>
-  <body class="bg-light">
+  <body class="bg-light" >
 <div >
-  <div class="col-sm-11 offset-1 ">
+  <div class="col-sm-12 offset-1 mi-auto">
     <div class="row">
       <div class="col-sm-4">
         <div class="row">
@@ -37,10 +86,10 @@
               </nav>
             </div>
               <div class="btn-group btn-group-toggle text-right" data-toggle="buttons">
-                <label class="btn btn-secondary active">
+                <label class="btn btn-secondary ">
                   <input type="radio" name="options" id="option1" autocomplete="off" checked> EN
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-secondary active">
                   <input type="radio" name="options" id="option2" autocomplete="off"> TH
                 </label>
               </div>
@@ -71,4 +120,3 @@
   </div>
 </div>
 <br>
-</html>

@@ -10,9 +10,9 @@
 <title>Waanyen</title>
 </head>
 <body class="blockquote  bg-light">
-  <div>
+  <!-- <div>
     <h1 class="text-primary offset-1">Wannyen</h1>
-  </div>
+  </div> -->
   <?php echo form_open('login/login_valid'); ?>
 <form method="post" action="<?php echo base_url(). 'Login/login_valid' ;?>" >
 

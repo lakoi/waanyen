@@ -309,10 +309,9 @@ class Lists extends CI_Controller
       $id = $this->input->post("id");
       $del = $this->list_model->delete_popup_model($id);
       return true;
-      echo json_encode($del);
+      // echo json_encode($del);
     }
-
-    }
+  }
 
   public function updatedata()
   {
@@ -331,7 +330,6 @@ class Lists extends CI_Controller
       $data = array(
       'status' => $status
       );
-      // $id = $_POST["id"];
       $statusedit =  $this->list_model->editstatus($data);
       if($statusedit != '')
       {
@@ -349,10 +347,7 @@ class Lists extends CI_Controller
         $id = $_POST["id"];
         $statussedit =  $this->list_model->editstatuss($data,$id);
         echo json_encode($data);
-        // return true;
       }
-      //
-      // return true;
   }
 
 }

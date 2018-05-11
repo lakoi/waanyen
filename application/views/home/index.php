@@ -2,20 +2,29 @@
   <br>
   <div class="text-center">
     <div class="col-sm-6 offset-3 border align-bottom">
-      <p>ขอเชิญชวนท่านที่มีจิตอาสาทุกท่าน</p>
+      <p id="donate_bd">xxxxxxxxxx</p>
+      <?php
+
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+
+        echo $date."  ".$time;
+
+    ?>
     </div>
     <div class="col-sm-6 offset-3">
-      <p>เป็นส่วนหนึ่ง...ในการ<b>ช่วยเหลือ</b></p>
-      <p>ผู้พิการทางสายตากับมูลนิธิคนตาบอดแห่งประเทศไทย</p>
+      <p id="donate1">xxxxxxxxxxxxx</p>
+      <p id="donate2">xxxxxxxxxxxxxxx</p>
     </div>
     <div>
-      <button type="button" class="btn btn-primary">ร่วมบริจาคสนันสนุน</button>
+      <a class="btn btn-primary" href="<?php echo base_url(). 'login/index';?>">login</a>
+      <button type="button" class="btn btn-primary" id="donate_bt">xxxxxxxx</button>
     </div>
   </div>
     <br>
   <div class="text-center col-sm-10 offset-1">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary active">
+      <label class="btn btn-secondary">
         <input type="radio" name="options" id="option1" autocomplete="off" checked>
         <div class="text-center">
           <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
@@ -56,40 +65,106 @@
   <br>
   <div class="row">
     <div class="col-sm-5 offset-1">
-      <div class="offset-1">
-        <p>เกี่ยวกับเรา</p>
+      <div class="col-sm-8 offset-1" >
+        <p id="about_tle" class="text-center">xxxxxxx</p>
         <hr width="20%">
-        <p><b>มูลนิธิช่วยคนตาบอดแห่งประเทศไทย<br>
-        ในพระบรมราชินูปถัมภ์</b></p>
-        <p>qweqwweqwe</p>
+        <h5 id="about_h1">xxxxxxxxxx</h5>
+        <h5 id="about_h2">xxxxxxxxxxxx</h5>
+        <p id="about_ui">xxxxxxxxxxxx</p>
         <ui>
-          <li>asdasds</li>
-          <li>asdasds</li>
-          <li>asdasds</li>
+          <li id="about_li1">xxxxxxxxxxx</li>
+          <li id="about_li2">xxxxxxxxxxxxxxxx</li>
+          <li id="about_li3">xxxxxxxxxxxxxx</li>
+          <li id="about_li4">xxxxxxxxxxxxxx</li>
         </ui>
       </div>
     </div>
     <div class="col-sm-5">
-      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
+      <img id="about_pto1" src="<?php echo base_url(). 'img/show_photo.png';?>" width="200" height="200" />
     </div>
   </div>
   <br>
-  <div class="col-sm-10 offset-1">
-    <table class="text-center">
-      <tr>
-        <td style="width: 18rem;"><br><br><br><p class="text-center">ศูนย์ต่าง ๆ ของ<br>
-          <b>มูลนิธิช่วยคนตาบอด</b></p></td>
-        <td style="width: 18rem;"><img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /></td>
-        <td style="width: 18rem;"><img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /></td>
-      </tr>
-      <tr>
-        <td style="width: 18rem;"><img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /></td>
-        <td style="width: 18rem;"><img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /></td>
-        <td style="width: 18rem;"><img <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /></td>
-      </tr>
-    </table>
+  <div class="offset-1 text-center">
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+        </div>
+        <div class="col-sm-4">
+          <div class="centre-img1 border">
+            <div class="centre-pto">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+            </div>
+            <div class="border centre-txt1">
+              <div class="centre-mid">
+                <p><b id="">adasdfsdf</b></p>
+                <p id="">asdfasdfd</p>
+                <button class="btn btn-primary" id="">อ่านเพิ่มเติม</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="centre-img1 border">
+            <div class="centre-pto">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+            </div>
+            <div class="border centre-txt1" >
+              <div class="centre-mid">
+                <p><b id="">adasf</b></p>
+                <p id="">asdfasdfd</p>
+                <button class="btn btn-primary" id="">อ่านเพิ่มเติม</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="centre-img1 border">
+            <div class="centre-pto">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+            </div>
+            <div class="border centre-txt1" >
+              <div class="centre-mid">
+                <p><b id="">adasf</b></p>
+                <p id="">asdfasdfd</p>
+                <button class="btn btn-primary" id="">อ่านเพิ่มเติม</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="centre-img1 border">
+            <div class="centre-pto">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+            </div>
+            <div class="border centre-txt1" >
+              <div class="centre-mid">
+                <p><b id="">adasf</b></p>
+                <p id="">asdfasdfd</p>
+                <button class="btn btn-primary" id="">อ่านเพิ่มเติม</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="centre-img1 border">
+            <div class="centre-pto">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+            </div>
+            <div class="border centre-txt1" >
+              <div class="centre-mid">
+                <p><b id="">adasf</b></p>
+                <p id="">asdfasdfd</p>
+                <button class="btn btn-primary" id="">อ่านเพิ่มเติม</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /> -->
   </div>
   <br>
   <div class="col-sm-10 offset-1">
@@ -272,6 +347,32 @@
     ตั้งหน้าชื่นเอาไว้ย้อมใจด้วยเพลง ไยนึกกลัวหวาดเกรงยิ้มสู้"</p>
     <div>
       <button type="button" class="btn btn-primary">ร่วมบริจาค</button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog" >
+      <div class="modal-content" >
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <div class="container box" style="width: 30rem; height: 30rem;">
+            <?php if (isset($popup)): ?>
+            <?php foreach($popup as $r)
+            {
+              echo "<div class='text-center'>";
+              echo  "<div><img src=" .base_url()."img/".$r->photo." width='300' hight='300' id='photo'/></div>";
+              echo  "<div id='title'>".$r->title."</div>";
+              echo  "</div>";
+            }
+            ?>
+          </div>
+          <?php endif; ?>
+        </div>
+      </div>
     </div>
   </div>
 

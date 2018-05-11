@@ -1,3 +1,5 @@
+<html>
+  <body>
 <style>
     .fa
     {
@@ -43,7 +45,7 @@
     .dropdown:hover .dropbtn {
     background-color: #f8f9fa;
     }
-  .btn
+  .xxx
   {
       border: none;
       color: white;
@@ -58,7 +60,7 @@
 <!-- <div class=""> -->
 <div class="dropdown col-sm-3 offset-10">
   <div class="fa">
-<button type="button" href="<?php echo base_url(). 'login/profile';?>" class="btn primary btn-lg dropbtn dropdown-toggle"><?php echo $this->session->userdata('Email'); ?></button>
+<button type="button" href="<?php echo base_url(). 'login/profile';?>" class="xxx primary btn-lg dropbtn dropdown-toggle"><?php echo $this->session->userdata('Email'); ?></button>
 
 <div class="dropdown-content">
 <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
@@ -69,5 +71,7 @@
 </div>
 </div>
 </div>
+</body>
+</html>
 
 <!-- </div> -->

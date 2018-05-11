@@ -1,17 +1,5 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-    p
-    {
-      color: red;
-    }
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>"Waanyen"</title>
-  </head>
+<!DOCTYPE html>
+<html>
   <body class="blockquote bg-light request">
 
       <div class="container box">
@@ -50,7 +38,6 @@
                         echo "<td><input class='form-check-input status' type='radio' name='status$r->id' id='$r->id' value='1' $uncheck/>ON<br>";
                           echo  "<input class='form-check-input status' type='radio' name='status$r->id' id='$r->id' value='0' $check/>OFF<br>";
                             echo  "<input id='status$r->id' name='statuss' type='hidden' class='up_s form-control' value='$r->status'>";
-                            echo  "<p id='status$r->id' name='status'class='up_s' >$r->status</p></td>";
 
                       echo  "<td><img src=" .base_url()."img/".$r->photo." width='80' hight='80' id='photo$r->id'/></td>";
 
