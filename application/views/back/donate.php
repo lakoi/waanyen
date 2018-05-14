@@ -1,22 +1,27 @@
-<div class="col-sm-10 offset-1 text-center">
-  <form method="post" id="donate_form" name="donate_form" action="">
-    <div class="row">
-      <div class="col-sm-6 offset-3">
-        <input type="hidden" id="id_donate" name="id_donate" />
-        <div class="border col-sm-12">
-          <input type="text" class="form-control text-center" id="donate_bd" name="donate_bd" />
+<div>
+  <div>
+    <img src="<?php echo base_url(). 'img/show_photo.png';?>" id="donate_pto" name="donate_pto" width="800" height="600"/>
+  </div>
+  <div class="col-sm-10 offset-1 text-center">
+    <form method="post" id="donate_form" name="donate_form" action="">
+      <div class="row">
+        <div class="col-sm-6 offset-3">
+          <input type="hidden" id="id_donate" name="id_donate" />
+          <div class="border col-sm-12">
+            <input type="text" class="form-control text-center" id="donate_bd" name="donate_bd" />
+          </div>
+            <input type="text" class="form-control text-center" id="donate1" name="donate1" />
+            <input type="text" class="form-control text-center" id="donate2" name="donate2" />
+            <button type="button" class="btn btn-primary">
+              <input type="text" class="form-control text-center" id="donate_bt" name="donate_bt" />
+            </button>
         </div>
-          <input type="text" class="form-control text-center" id="donate1" name="donate1" />
-          <input type="text" class="form-control text-center" id="donate2" name="donate2" />
-          <button type="button" class="btn btn-primary">
-            <input type="text" class="form-control text-center" id="donate_bt" name="donate_bt" />
-          </button>
+        <div class="col-sm-3">
+          <input type="submit" id="save_donate" class="btn btn-success" value="Save Donate"/>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <input type="submit" id="save_donate" class="btn btn-success" value="Save Donate"/>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 <script type="text/javascript">

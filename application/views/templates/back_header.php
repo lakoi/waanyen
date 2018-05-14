@@ -53,6 +53,10 @@
         {
           opacity: 0.9;
         }
+        textarea
+        {
+          resize:none;
+        }
     </style>
   </head>
   <body class="bg-light">

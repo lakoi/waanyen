@@ -59,7 +59,11 @@
     </style>
   </head>
   <body class="bg-light" >
-<div >
+<div style="position:relative;" >
+  <div>
+    <div class="text-center" style="position:absolute; z-index:0;">
+      <img src="<?php echo base_url(). 'img/test1.jpg';?>" id="donate_pto" name="donate_pto" width="1350" height="500"/>
+    </div>
   <div class="col-sm-12 offset-1 mi-auto">
     <div class="row">
       <div class="col-sm-4">
@@ -118,5 +122,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 <br>

@@ -34,4 +34,10 @@ class Pages extends CI_Controller
 	echo json_encode($data);
 	}
 
+	public function getcentre()
+	{
+	$data ['centre'] = $this->page_model->getcentre();
+	echo json_encode($data);
+	}
+
 }

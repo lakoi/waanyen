@@ -18,4 +18,10 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
+  public function getcentre()
+  {
+      $query = $this->db->get('centre');
+      return $query->result();
+  }
+
 }

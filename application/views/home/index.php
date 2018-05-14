@@ -1,5 +1,7 @@
+<br>
+<br>
+<br>
 <div>
-  <br>
   <div class="text-center">
     <div class="col-sm-6 offset-3 border align-bottom">
       <p id="donate_bd">xxxxxxxxxx</p>
@@ -21,6 +23,9 @@
       <button type="button" class="btn btn-primary" id="donate_bt">xxxxxxxx</button>
     </div>
   </div>
+</div>
+<br>
+<br>
     <br>
   <div class="text-center col-sm-10 offset-1">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -66,16 +71,16 @@
   <div class="row">
     <div class="col-sm-5 offset-1">
       <div class="col-sm-8 offset-1" >
-        <p id="about_tle" class="text-center">xxxxxxx</p>
+        <p id="about_tle" class="text-center"></p>
         <hr width="20%">
-        <h5 id="about_h1">xxxxxxxxxx</h5>
-        <h5 id="about_h2">xxxxxxxxxxxx</h5>
-        <p id="about_ui">xxxxxxxxxxxx</p>
+        <h5 id="about_h1"></h5>
+        <h5 id="about_h2"></h5>
+        <p id="about_ui"></p>
         <ui>
-          <li id="about_li1">xxxxxxxxxxx</li>
-          <li id="about_li2">xxxxxxxxxxxxxxxx</li>
-          <li id="about_li3">xxxxxxxxxxxxxx</li>
-          <li id="about_li4">xxxxxxxxxxxxxx</li>
+          <li id="about_li1"></li>
+          <li id="about_li2"></li>
+          <li id="about_li3"></li>
+          <li id="about_li4"></li>
         </ui>
       </div>
     </div>
@@ -88,7 +93,8 @@
     <div class="col-sm-10">
       <div class="row">
         <div class="col-sm-4">
-          <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="330" height="270" />
+          <p>ศูนย์ต่าง ๆ ของ</p>
+          <p>มูลนิธิช่วยคนตาบอด</p>
         </div>
         <div class="col-sm-4">
           <div class="centre-img1 border">

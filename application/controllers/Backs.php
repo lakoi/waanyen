@@ -57,8 +57,8 @@ class Backs extends CI_Controller
 		$config['max_width']     = 0;
 		$config['max_height']    = 0;
 		// $config['file_name']  = date(d_m_Y_H_i_s);
-		$config['encrypt_name']  = true; 
-		// $config['remove_spaces']  = true;
+		$config['encrypt_name']  = true;
+		$config['remove_spaces']  = true;
 			$this->load->library('upload', $config);
 			if ( ! $this->upload->do_upload('showabout_pto1'))
 			{
@@ -87,9 +87,47 @@ class Backs extends CI_Controller
 	public function centre()
 	{
 		$this->login_model->check_status();
+		$data['centre'] = $this->back_model->getcentre();
     $this->load->view('templates/back_header');
-    $this->load->view('back/centre');
+    $this->load->view('back/centre', $data);
     $this->load->view('templates/back_footer');
+	}
+
+	public function edit_centre()
+	{
+		$id = $this->input->post('id');
+		$edit_centre = $this->back_model->edit_centre($id);
+		echo json_encode($edit_centre);
+	}
+
+	public function save_centre()
+	{
+		$config['upload_path']   = 'img/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']      = 0;
+		$config['max_width']     = 0;
+		$config['max_height']    = 0;
+		// $config['file_name']  = date(d_m_Y_H_i_s);
+		$config['encrypt_name']  = true;
+		$config['remove_spaces']  = true;
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('newcentre_pto'))
+			{
+				$photo = $this->input->post('oldcentre_pto');
+			}
+			else
+			{
+				$photo = $this->upload->data('file_name');
+			}
+				$data = array(
+					'centre_area1' => $this->input->post('centre_area1'),
+					'centre_area2' => $this->input->post('centre_area2'),
+					'centre_bt' => $this->input->post('centre_bt'),
+					'centre_pto' => $photo,
+				);
+				$id = $this->input->post('id_centre');
+				$this->back_model->save_centre($data, $id);
+				return true;
 	}
 
 	public function news()
