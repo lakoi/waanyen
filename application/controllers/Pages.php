@@ -17,6 +17,7 @@ class Pages extends CI_Controller
 	{
 		$status = "1";
 		$data ['popup'] = $this->page_model->on_popup_model($status);
+		$data ['news'] = $this->page_model->getnews();
     $this->load->view('templates/header');
     $this->load->view('home/index', $data);
     $this->load->view('templates/footer');
@@ -39,5 +40,11 @@ class Pages extends CI_Controller
 	$data ['centre'] = $this->page_model->getcentre();
 	echo json_encode($data);
 	}
+
+	// public function getnews()
+	// {
+	// $data ['news'] = $this->page_model->getnews();
+	// echo json_encode($data);
+	// }
 
 }

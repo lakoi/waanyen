@@ -5,7 +5,7 @@
       <div class="container box">
         <h2>Popup</h2>
         <div id="result"></div>
-          <button id="add" type="button" class="btn btn-primary" onclick="submit('upload')" >Add</button>
+          <button id="add" type="button" class="btn btn-primary" onclick="submit('upload')">Add</button>
           <?php if (isset($query)): ?>
         <table class="table table-hover" id="table_popup">
           <thead>
@@ -183,7 +183,7 @@
               $('#action').val('upload');
               $('#upload').val("Upload");
             });
-            $('.update').on('click', function()
+            $('.update').click(function()
             {
                 $('#id').val($(this).attr("id"));
                 $('#action').val("update");

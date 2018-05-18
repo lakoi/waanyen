@@ -35,9 +35,11 @@ class Backs extends CI_Controller
 			'donate1' => $_POST['donate1'],
 			'donate2' => $_POST['donate2'],
 			'donate_bt' => $_POST['donate_bt'],
+			'donate_time' => date(Y_m_d_H_i_s),
 			);
 			$id = $_POST['id_donate'];
 			$this->back_model->save_donate($data, $id);
+			echo json_encode($data);
 			return true;
 	}
 
@@ -53,9 +55,6 @@ class Backs extends CI_Controller
 	{
 		$config['upload_path']   = 'img/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']      = 0;
-		$config['max_width']     = 0;
-		$config['max_height']    = 0;
 		// $config['file_name']  = date(d_m_Y_H_i_s);
 		$config['encrypt_name']  = true;
 		$config['remove_spaces']  = true;
@@ -133,17 +132,165 @@ class Backs extends CI_Controller
 	public function news()
 	{
 		$this->login_model->check_status();
+		$data['news'] = $this->back_model->getnews();
     $this->load->view('templates/back_header');
-    $this->load->view('back/news');
+    $this->load->view('back/news', $data);
     $this->load->view('templates/back_footer');
 	}
+
+	public function edit_news()
+	{
+		$id = $this->input->post('id');
+		$edit_news = $this->back_model->edit_news($id);
+		echo json_encode($edit_news);
+	}
+
+	public function save_news()
+  {
+    if($_POST["action"] == "upload")
+    {
+    $config['upload_path']   = 'img/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 0;
+    $config['max_width']     = 0;
+    $config['max_height']    = 0;
+		$config['encrypt_name']  = true;
+      $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('newnews_pto'))
+      {
+        $photo = $this->input->post('oldnews_pto');
+      }
+      else
+      {
+				$photo = $this->upload->data('file_name');
+      }
+			$data = array(
+				'news_title' => $this->input->post('news_title'),
+				'news_content' => $this->input->post('news_content'),
+				'news_bt' => $this->input->post('news_bt'),
+				'news_post' => $this->session->userdata('Name'),
+				'news_pto' => $photo,
+				'news_time' => date(Y_m_d_H_i_s),
+			);
+			$this->back_model->save_news($data);
+			return true;
+    }
+    if($_POST["action"] == "update")
+    {
+      $config['upload_path']   = 'img/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size']      = 0;
+      $config['max_width']     = 0;
+      $config['max_height']    = 0;
+			$config['encrypt_name']  = true;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('newnews_pto'))
+        {
+          $photo = $this->input->post('oldnews_pto');
+        }
+        else
+        {
+          $photo = $this->upload->data('file_name');
+        }
+				$data = array(
+					'news_title' => $this->input->post('news_title'),
+					'news_content' => $this->input->post('news_content'),
+					'news_bt' => $this->input->post('news_bt'),
+					'news_post' => $this->session->userdata('Name'),
+					'news_pto' => $photo,
+					'news_time' => date(Y_m_d_H_i_s),
+				);
+          $id = $this->input->post('id_news');
+          $this->back_model->save_edit_news($data,$id);
+          return true;
+    }
+    // if($_POST["action"] == "delete")
+    // {
+    //   $id = $this->input->post("id");
+    //   $del = $this->list_model->delete_popup_model($id);
+    //   return true;
+    // }
+  }
 
 	public function product()
 	{
 		$this->login_model->check_status();
+		$data['product'] = $this->back_model->getproduct();
     $this->load->view('templates/back_header');
-    $this->load->view('back/product');
+    $this->load->view('back/product', $data);
     $this->load->view('templates/back_footer');
+	}
+
+	public function edit_product()
+	{
+		$id = $this->input->post('id');
+		$edit_product = $this->back_model->edit_product($id);
+		echo json_encode($edit_product);
+	}
+
+	public function save_product()
+	{
+		if($_POST["action"] == "upload")
+		{
+		$config['upload_path']   = 'img/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']      = 0;
+		$config['max_width']     = 0;
+		$config['max_height']    = 0;
+		$config['encrypt_name']  = true;
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('newpd_pto'))
+			{
+				$photo = $this->input->post('oldpd_pto');
+			}
+			else
+			{
+				$photo = $this->upload->data('file_name');
+			}
+			$data = array(
+				'pd_name' => $this->input->post('pd_name'),
+				'pd_price' => $this->input->post('pd_price'),
+				'pd_from' => $this->input->post('pd_from'),
+				'pd_pto' => $photo,
+				'pd_time' => date(Y_m_d_H_i_s),
+			);
+			$this->back_model->save_product($data);
+			return true;
+		}
+		if($_POST["action"] == "update")
+		{
+			$config['upload_path']   = 'img/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']      = 0;
+			$config['max_width']     = 0;
+			$config['max_height']    = 0;
+			$config['encrypt_name']  = true;
+				$this->load->library('upload', $config);
+				if ( ! $this->upload->do_upload('newpd_pto'))
+				{
+					$photo = $this->input->post('oldpd_pto');
+				}
+				else
+				{
+					$photo = $this->upload->data('file_name');
+				}
+				$data = array(
+					'pd_name' => $this->input->post('pd_name'),
+					'pd_price' => $this->input->post('pd_price'),
+					'pd_from' => $this->input->post('pd_from'),
+					'pd_pto' => $photo,
+					'pd_time' => date(Y_m_d_H_i_s),
+				);
+					$id = $this->input->post('id_product');
+					$this->back_model->save_edit_product($data,$id);
+					return true;
+		}
+		// if($_POST["action"] == "delete")
+		// {
+		//   $id = $this->input->post("id");
+		//   $del = $this->list_model->delete_popup_model($id);
+		//   return true;
+		// }
 	}
 
 	public function motto()
@@ -153,6 +300,8 @@ class Backs extends CI_Controller
     $this->load->view('back/motto');
     $this->load->view('templates/back_footer');
 	}
+
+	
 
 	public function footer()
 	{

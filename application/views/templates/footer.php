@@ -18,6 +18,8 @@
       $(function(){
         getdonate();
         getabout();
+        getcentre();
+        // getnews();
         if($('#title').text() == '')
         {
           $('#myModal').modal('hide');
@@ -62,6 +64,7 @@
                 {
                   $.each(data.about, function(key, val)
                   {
+
                     $('#id_about').html(val["id_about"]);
                     $('#about_tle').html(val["about_tle"]);
                     $('#about_h1').html(val["about_h1"]);
@@ -80,6 +83,110 @@
                  }
                });
         }
+
+        function getcentre()
+        {
+        $.ajax({
+                type: 'POST',
+                url: "<?php echo base_url(). "Pages/getcentre";?>",
+                dataType: 'json',
+                success: function(data)
+                {
+                  $.each(data.centre, function(key, val)
+                  {
+                    if(key == "0")
+                    {
+                      $('#centre_area11').html(val["centre_area1"]);
+                      $('#centre_area12').html(val["centre_area2"]);
+                      $('#centre_bt1').html(val["centre_bt"]);
+                      $('#centre_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+                    }
+                    if(key == "1")
+                    {
+                      $('#centre_area21').html(val["centre_area1"]);
+                      $('#centre_area22').html(val["centre_area2"]);
+                      $('#centre_bt2').html(val["centre_bt"]);
+                      $('#centre_pto2').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+                    }
+                    if(key == "2")
+                    {
+                      $('#centre_area31').html(val["centre_area1"]);
+                      $('#centre_area32').html(val["centre_area2"]);
+                      $('#centre_bt3').html(val["centre_bt"]);
+                      $('#centre_pto3').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+                    }
+                    if(key == "3")
+                    {
+                      $('#centre_area41').html(val["centre_area1"]);
+                      $('#centre_area42').html(val["centre_area2"]);
+                      $('#centre_bt4').html(val["centre_bt"]);
+                      $('#centre_pto4').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+                    }
+                    if(key == "4")
+                    {
+                      $('#centre_area51').html(val["centre_area1"]);
+                      $('#centre_area52').html(val["centre_area2"]);
+                      $('#centre_bt5').html(val["centre_bt"]);
+                      $('#centre_pto5').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+                    }
+                  });
+                 },
+                 error: function()
+                 {
+                   alert('not getcentre');
+                 }
+               });
+        }
+
+        // function getnews()
+        // {
+        // $.ajax({
+        //         type: 'POST',
+        //         url: "<?php echo base_url(). "Pages/getnews";?>",
+        //         dataType: 'json',
+        //         success: function(data)
+        //         {
+        //           $.each(data.news, function(key, val)
+        //           {
+        //             if(key == "0")
+        //             {
+        //               $('#id_news1').html(val["id_news"]);
+        //               $('#news_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
+        //               $('#news_title1').html(val["news_title"]);
+        //               $('#news_content1').html(val["news_content"]);
+        //               $('#news_bt1').html(val["news_bt"]);
+        //               $('#news_time1').html(val["news_time"]);
+        //               $('#news_post1').html(val["news_post"]);
+        //             }
+        //             if(key == "1")
+        //             {
+        //               $('#id_news2').html(val["id_news"]);
+        //               $('#news_pto2').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
+        //               $('#news_title2').html(val["news_title"]);
+        //               $('#news_content2').html(val["news_content"]);
+        //               $('#news_bt2').html(val["news_bt"]);
+        //               $('#news_time2').html(val["news_time"]);
+        //               $('#news_post2').html(val["news_post"]);
+        //             }
+        //             if(key == "2")
+        //             {
+        //               $('#id_news3').html(val["id_news"]);
+        //               $('#news_pto3').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
+        //               $('#news_title3').html(val["news_title"]);
+        //               $('#news_content3').html(val["news_content"]);
+        //               $('#news_bt3').html(val["news_bt"]);
+        //               $('#news_time3').html(val["news_time"]);
+        //               $('#news_post3').html(val["news_post"]);
+        //             }
+        //           });
+        //
+        //          },
+        //          error: function()
+        //          {
+        //            alert('not getnews');
+        //          }
+        //        });
+        // }
       </script>
 
 

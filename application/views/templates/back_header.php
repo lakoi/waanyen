@@ -57,6 +57,15 @@
         {
           resize:none;
         }
+        .asd
+        {
+           width: 400px;
+           /* border:3px solid #00ACEE; */
+           overflow: hidden;
+           white-space: normal;
+           text-overflow: ellipsis;
+           word-wrap: break-word;
+        }
     </style>
   </head>
   <body class="bg-light">

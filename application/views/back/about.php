@@ -5,8 +5,8 @@
       <input type="hidden" id="id_about" name="id_about"/>
       <p><input type="text" class="form-control text-center" id="about_tle" name="about_tle"/></p>
       <hr width="20%">
-      <h1><input type="text" class="form-control"  id="about_h1" name="about_h1"/></h1>
-      <h5><input type="text" class="form-control"  id="about_h2" name="about_h2"/></h5>
+      <h1><textarea type="text" class="form-control"  rows=1 cols=40 id="about_h1" name="about_h1"></textarea></h1>
+      <h5><textarea type="text" class="form-control" rows=1 cols=40 id="about_h2" name="about_h2"></textarea></h5>
       <p><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_ui" name="about_ui"></textarea></p>
       <ui>
         <li><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_li1" name="about_li1"></textarea></li>
@@ -21,7 +21,7 @@
     <div>
     <input type="hidden" id="oldabout_pto1" name="oldabout_pto1"/>
     <input type="file" id="showabout_pto1" name="showabout_pto1" style="display:none;" onchange="showabout1(this);"/>
-    <img src class="btn-upload border" wigth="200" height="200" id="about_pto1" name="about_pto1"/>
+    <img src class="btn-upload border" height="200" id="about_pto1" name="about_pto1"/>
   </div>
   </div>
   <div>
@@ -43,6 +43,7 @@ function showabout1(input)
      reader.readAsDataURL(input.files[0]);
   }
 }
+
 $(function()
 {
   getabout();
@@ -87,7 +88,6 @@ $(function()
          });
   }
 
-
   $(document).ready(function(e)
   {
     $(".btn-upload").on("click",function()
@@ -130,10 +130,6 @@ $(function()
             });
           }
     }));
+  });
 });
-});
-
-
-
-
 </script>

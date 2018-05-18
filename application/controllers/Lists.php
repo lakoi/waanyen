@@ -235,9 +235,9 @@ class Lists extends CI_Controller
     $this->login_model->checker();
     $data ['query'] = $this->list_model->popup_model();
       $this->login_model->check_status();
-      $this->load->view('templates/header');
+      $this->load->view('templates/back_header');
       $this->load->view('login/list_popup',$data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/back_footer');
   }
 
   public function popup_re()

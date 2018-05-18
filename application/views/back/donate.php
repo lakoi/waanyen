@@ -1,7 +1,4 @@
 <div>
-  <div>
-    <img src="<?php echo base_url(). 'img/show_photo.png';?>" id="donate_pto" name="donate_pto" width="800" height="600"/>
-  </div>
   <div class="col-sm-10 offset-1 text-center">
     <form method="post" id="donate_form" name="donate_form" action="">
       <div class="row">
@@ -18,11 +15,19 @@
         </div>
         <div class="col-sm-3">
           <input type="submit" id="save_donate" class="btn btn-success" value="Save Donate"/>
+          <div>
+            <div>แก้ไขล่าสุด เมื่อ <span id="donate_time"><span></div>
+              <?php
+                $date=date_create("2013-03-15");
+                echo date_format($date,"Y/m/d H:i:s");
+              ?>
+          </div>
         </div>
       </div>
     </form>
   </div>
 </div>
+
 
 <script type="text/javascript">
   $(function(){
@@ -37,17 +42,12 @@
       success: function(data)
       {
         $.each(data.donate, function(key, val) {
-          var id_donate = val["id_donate"];
-          var donate_bd = val["donate_bd"];
-          var donate1 = val["donate1"];
-          var donate2 = val["donate2"];
-          var donate_bt = val["donate_bt"];
-
-          $('#id_donate').val(id_donate);
-          $('#donate_bd').val(donate_bd);
-          $('#donate1').val(donate1);
-          $('#donate2').val(donate2);
-          $('#donate_bt').val(donate_bt);
+          $('#id_donate').val(val["id_donate"]);
+          $('#donate_bd').val(val["donate_bd"]);
+          $('#donate1').val(val["donate1"]);
+          $('#donate2').val(val["donate2"]);
+          $('#donate_bt').val(val["donate_bt"]);
+          $('#donate_time').html(val["donate_time"]);
           });
      },
      error: function()
@@ -71,6 +71,7 @@
               processData: false,
               success: function(data)
               {
+                console.log(data);
                 alert('save success.');
                 $('#check_donate').val('');
                 $('#id_donate').val('');

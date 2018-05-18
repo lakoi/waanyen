@@ -22,6 +22,7 @@
         }
         .centre-txt1
         {
+          color: white;
           z-index: 1;
           position: relative;
           border: 10px 0;
@@ -40,7 +41,7 @@
         }
         .centre-mid
         {
-          z-index: 2;
+          z-index: 20;
           position: relative;
           display:table-cell;
           vertical-align:middle;
@@ -48,7 +49,6 @@
         .centre-mid:hover
         {
           opacity: 1;
-
         }
         .centre-pto
         {
@@ -59,11 +59,8 @@
     </style>
   </head>
   <body class="bg-light" >
-<div style="position:relative;" >
+<div style="position:relative; z-index: 1;" >
   <div>
-    <div class="text-center" style="position:absolute; z-index:0;">
-      <img src="<?php echo base_url(). 'img/test1.jpg';?>" id="donate_pto" name="donate_pto" width="1350" height="500"/>
-    </div>
   <div class="col-sm-12 offset-1 mi-auto">
     <div class="row">
       <div class="col-sm-4">

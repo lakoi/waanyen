@@ -24,4 +24,10 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
+  public function getnews()
+  {
+      $query = $this->db->query(" select * from news order by id_news desc limit 0,3");
+      return $query->result();
+  }
+
 }

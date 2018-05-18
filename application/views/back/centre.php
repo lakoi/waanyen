@@ -18,7 +18,7 @@
           <td><?php echo $r->centre_area2 ;?></td>
           <td><?php echo $r->centre_bt ;?></td>
           <td><img src='<?php echo base_url(). 'img/'.$r->centre_pto ;?>' width="80" height="80"/></td>
-          <td><a id="<?php echo $r->id_centre;?>" name="edit" class="btn btn-warning edit" onclick="edit(<?php echo $r->id_centre;?>)">Edit</a></td>
+          <td><a id="<?php echo $r->id_centre;?>" name="edit" style="color: white;" class="btn btn-success edit" onclick="edit(<?php echo $r->id_centre;?>)">Edit</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -40,8 +40,10 @@
           <div class="text-center">
             <p>click photo<p>
             <input type="hidden" id="oldcentre_pto" name="oldcentre_pto"/>
-            <input type="file" id="newcentre_pto" name="newcentre_pto"  onchange="newcentre(this);"/>
-            <img name="centre_pto" id="centre_pto" src width="200" height="200"/>
+            <input type="file" id="newcentre_pto" name="newcentre_pto" style="display:none;" onchange="newcentre(this);"/>
+            <!-- <div class="border" id="centre_pto" style="width:330px; height: 270px;"> -->
+            <img name="centre_pto" id="centre_pto" src width="330" height="270"/>
+            <!-- </div> -->
             <input type="hidden" id="id_centre" name="id_centre"/>
           </div>
           <table>
@@ -143,95 +145,3 @@ $(function()
     }
   }
 </script>
-
-<!-- <div class="offset-10">
-  <button type="submit" class="btn btn-success">Save Centre</button>
-</div>
-<div class="offset-1 text-center">
-  <div class="col-sm-10">
-    <div class="row">
-      <div class="col-sm-4">
-        <div style="width:330; height:270;">
-          <input type="hidden" id="oldabout_pto1" name="oldabout_pto1"/>
-          <input type="file" id="showabout_pto1" name="showabout_pto1" style="display:none;" onchange="showabout1(this);"/>
-          <img id="centre_pto" name="centre_pto" class="btn-upload" src width="330" height="270" />
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="centre-img1 border">
-          <div class="centre-pto">
-            <input type="hidden" id="oldabout_pto1" name="oldabout_pto1"/>
-            <input type="file" id="showabout_pto1" name="showabout_pto1" style="display:none;" onchange="showabout1(this);"/>
-            <img id="centre_pto1" name="centre_pto1" class="btn-upload" src width="330" height="270" />
-          </div>
-          <div class="border centre-txt1">
-            <div class="centre-mid">
-              <textarea id="centre_area11" name="centre_area11" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <textarea id="centre_area12" name="centre_area12" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <button class="btn"><input id="centre_bt1" name="centre_bt1" type="text" class="form-control"/></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="centre-img1 border">
-          <div class="centre-pto">
-            <img id="centre_pto2" name="centre_pto2" src width="330" height="270" />
-          </div>
-          <div class="border centre-txt1">
-            <div class="centre-mid">
-              <textarea id="centre_area21" name="centre_area21" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <textarea id="centre_area22" name="centre_area22" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <button class="btn"><input id="centre_bt2" name="centre_bt2" type="text" class="form-control"/></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="centre-img1 border">
-          <div class="centre-pto">
-            <img id="centre_pto3" name="centre_pto3" src width="330" height="270" />
-          </div>
-          <div class="border centre-txt1">
-            <div class="centre-mid">
-              <textarea id="centre_area31" name="centre_area31" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <textarea id="centre_area32" name="centre_area32" type="text" class="form-control" rows=2 style="resize:none;"></textarea>
-              <button class="btn"><input id="centre_bt3" name="centre_bt3" type="text" class="form-control"/></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="centre-img1 border">
-          <div class="centre-pto">
-            <img id="centre_pto4" name="centre_pto4" src width="330" height="270" />
-          </div>
-          <div class="border centre-txt1">
-            <div class="centre-mid">
-              <textarea id="centre_area41" name="centre_area41" type="text" class="form-control" rows=2 style="resize:none;" ></textarea>
-              <textarea id="centre_area42" name="centre_area42" type="text" class="form-control" rows=2 style="resize:none;" ></textarea>
-              <button class="btn"><input id="centre_bt4" name="centre_bt4" type="text" class="form-control" /></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="centre-img1 border">
-          <div class="centre-pto">
-            <img id="centre_pto5" name="centre_pto5" src width="330" height="270" />
-          </div>
-          <div class="border centre-txt1">
-            <div class="centre-mid">
-              <textarea id="centre_area51" name="centre_area51" type="text" class="form-control" rows=2 style="resize:none;" ></textarea>
-              <textarea id="centre_area52" name="centre_area52" type="text" class="form-control" rows=2 style="resize:none;" ></textarea>
-              <button class="btn"><input id="centre_bt5" name="centre_bt5" type="text" class="form-control" /></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      <img src="<?php echo base_url(). 'img/show_photo.png';?>" width="350" height="350" />
-</div> -->
