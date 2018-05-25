@@ -55,7 +55,6 @@ class Backs extends CI_Controller
 	{
 		$config['upload_path']   = 'img/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		// $config['file_name']  = date(d_m_Y_H_i_s);
 		$config['encrypt_name']  = true;
 		$config['remove_spaces']  = true;
 			$this->load->library('upload', $config);
@@ -76,6 +75,7 @@ class Backs extends CI_Controller
 					'about_li2' => $this->input->post('about_li2'),
 					'about_li3' => $this->input->post('about_li3'),
 					'about_li4' => $this->input->post('about_li4'),
+					'about_time' => date(Y_m_d_H_i_s),
 					'about_pto1' => $photo,
 				);
 				$id = $this->input->post('id_about');
@@ -204,12 +204,12 @@ class Backs extends CI_Controller
           $this->back_model->save_edit_news($data,$id);
           return true;
     }
-    // if($_POST["action"] == "delete")
-    // {
-    //   $id = $this->input->post("id");
-    //   $del = $this->list_model->delete_popup_model($id);
-    //   return true;
-    // }
+    if($_POST["action"] == "delete")
+    {
+      $id = $this->input->post("id");
+      $this->back_model->delete_news($id);
+      return true;
+    }
   }
 
 	public function product()
@@ -285,30 +285,71 @@ class Backs extends CI_Controller
 					$this->back_model->save_edit_product($data,$id);
 					return true;
 		}
-		// if($_POST["action"] == "delete")
-		// {
-		//   $id = $this->input->post("id");
-		//   $del = $this->list_model->delete_popup_model($id);
-		//   return true;
-		// }
+		if($_POST["action"] == "delete")
+		{
+		  $id = $this->input->post("id");
+		  $this->back_model->delete_product($id);
+		  return true;
+		}
 	}
 
 	public function motto()
 	{
 		$this->login_model->check_status();
+		$data['motto'] = $this->back_model->getmotto();
     $this->load->view('templates/back_header');
-    $this->load->view('back/motto');
+    $this->load->view('back/motto', $data);
     $this->load->view('templates/back_footer');
 	}
 
-	
+	public function save_motto()
+	{
+			$data = array(
+			'motto_txt' => $_POST['motto_txt'],
+			'motto_bt' => $_POST['motto_bt'],
+			'motto_time' => date(Y_m_d_H_i_s),
+			);
+			$id = $_POST['id_motto'];
+			$this->back_model->save_motto($data, $id);
+			return true;
+	}
 
 	public function footer()
 	{
 		$this->login_model->check_status();
+		$data['footer'] = $this->back_model->getfooter();
     $this->load->view('templates/back_header');
-    $this->load->view('back/footer');
+    $this->load->view('back/footer', $data);
     $this->load->view('templates/back_footer');
+	}
+
+	public function save_footer()
+	{
+		$config['upload_path']   = 'img/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['encrypt_name']  = true;
+		$config['remove_spaces']  = true;
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('newfooter_pto'))
+			{
+				$photo = $this->input->post('oldfooter_pto');
+			}
+			else
+			{
+				$photo = $this->upload->data('file_name');
+			}
+				$data = array(
+					'footer_title' => $this->input->post('footer_title'),
+					'footer_from' => $this->input->post('footer_from'),
+					'footer_phone' => $this->input->post('footer_phone'),
+					'footer_fax' => $this->input->post('footer_fax'),
+					'footer_mail' => $this->input->post('footer_mail'),
+					'footer_time' => date(Y_m_d_H_i_s),
+					'footer_pto' => $photo,
+				);
+				$id = $this->input->post('id_footer');
+				$this->back_model->save_footer($data, $id);
+				return true;
 	}
 
 }

@@ -17,10 +17,15 @@ class Pages extends CI_Controller
 	{
 		$status = "1";
 		$data ['popup'] = $this->page_model->on_popup_model($status);
+		$data ['centre'] = $this->page_model->getcentre();
 		$data ['news'] = $this->page_model->getnews();
+		$data ['product'] = $this->page_model->getproduct();
+		$data ['motto'] = $this->page_model->getmotto();
+		$data ['footer'] = $this->page_model->getfooter();
+
     $this->load->view('templates/header');
     $this->load->view('home/index', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/footer', $data);
 	}
 
 	public function getdonate()
@@ -35,11 +40,11 @@ class Pages extends CI_Controller
 	echo json_encode($data);
 	}
 
-	public function getcentre()
-	{
-	$data ['centre'] = $this->page_model->getcentre();
-	echo json_encode($data);
-	}
+	// public function getcentre()
+	// {
+	// $data ['centre'] = $this->page_model->getcentre();
+	// echo json_encode($data);
+	// }
 
 	// public function getnews()
 	// {

@@ -10,6 +10,7 @@
         <th>content</th>
         <th>text button</th>
         <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +22,8 @@
         <td><?php echo $r->news_post;?></td>
         <td><div class="asd"><?php echo $r->news_content;?></div></td>
         <td><?php echo $r->news_bt;?></td>
-        <td><a id="<?php echo $r->id_news;?>" name="news" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a></td>
+        <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a></td>
+        <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a></td>
       </tr>
     <?php };?>
     </tbody>
@@ -50,7 +52,7 @@
             </div>
             <div class="col-sm-6">
               <div class="offset-2">
-                <p>post by <span name="news_post" class="news_post"><span></p>
+                <p id="postby">post by <span name="news_post" class="news_post"><span></p>
               </div>
               <div>
                 <div>
@@ -89,9 +91,11 @@ function action(x)
     $("[name='news_title']").val('');
     $("[name='news_content']").val('');
     $("[name='news_bt']").val('');
+    $('#postby').hide();
   }
   else
   {
+    $('#postby').show();
     $.ajax({
             type: 'POST',
             data: 'id='+x,
@@ -155,6 +159,30 @@ $(document).ready(function(e)
       $('.modal-title').text("update news");
       $('#upload').val("Update");
       $('#news_modal').modal("show");
+  });
+
+  $('.delete').on('click', function()
+  {
+    var id = $(this).attr("id");
+    var action = "delete";
+    if(confirm("Are you sure delete data?"))
+    {
+      $.ajax({
+              url: "<?php echo base_url(). "Backs/save_news";?>",
+              method: 'POST',
+              data:{id:id, action:action},
+              // dataType: 'json',
+              success: function(data)
+              {
+                alert("delete success");
+                location.reload();
+              },
+              error: function()
+              {
+                alert("Not delete");
+              }
+            });
+    }
   });
 
   $('#news_form').on('submit',function(e)

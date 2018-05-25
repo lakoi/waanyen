@@ -30,4 +30,21 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
+  public function getproduct()
+  {
+      $query = $this->db->query(" select * from product order by id_product desc");
+      return $query->result();
+  }
+
+  public function getmotto()
+  {
+      $query = $this->db->get('motto');
+      return $query->result();
+  }
+
+  public function getfooter()
+  {
+      $query = $this->db->get('footer');
+      return $query->result();
+  }
 }

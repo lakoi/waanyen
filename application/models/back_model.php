@@ -79,6 +79,14 @@ class Back_model extends CI_Model
         return true;
   }
 
+  public function delete_news($id)
+  {
+        if ($this->db->delete("news", "id_news =".$id))
+        {
+          return true;
+        }
+  }
+
   public function getproduct()
   {
       $query = $this->db->get('product');
@@ -105,6 +113,42 @@ class Back_model extends CI_Model
         $this->db->set($data);
         $this->db->where("id_product", $id);
         $this->db->update("product");
+        return true;
+  }
+
+  public function delete_product($id)
+  {
+        if ($this->db->delete("product", "id_product =".$id))
+        {
+          return true;
+        }
+  }
+
+  public function getmotto()
+  {
+      $query = $this->db->get('motto');
+      return $query->result();
+  }
+
+  public function save_motto($data, $id)
+  {
+        $this->db->set($data);
+        $this->db->where("id_motto", $id);
+        $this->db->update("motto");
+        return true;
+  }
+
+  public function getfooter()
+  {
+      $query = $this->db->get('footer');
+      return $query->result();
+  }
+
+  public function save_footer($data, $id)
+  {
+        $this->db->set($data);
+        $this->db->where("id_footer", $id);
+        $this->db->update("footer");
         return true;
   }
 

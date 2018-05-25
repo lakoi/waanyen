@@ -9,6 +9,21 @@
 
     <title>waanyen</title>
     <style>
+        .qw:hover{
+          background: rgba(42, 103, 183, 0.9);
+          /* opacity: 0.9; */
+        }
+        .we:hover{
+          visibility: show;
+        }
+        .as:hover{
+          background-color: #d7efed;
+          border-left: 4px solid #2a67b7;
+          /* border-color: lime; */
+        }
+        body{
+          color: black;
+        }
       .centre-img1
         {
           margin: 10px 5px ;
@@ -56,12 +71,33 @@
           left: 0; top: 0;
           z-index: 0;
         }
+          .boxnews{
+          font-size: 1em;
+          /* padding-top: 7px; */
+          padding-bottom: 5px;
+          text-indent: 25px;
+          position: relative;
+          max-height: 70px;
+          overflow: hidden;
+        }
+          .boxnewsFade {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          z-index: 1;
+          height: 40px;
+          display: inline-block;
+          background: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));
+          background: -o-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1));
+          background: -moz-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1));
+          background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+      }
     </style>
   </head>
   <body class="bg-light" >
-<div style="position:relative; z-index: 1;" >
-  <div>
-  <div class="col-sm-12 offset-1 mi-auto">
+<div style="position:absolute ; z-index: 99; width:100vw;" >
+  <div class="col-sm-10 offset-2">
     <div class="row">
       <div class="col-sm-4">
         <div class="row">
@@ -120,5 +156,3 @@
     </div>
   </div>
 </div>
-</div>
-<br>

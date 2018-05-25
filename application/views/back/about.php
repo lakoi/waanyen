@@ -57,28 +57,17 @@ $(function()
           {
             $.each(data.about, function(key, val)
             {
-              var id_about = val["id_about"];
-              var about_tle = val["about_tle"];
-              var about_h1 = val["about_h1"];
-              var about_h2 = val["about_h2"];
-              var about_ui = val["about_ui"];
-              var about_li1 = val["about_li1"];
-              var about_li2 = val["about_li2"];
-              var about_li3 = val["about_li3"];
-              var about_li4 = val["about_li4"];
-              var about_pto1 = val["about_pto1"];
-
-              $('#id_about').val(id_about);
-              $('#about_tle').val(about_tle);
-              $('#about_h1').val(about_h1);
-              $('#about_h2').val(about_h2);
-              $('#about_ui').val(about_ui);
-              $('#about_li1').val(about_li1);
-              $('#about_li2').val(about_li2);
-              $('#about_li3').val(about_li3);
-              $('#about_li4').val(about_li4);
-              $('#about_pto1').attr("src",'<?php echo base_url(). 'img/';?>'+about_pto1);
-              $('#oldabout_pto1').val(about_pto1);
+              $('#id_about').val(val["id_about"]);
+              $('#about_tle').val(val["about_tle"]);
+              $('#about_h1').val(val["about_h1"]);
+              $('#about_h2').val(val["about_h2"]);
+              $('#about_ui').val(val["about_ui"]);
+              $('#about_li1').val(val["about_li1"]);
+              $('#about_li2').val(val["about_li2"]);
+              $('#about_li3').val(val["about_li3"]);
+              $('#about_li4').val(val["about_li4"]);
+              $('#about_pto1').attr("src",'<?php echo base_url(). 'img/';?>'+val["about_pto1"]);
+              $('#oldabout_pto1').val(val["about_pto1"]);
             });
            },
            error: function()

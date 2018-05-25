@@ -17,10 +17,6 @@
           <input type="submit" id="save_donate" class="btn btn-success" value="Save Donate"/>
           <div>
             <div>แก้ไขล่าสุด เมื่อ <span id="donate_time"><span></div>
-              <?php
-                $date=date_create("2013-03-15");
-                echo date_format($date,"Y/m/d H:i:s");
-              ?>
           </div>
         </div>
       </div>

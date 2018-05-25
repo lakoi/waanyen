@@ -9,6 +9,7 @@
         <th>price (baht)</th>
         <th>product from</th>
         <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +20,8 @@
         <td><?php echo $r->pd_name;?></td>
         <td><?php echo $r->pd_price;?></td>
         <td><div class="asd"><?php echo $r->pd_from;?></div></td>
-        <td><a id="<?php echo $r->id_product;?>" name="news" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a></td>
+        <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a></td>
+        <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-danger delete" >Edit</a></td>
       </tr>
     <?php };?>
     </tbody>
@@ -43,7 +45,7 @@
             <input type="hidden" id="oldpd_pto" name="oldpd_pto"/>
             <input type="file" id="newpd_pto" name="newpd_pto" style="display:none;" onchange="newpd(this);"/>
             <img name="pd_pto" id="pd_pto" src width="330" height="270"/>
-            <input type="hidden" id="id_pd" name="id_pd"/>
+            <input type="hidden" id="id_product" name="id_product"/>
             <input type="hidden" name="action" id="action" value="upload"/>
           </div>
           <div class="col-sm-6">
@@ -151,6 +153,29 @@ $(document).ready(function(e)
       $('#product_modal').modal("show");
   });
 
+  $('.delete').on('click', function()
+  {
+    var id = $(this).attr("id");
+    var action = "delete";
+    if(confirm("Are you sure delete data?"))
+    {
+      $.ajax({
+              url: "<?php echo base_url(). "Backs/save_product";?>",
+              method: 'POST',
+              data:{id:id, action:action},
+              success: function(data)
+              {
+                alert("delete success");
+                location.reload();
+              },
+              error: function()
+              {
+                alert("Not delete");
+              }
+            });
+    }
+  });
+
   $('#product_form').on('submit',function(e)
   {
     e.preventDefault();
@@ -176,3 +201,140 @@ $(document).ready(function(e)
   });
 });
 </script>
+
+<!-- <div class="col-sm-12 text-center">
+  <div class="row">
+    <div class="col-sm-4">
+      <p><span class="font-weight-bold">ผลิตภัณฑ์และบริการ</span><br>
+      "การสนับสนุนผลิตภัณฑ์ฝีมือคนตาบอด<br>
+      เป็นการสร้างอาชีพและให้อนาคต"</p>
+    </div>
+    <div class="col-sm-7">
+      <div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="card" style="width: 230px; height: 400px;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span>asd</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 230px;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 230px;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="card" style="width: 230px; height: 400px;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span>asd</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="card" style="width: 230px; height: 400px;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span>asd</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">ราคา  บาท</p>
+                      <p class="card-text">ผลิตภัณฑ์จาก:<br>
+                      <span></span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

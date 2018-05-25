@@ -1,24 +1,28 @@
       <br>
       <div class="bg-secondary text-center">
-        <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="100" height="100" />
-        <div>
-          <b>มูลนิธิช่วยคนตาบอดแห่งประเทศไทย</b><br>
-          <p>ในพระบรมราชินูปถัมภ์</p><br>
-        </div>
-        <div>
-          <p>420 ถนนราชวิถี แขวงทุ่งพญาไท เขตราชเทวี กรุงเทพมหานคร 10400<br>
-          โทรศัพท์ : 0-2354-8365-68 , 0-2354-8370-71<br>
-          โทรสาร : 0-2354-8369<br>
-          อีเมล : service@blind.or.th</p><br>
-          <p>Copyright 	&copy; 2016 www.blind.or.th All right reserved.</p>
-        </div>
+        <?php if(isset($footer)):?>
+          <?php foreach ($footer as $r)
+          {?>
+            <img src="<?php echo base_url(). 'img/'.$r->footer_pto;?>" wigth="100" height="100" />
+            <div>
+              <b><?php echo nl2br($r->footer_title);?></b>
+            </div>
+            <div>
+              <p><?php echo $r->footer_from;?><br>
+              โทรศัพท์ : <?php echo $r->footer_phone;?><br>
+              โทรสาร : <?php echo $r->footer_fax;?><br>
+              อีเมล : <?php echo $r->footer_mail;?></p><br>
+              <p>Copyright 	&copy; 2016 www.blind.or.th All right reserved.</p>
+            </div>
+          <?php };?>
+        <?php endif;?>
       </div>
 
       <script type="text/javascript">
       $(function(){
         getdonate();
         getabout();
-        getcentre();
+        // getcentre();
         // getnews();
         if($('#title').text() == '')
         {
@@ -29,6 +33,26 @@
           $('#myModal').modal('show');
         }
         });
+
+        $(document).ready(function()
+      {
+        $('.centre-mid').mouseenter(function()
+        {
+          $('.centre-txt1').hover();
+        });
+        var id = $('.qw').attr("id");
+        $('.qw').hover(function()
+        {
+          // alert(id);
+          // alert(id);
+          // alert($(this).attr("id"));
+          $('.we').show();
+        },
+        function()
+        {
+          $('.we').hide();
+        });
+      });
 
         function getdonate()
         {
@@ -66,14 +90,9 @@
                   {
 
                     $('#id_about').html(val["id_about"]);
-                    $('#about_tle').html(val["about_tle"]);
-                    $('#about_h1').html(val["about_h1"]);
-                    $('#about_h2').html(val["about_h2"]);
-                    $('#about_ui').html(val["about_ui"]);
-                    $('#about_li1').html(val["about_li1"]);
-                    $('#about_li2').html(val["about_li2"]);
-                    $('#about_li3').html(val["about_li3"]);
-                    $('#about_li4').html(val["about_li4"]);
+                    $('#about_head').html(val["about_head"]);
+                    $('#about_motto').html(val["about_motto"]);
+                    $('#about_content').html(val["about_content"]);
                     $('#about_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["about_pto1"]);
                   });
                  },
@@ -84,106 +103,56 @@
                });
         }
 
-        function getcentre()
-        {
-        $.ajax({
-                type: 'POST',
-                url: "<?php echo base_url(). "Pages/getcentre";?>",
-                dataType: 'json',
-                success: function(data)
-                {
-                  $.each(data.centre, function(key, val)
-                  {
-                    if(key == "0")
-                    {
-                      $('#centre_area11').html(val["centre_area1"]);
-                      $('#centre_area12').html(val["centre_area2"]);
-                      $('#centre_bt1').html(val["centre_bt"]);
-                      $('#centre_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
-                    }
-                    if(key == "1")
-                    {
-                      $('#centre_area21').html(val["centre_area1"]);
-                      $('#centre_area22').html(val["centre_area2"]);
-                      $('#centre_bt2').html(val["centre_bt"]);
-                      $('#centre_pto2').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
-                    }
-                    if(key == "2")
-                    {
-                      $('#centre_area31').html(val["centre_area1"]);
-                      $('#centre_area32').html(val["centre_area2"]);
-                      $('#centre_bt3').html(val["centre_bt"]);
-                      $('#centre_pto3').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
-                    }
-                    if(key == "3")
-                    {
-                      $('#centre_area41').html(val["centre_area1"]);
-                      $('#centre_area42').html(val["centre_area2"]);
-                      $('#centre_bt4').html(val["centre_bt"]);
-                      $('#centre_pto4').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
-                    }
-                    if(key == "4")
-                    {
-                      $('#centre_area51').html(val["centre_area1"]);
-                      $('#centre_area52').html(val["centre_area2"]);
-                      $('#centre_bt5').html(val["centre_bt"]);
-                      $('#centre_pto5').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
-                    }
-                  });
-                 },
-                 error: function()
-                 {
-                   alert('not getcentre');
-                 }
-               });
-        }
-
-        // function getnews()
+        // function getcentre()
         // {
         // $.ajax({
         //         type: 'POST',
-        //         url: "<?php echo base_url(). "Pages/getnews";?>",
+        //         url: "<?php echo base_url(). "Pages/getcentre";?>",
         //         dataType: 'json',
         //         success: function(data)
         //         {
-        //           $.each(data.news, function(key, val)
+        //           $.each(data.centre, function(key, val)
         //           {
         //             if(key == "0")
         //             {
-        //               $('#id_news1').html(val["id_news"]);
-        //               $('#news_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
-        //               $('#news_title1').html(val["news_title"]);
-        //               $('#news_content1').html(val["news_content"]);
-        //               $('#news_bt1').html(val["news_bt"]);
-        //               $('#news_time1').html(val["news_time"]);
-        //               $('#news_post1').html(val["news_post"]);
+        //               $('#centre_area11').html(val["centre_area1"]);
+        //               $('#centre_area12').html(val["centre_area2"]);
+        //               $('#centre_bt1').html(val["centre_bt"]);
+        //               $('#centre_pto1').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
         //             }
         //             if(key == "1")
         //             {
-        //               $('#id_news2').html(val["id_news"]);
-        //               $('#news_pto2').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
-        //               $('#news_title2').html(val["news_title"]);
-        //               $('#news_content2').html(val["news_content"]);
-        //               $('#news_bt2').html(val["news_bt"]);
-        //               $('#news_time2').html(val["news_time"]);
-        //               $('#news_post2').html(val["news_post"]);
+        //               $('#centre_area21').html(val["centre_area1"]);
+        //               $('#centre_area22').html(val["centre_area2"]);
+        //               $('#centre_bt2').html(val["centre_bt"]);
+        //               $('#centre_pto2').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
         //             }
         //             if(key == "2")
         //             {
-        //               $('#id_news3').html(val["id_news"]);
-        //               $('#news_pto3').attr('src','<?php echo base_url(). 'img/';?>'+val["news_pto"]);
-        //               $('#news_title3').html(val["news_title"]);
-        //               $('#news_content3').html(val["news_content"]);
-        //               $('#news_bt3').html(val["news_bt"]);
-        //               $('#news_time3').html(val["news_time"]);
-        //               $('#news_post3').html(val["news_post"]);
+        //               $('#centre_area31').html(val["centre_area1"]);
+        //               $('#centre_area32').html(val["centre_area2"]);
+        //               $('#centre_bt3').html(val["centre_bt"]);
+        //               $('#centre_pto3').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+        //             }
+        //             if(key == "3")
+        //             {
+        //               $('#centre_area41').html(val["centre_area1"]);
+        //               $('#centre_area42').html(val["centre_area2"]);
+        //               $('#centre_bt4').html(val["centre_bt"]);
+        //               $('#centre_pto4').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
+        //             }
+        //             if(key == "4")
+        //             {
+        //               $('#centre_area51').html(val["centre_area1"]);
+        //               $('#centre_area52').html(val["centre_area2"]);
+        //               $('#centre_bt5').html(val["centre_bt"]);
+        //               $('#centre_pto5').attr('src','<?php echo base_url(). 'img/';?>'+val["centre_pto"]);
         //             }
         //           });
-        //
         //          },
         //          error: function()
         //          {
-        //            alert('not getnews');
+        //            alert('not getcentre');
         //          }
         //        });
         // }

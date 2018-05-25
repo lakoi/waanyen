@@ -1,103 +1,142 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<div style="position: relative;">
-  <div class="text-center" style="position:absolute; opacity: 0.4; margin-top: -250px; width: 100%; height: 650px; overflow: hidden;">
-    <img src="<?php echo base_url(). 'img/test1.jpg';?>" id="donate_pto" name="donate_pto"/>
+<header>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="position: relative; height: 100vh;">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="height: 100vh;">
+      <div class="text-center" style="position:absolute; ">
+      <img class="d-block w-100 h-100" src="<?php echo base_url(). 'img/test1.jpg';?>" alt="First slide">
+      </div>
+      <div class="text-center" style="position:relative; top: 40% ">
+          <div class="" style="font-size: 3vw;">
+            <p id="donate_bd">xxxxxxxxxx</p>
+          </div>
+          <div class="" style="font-size: 2vw;">
+            <p id="donate1">xxxxxxxxxxxxx</p>
+            <p id="donate2">xxxxxxxxxxxxxxx</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href="<?php echo base_url(). 'login/index';?>">login</a>
+            <button type="button" class="btn btn-primary" id="donate_bt">xxxxxxxx</button>
+          </div>
+        </div>
+        </div>
+    <div class="carousel-item" style="height: 100vh ">
+      <div>
+      <img class="d-block w-100 h-100" src="<?php echo base_url(). 'img/test2.jpg';?>" alt="Second slide">
+    </div>
+    </div>
+    <div class="carousel-item" style="height: 100vh">
+      <img class="d-block w-100" src="<?php echo base_url(). 'img/test1.jpg';?>" alt="Third slide">
+    </div>
   </div>
-  <div class="text-center" style="position:relative; z-index:1;">
-    <div class="col-sm-6 offset-3 border align-bottom">
-      <p id="donate_bd">xxxxxxxxxx</p>
-      <?php
-
-        $date = date("Y-m-d");
-        $time = date("H:i:s");
-
-        echo $date."  ".$time;
-
-    ?>
-    </div>
-    <div class="col-sm-6 offset-3">
-      <p id="donate1">xxxxxxxxxxxxx</p>
-      <p id="donate2">xxxxxxxxxxxxxxx</p>
-    </div>
-    <div>
-      <a class="btn btn-primary" href="<?php echo base_url(). 'login/index';?>">login</a>
-      <button type="button" class="btn btn-primary" id="donate_bt">xxxxxxxx</button>
-    </div>
-  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <br>
-  <div class="text-center col-sm-10 offset-1">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked>
-        <div class="text-center">
-          <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-          <p><b>อาสาสมัคร</b><br>
-            ร่วมเป็นจิตอาสามาในการช่วยเหลือ
-          </p>
-        </div>
-      </label>
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off">
-        <div class="text-center">
-          <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-          <p><b>ร่วมสนับสนุนกิจกรรม</b><br>
-            กิจกรรมส่งเสริมผู้พิการทางสายตา
-          </p>
-        </div>
-      </label>
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off">
-        <div class="text-center">
-          <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-          <p><b>ผลิตภัณฑ์และบริการ</b><br>
-            สนับสนุนผลิตภัณฑ์ฝีมือคนตาบอด
-          </p>
-        </div>
-      </label>
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off">
-        <div class="text-center">
-          <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
-          <p><b>ร่วมบริจาค</b><br>
-            ส่งเสริมและพัฒนาอาชีพ
-          </p>
-        </div>
-      </label>
+</header>
+
+  <div style="position:relative; height: 100vh; width: 100vw;">
+    <div style="position:absolute; height: 100vh; width: 100vw;">
+      <img class="d-block w-100 h-100" src="<?php echo base_url(). 'img/test2.jpg';?>">
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-5 offset-1">
-      <div class="col-sm-8 offset-1" >
-        <p id="about_tle" class="text-center"></p>
-        <hr width="20%">
-        <h5 id="about_h1"></h5>
-        <h5 id="about_h2"></h5>
-        <p id="about_ui"></p>
-        <ui>
-          <li id="about_li1"></li>
-          <li id="about_li2"></li>
-          <li id="about_li3"></li>
-          <li id="about_li4"></li>
-        </ui>
+    <div class="row" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="col-sm-4 offset-2">
+        <div class="border" style="background-color: #d7efed;  border-radius: 15px;">
+          <div style="padding: 20px;">
+          <div style="border-left: 4px solid #2a67b7;">
+            <div style="margin: 10px;">
+              <h4 id="about_head"></h4>
+            </div>
+          </div>
+          <div class="border" style="margin-top: 20px; margin-bottom: 20px; max-width: 100%; max-height: 200px;">
+            <img class="w-100" id="" src="<?php echo base_url(). 'img/test1.jpg';?>" height="200"/>
+          </div>
+          <p id="about_motto" style="font-size: 0.75em; font-weight: bold;"></p>
+          <p id="about_content" style="font-size: 0.8em; word-wrap:break-word;"></p>
+        </div>
+          <div class="offset-8  text-center" style="font-size: 0.8em; padding: 5px; margin-bottom: 20px; background-color: #2a81b7; position: relative;">
+            <a href="#" style="text-decoration: none; color: white;">รายละเอียดเพิ่มเติม</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-4">
+          <div style=" height: 90px;">
+            <div class="row">
+              <div class="col-sm-6">
+                <br>
+                <div style="background-color: #2a81b7; padding: 10px; color: white;">
+                  ข่าวสารต่างๆ
+                </div>
+              </div>
+              <div class="col-sm-6 text-right">
+                <br>
+                <br>
+                <a href="#" style="text-decoration: none;">ข่าวทั้งหมด ></a>
+              </div>
+            </div>
+          </div>
+        <div class="">
+          <ul class="list-group">
+            <?php if(isset($news)):?>
+              <?php foreach ($news as $r) {?>
+            <li id="<?php echo $r->id_news;?>" class="list-group-item as" style="display: block; position: relative; height: 150px;">
+              <div style="padding: 10px;">
+                <div class="row">
+                  <div style="padding-right: 10px;">
+                    <img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="110" height="110" >
+                  </div>
+                  <div style="word-wrap:break-word; width: 280px;">
+                    <div style="white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;">
+                      <b><?php echo $r->news_title;?></b>
+                    </div>
+                    <span><?php echo date('d M Y',strtotime($r->news_time));?></span>
+                    <div style="font-size: .8em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                      <?php echo $r->news_content;?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <?php }?>
+        <?php endif;?>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="col-sm-5">
-      <img id="about_pto1" src="<?php echo base_url(). 'img/show_photo.png';?>" width="200" height="200" />
+  </div>
+<br>
+  <div class="col-sm-8 offset-2">
+    <div class="col-sm-3" style="background-color: #2a81b7; padding: 10px; color: white;">
+      ศูนย์ต่างๆ
+    </div><br>
+    <div class="row">
+      <?php if(isset($centre)):?>
+        <!-- <?php $n = "1";?> -->
+        <?php foreach ($centre as $r)
+        {?>
+          <!-- <?php echo $n;?> -->
+          <div class="border" style="position: relative; z-index: 1; height: 270px; width: 179px; ">
+            <div class="border" style="position: absolute; z-index: 2; height: 250px; max-width: 160px; margin: 10px; background-image: url('<?php echo base_url().'img/'.$r->centre_pto;?>'); background-position: center; background-size: auto 100%; display:table;">
+              <div class="qw" id="<?php echo $r->id_centre;?>" style="word-wrap:break-word; margin: auto; max-width: 160px; text-align:center; display:table-cell; vertical-align:middle; ">
+                <p style="color:white; font-size: 14px; font-weight: bold;"><?php echo $r->centre_title;?></p>
+                <div class="we" id="<?php echo $r->id_centre;?>" style="display:none;">
+                <p style="font-size: 14px; word-wrap:break-word; display:block;"><?php echo $r->centre_content;?></p>
+                <a href="#" style="color:white; text-decoration: none; border: 2px solid #ffffff; padding:5px;">เพิ่มเติม</a>
+              </div>
+              </div>
+            </div>
+          </div>
+        <?php };?>
+      <?php endif;?>
     </div>
   </div>
-  <br>
+
+  <!-- <br>
   <div class="offset-1 text-center">
     <div class="col-sm-10">
       <div class="row">
@@ -185,32 +224,10 @@
         </div>
       </div>
     </div>
-        <!-- <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" /> -->
+        <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="350" height="350" />
   </div>
-  <br>
-  <div class="col-sm-10 offset-1">
-    <p class="text-center">ข่าวสาร<span class="text-success">มูลนิธิ</span></p>
-    <hr width="20%" style="color: #fff">
-    <div class="row">
-      <?php if(isset($news)):?>
-        <?php foreach ($news as $r) {?>
-          <div class="col-sm-4">
-            <div class="card" style="width: 330px; height: 500px;">
-              <img class="card-img-top" src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="300" height="250">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $r->news_title;?></h5>
-                <p>Post by <?php echo $r->news_post;?></p>
-                <div style="height: 73px; overflow: hidden; word-wrap: break-word;" class="border">
-                  <p class="card-text"><?php echo $r->news_content;?></p>
-                </div>
-                <a href="#" class="btn btn-primary"><?php echo $r->news_bt;?></a>
-              </div>
-            </div>
-          </div>
-        <?php }?>
-      <?php endif;?>
-    </div>
-  </div>
+  <br> -->
+
   <br>
   <div class="col-sm-12 text-center">
     <div class="row">
@@ -220,120 +237,36 @@
         เป็นการสร้างอาชีพและให้อนาคต"</p>
       </div>
       <div class="col-sm-7">
-        <div>
+          <?php if(isset($product)):?>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              <?php $product_r =  array_chunk($product, 3, true);
+                    foreach ($product_r as $key) { ?>
+                      <?php if(isset($key[0]))
+                      {
+                        echo "<div class='carousel-item active'>";
+                      }
+                      else
+                      {
+                        echo "<div class='carousel-item'>";
+                      };?>
                 <div class="row">
+                  <?php foreach ($key as $arr) {?>
                   <div class="col-sm-4">
                     <div class="card" style="width: 230px; height: 400px;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
+                      <img class="card-img-top" src="<?php echo base_url(). 'img/'.$arr->pd_pto;?>" height="220">
                       <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
+                        <h5 class="card-title"><?php echo $arr->pd_name;?></h5>
+                        <p class="card-text">ราคา <?php echo $arr->pd_price;?> บาท</p>
                         <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span>asd</span></p>
+                        <span><?php echo $arr->pd_from;?></span></p>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 230px;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 230px;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
+                  <?php };?>
                 </div>
               </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 230px; height: 400px;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span>asd</span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 12rem;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 12rem;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 230px; height: 400px;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/test1.jpg';?>" height="220">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span>asd</span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 12rem;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card" style="width: 12rem;">
-                      <img class="card-img-top" src="<?php echo base_url(). 'img/show_photo.png';?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">ราคา  บาท</p>
-                        <p class="card-text">ผลิตภัณฑ์จาก:<br>
-                        <span></span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <?php };?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -344,19 +277,23 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
+        <?php endif;?>
         </div>
-      </div>
     </div>
   </div>
   <br>
+  <?php if(isset($motto)):?>
+    <?php foreach ($motto as $r)
+    {?>
   <div class="text-center">
-    <p><span class="font-weight-bold">"</span><br>
-    "ฝ่าลู่ทางชีวิตต้องคิดเฝ้าย้อมใจ โลกมืดมนเพียงใดหัวใจอย่าคร้ามเกรง<br>
-    ตั้งหน้าชื่นเอาไว้ย้อมใจด้วยเพลง ไยนึกกลัวหวาดเกรงยิ้มสู้"</p>
+    <span class="font-weight-bold">"</span>
+    <p><?php echo nl2br($r->motto_txt);?></p>
     <div>
-      <button type="button" class="btn btn-primary">ร่วมบริจาค</button>
+      <button type="button" class="btn btn-primary"><?php echo $r->motto_bt;?></button>
     </div>
   </div>
+<?php };?>
+<?php endif;?>
 
   <div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog" >
@@ -367,7 +304,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="container box" style="width: 30rem; height: 30rem;">
+          <div class="container-box" style="width: 30rem; height: 30rem;">
             <?php if (isset($popup)): ?>
             <?php foreach($popup as $r)
             {
