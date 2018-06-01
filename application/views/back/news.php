@@ -1,34 +1,37 @@
-<div class="col-sm-10 offset-1">
-  <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
-  <?php if(isset($news)):?>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>photo</th>
-        <th>title</th>
-        <th>post by</th>
-        <th>content</th>
-        <th>text button</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($news as $r)
-    {?>
-      <tr>
-        <td><img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="200" height="120"></td>
-        <td><?php echo nl2br($r->news_title);?></td>
-        <td><?php echo $r->news_post;?></td>
-        <td><div class="asd"><?php echo $r->news_content;?></div></td>
-        <td><?php echo $r->news_bt;?></td>
-        <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a></td>
-        <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a></td>
-      </tr>
-    <?php };?>
-    </tbody>
-  </table>
-  <?php endif;?>
+<div class="container">
+  <div class="row">
+    <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
+    <?php if(isset($news)):?>
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>photo</th>
+          <th>title</th>
+          <th>post by</th>
+          <th>content</th>
+          <th>text button</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach ($news as $r)
+      {?>
+        <tr>
+          <td><img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="200" height="120"></td>
+          <td><div class="asd"><?php echo nl2br($r->news_title);?></div></td>
+          <td><?php echo $r->news_post;?></td>
+          <td><div class="asd"><?php echo $r->news_content;?></div></td>
+          <td><?php echo $r->news_bt;?></td>
+          <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a></td>
+          <td class="text-center"><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a>
+          <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->news_time));?><span></div></td>
+        </tr>
+      <?php };?>
+      </tbody>
+    </table>
+    <?php endif;?>
+  </div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="news_modal" tabindex="-1" role="dialog" >

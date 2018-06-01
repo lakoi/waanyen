@@ -17,23 +17,17 @@ class Backs extends CI_Controller
 	public function donate()
 	{
 		$this->login_model->check_status();
+		$data ['donate'] = $this->back_model->getdonate();
     $this->load->view('templates/back_header');
-    $this->load->view('back/donate');
+    $this->load->view('back/donate', $data);
     $this->load->view('templates/back_footer');
-	}
-
-	public function getdonate()
-	{
-	$data ['donate'] = $this->page_model->donate();
-	echo json_encode($data);
 	}
 
 	public function save_donate()
 	{
 			$data = array(
-			'donate_bd' => $_POST['donate_bd'],
-			'donate1' => $_POST['donate1'],
-			'donate2' => $_POST['donate2'],
+			'donate_title' => $_POST['donate_title'],
+			'donate_text' => $_POST['donate_text'],
 			'donate_bt' => $_POST['donate_bt'],
 			'donate_time' => date(Y_m_d_H_i_s),
 			);
@@ -46,8 +40,9 @@ class Backs extends CI_Controller
 	public function about()
 	{
 		$this->login_model->check_status();
+		$data ['about'] = $this->back_model->getabout();
     $this->load->view('templates/back_header');
-    $this->load->view('back/about');
+    $this->load->view('back/about', $data);
     $this->load->view('templates/back_footer');
 	}
 
@@ -58,25 +53,20 @@ class Backs extends CI_Controller
 		$config['encrypt_name']  = true;
 		$config['remove_spaces']  = true;
 			$this->load->library('upload', $config);
-			if ( ! $this->upload->do_upload('showabout_pto1'))
+			if ( ! $this->upload->do_upload('showabout_pto'))
 			{
-				$photo = $this->input->post('oldabout_pto1');
+				$photo = $this->input->post('oldabout_pto');
 			}
 			else
 			{
 				$photo = $this->upload->data('file_name');
 			}
 				$data = array(
-					'about_tle' => $this->input->post('about_tle'),
-					'about_h1' => $this->input->post('about_h1'),
-					'about_h2' => $this->input->post('about_h2'),
-					'about_ui' => $this->input->post('about_ui'),
-					'about_li1' => $this->input->post('about_li1'),
-					'about_li2' => $this->input->post('about_li2'),
-					'about_li3' => $this->input->post('about_li3'),
-					'about_li4' => $this->input->post('about_li4'),
+					'about_head' => $this->input->post('about_head'),
+					'about_title' => $this->input->post('about_title'),
+					'about_content' => $this->input->post('about_content'),
 					'about_time' => date(Y_m_d_H_i_s),
-					'about_pto1' => $photo,
+					'about_pto' => $photo,
 				);
 				$id = $this->input->post('id_about');
 				$this->back_model->save_about($data, $id);
@@ -119,8 +109,8 @@ class Backs extends CI_Controller
 				$photo = $this->upload->data('file_name');
 			}
 				$data = array(
-					'centre_area1' => $this->input->post('centre_area1'),
-					'centre_area2' => $this->input->post('centre_area2'),
+					'centre_title' => $this->input->post('centre_title'),
+					'centre_content' => $this->input->post('centre_content'),
 					'centre_bt' => $this->input->post('centre_bt'),
 					'centre_pto' => $photo,
 				);
@@ -293,24 +283,47 @@ class Backs extends CI_Controller
 		}
 	}
 
-	public function motto()
+	public function join()
 	{
 		$this->login_model->check_status();
-		$data['motto'] = $this->back_model->getmotto();
+		$data['join'] = $this->back_model->getjoin();
     $this->load->view('templates/back_header');
-    $this->load->view('back/motto', $data);
+    $this->load->view('back/join', $data);
     $this->load->view('templates/back_footer');
 	}
 
-	public function save_motto()
+	public function edit_join()
 	{
+		$id = $this->input->post('id');
+		$edit_join = $this->back_model->edit_join($id);
+		echo json_encode($edit_join);
+	}
+
+	public function save_join()
+	{
+		$config['upload_path']   = 'img/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']      = 0;
+		$config['max_width']     = 0;
+		$config['max_height']    = 0;
+		$config['encrypt_name']  = true;
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('newjoin_pto'))
+			{
+				$photo = $this->input->post('oldjoin_pto');
+			}
+			else
+			{
+				$photo = $this->upload->data('file_name');
+			}
 			$data = array(
-			'motto_txt' => $_POST['motto_txt'],
-			'motto_bt' => $_POST['motto_bt'],
-			'motto_time' => date(Y_m_d_H_i_s),
+			'join_head' => $_POST['join_head'],
+			'join_title' => $_POST['join_title'],
+			'join_time' => date(Y_m_d_H_i_s),
+			'join_pto' => $photo,
 			);
-			$id = $_POST['id_motto'];
-			$this->back_model->save_motto($data, $id);
+			$id = $_POST['id_join'];
+			$this->back_model->save_join($data, $id);
 			return true;
 	}
 

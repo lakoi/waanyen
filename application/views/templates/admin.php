@@ -57,20 +57,26 @@
   .primary:hover {background-color: #f8f9fa; color: #007bff;}
 </style>
 
-<!-- <div class=""> -->
-<div class="dropdown col-sm-3 offset-10">
-  <div class="fa">
-<button type="button" href="<?php echo base_url(). 'login/profile';?>" class="xxx primary btn-lg dropbtn dropdown-toggle"><?php echo $this->session->userdata('Email'); ?></button>
+<div class="container-fluid" style="">
+  <div class="row">
+  <div class="dropdown offset-10">
+    <div class="fa" style="position:relative; float:right;">
+      <button style="float:right;" type="button" href="<?php echo base_url(). 'login/profile';?>" class="xxx primary btn-lg dropbtn dropdown-toggle">
+        <?php echo $this->session->userdata('Email'); ?>
+      </button>
+      </div>
+      <div class="dropdown-content">
+      <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
+      <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
+      <a class="dropdown-item" href="<?php echo base_url(). 'login/admin';?>">จัดการผู้ใช้</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
+      </div>
 
-<div class="dropdown-content">
-<a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
-<a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
-<a class="dropdown-item" href="<?php echo base_url(). 'login/admin';?>">จัดการผู้ใช้</a>
-<div class="dropdown-divider"></div>
-<a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
+  </div>
 </div>
 </div>
-</div>
+
 </body>
 </html>
 

@@ -17,9 +17,9 @@ class Admins extends CI_Controller
       $this->login_model->checker();
       $data ['query'] = $this->admins_model->admin_model();
       $this->load->view('templates/admin');
-      $this->load->view('templates/header');
+      $this->load->view('templates/back_header');
       $this->load->view('login/list_admin', $data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/back_footer');
   }
 
   public function edit_name_ad()
@@ -27,9 +27,9 @@ class Admins extends CI_Controller
       $this->login_model->checker();
       $UserID = $this->uri->segment('3');
       $data['query'] = $this->admins_model->edit_name_ad_model($UserID);
-      $this->load->view('templates/header');
+      $this->load->view('templates/back_header');
       $this->load->view('login/edit_name_admin', $data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/back_footer');
   }
 
   public function save_edit_name_ad()
@@ -47,9 +47,9 @@ class Admins extends CI_Controller
       $this->login_model->checker();
       $UserID = $this->uri->segment('3');
       $data['query'] = $this->admins_model->edit_status_ad_model($UserID);
-      $this->load->view('templates/header');
+      $this->load->view('templates/back_header');
       $this->load->view('login/edit_status_admin', $data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/back_footer');
   }
 
   public function save_edit_status_ad()

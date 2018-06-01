@@ -1,34 +1,34 @@
-<form method="post" id="about_form" name="about_form" action="">
-<div class="row">
-  <div class="col-sm-5 offset-1">
-    <div class="col-sm-10">
-      <input type="hidden" id="id_about" name="id_about"/>
-      <p><input type="text" class="form-control text-center" id="about_tle" name="about_tle"/></p>
-      <hr width="20%">
-      <h1><textarea type="text" class="form-control"  rows=1 cols=40 id="about_h1" name="about_h1"></textarea></h1>
-      <h5><textarea type="text" class="form-control" rows=1 cols=40 id="about_h2" name="about_h2"></textarea></h5>
-      <p><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_ui" name="about_ui"></textarea></p>
-      <ui>
-        <li><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_li1" name="about_li1"></textarea></li>
-        <li><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_li2" name="about_li2"></textarea></li>
-        <li><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_li3" name="about_li3"></textarea></li>
-        <li><textarea type="text" class="form-control" rows=2 cols=40 style="resize:none;" id="about_li4" name="about_li4"></textarea></li>
-      </ui>
+<div class="container">
+  <form method="post" id="about_form" name="about_form" action="">
+    <div class="row">
+      <?php if(isset($about)):?>
+        <?php foreach ($about as $r) {?>
+      <div class="col-sm-6">
+        <textarea class="form-control" id="about_head" name="about_head" ><?php echo $r->about_head;?></textarea>
+        <hr>
+        <textarea class="form-control" id="about_title" name="about_title" ><?php echo $r->about_title;?></textarea>
+        <hr>
+        <textarea class="form-control" id="about_content" name="about_content" rows="4"><?php echo $r->about_content;?></textarea>
+      </div>
+      <div class="col-sm-3">
+        <label>คลิกที่รูปเพื่อแก้ไข</label>
+        <div>
+          <input type="hidden" id="id_about" name="id_about" value="<?php echo $r->id_about;?>"/>
+          <input type="hidden" id="oldabout_pto" name="oldabout_pto" value="<?php echo $r->about_pto;?>"/>
+          <input type="file" id="showabout_pto" name="showabout_pto" style="display:none;" onchange="showabout1(this);"/>
+          <img src="<?php echo base_url().'img/'.$r->about_pto;?>" class="btn-upload border" height="200" id="about_pto" name="about_pto"/>
+        </div>
+      </div>
+      <div class="text-center">
+        <input type="submit" id="save_About" class="btn btn-success" value="Save About"/>
+        <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->about_time));?><span></div>
+      </div>
+
+    <?php };?>
+  <?php endif;?>
     </div>
-  </div>
-  <div class="col-sm-3">
-      <label>คลิกที่รูปเพื่อแก้ไข</label>
-    <div>
-    <input type="hidden" id="oldabout_pto1" name="oldabout_pto1"/>
-    <input type="file" id="showabout_pto1" name="showabout_pto1" style="display:none;" onchange="showabout1(this);"/>
-    <img src class="btn-upload border" height="200" id="about_pto1" name="about_pto1"/>
-  </div>
-  </div>
-  <div>
-    <input type="submit" id="save_About" class="btn btn-success" value="Save About"/>
-  </div>
+  </form>
 </div>
-</form>
 
 <script type="text/javascript">
 function showabout1(input)
@@ -38,50 +38,17 @@ function showabout1(input)
      var reader = new FileReader();
      reader.onload = function (e)
      {
-         $('#about_pto1').attr('src', e.target.result);
+         $('#about_pto').attr('src', e.target.result);
      }
      reader.readAsDataURL(input.files[0]);
   }
 }
 
-$(function()
-{
-  getabout();
-  function getabout()
-  {
-  $.ajax({
-          type: 'POST',
-          url: "<?php echo base_url(). "Pages/getabout";?>",
-          dataType: 'json',
-          success: function(data)
-          {
-            $.each(data.about, function(key, val)
-            {
-              $('#id_about').val(val["id_about"]);
-              $('#about_tle').val(val["about_tle"]);
-              $('#about_h1').val(val["about_h1"]);
-              $('#about_h2').val(val["about_h2"]);
-              $('#about_ui').val(val["about_ui"]);
-              $('#about_li1').val(val["about_li1"]);
-              $('#about_li2').val(val["about_li2"]);
-              $('#about_li3').val(val["about_li3"]);
-              $('#about_li4').val(val["about_li4"]);
-              $('#about_pto1').attr("src",'<?php echo base_url(). 'img/';?>'+val["about_pto1"]);
-              $('#oldabout_pto1').val(val["about_pto1"]);
-            });
-           },
-           error: function()
-           {
-             alert('not getdonate');
-           }
-         });
-  }
-
   $(document).ready(function(e)
   {
     $(".btn-upload").on("click",function()
     {
-      $('#showabout_pto1').trigger("click");
+      $('#showabout_pto').trigger("click");
     });
 
     $('#about_form').on('submit',(function(e)
@@ -98,19 +65,15 @@ $(function()
               success: function(data)
               {
                 alert('save success.');
-                $('#id_about').val('');
-                $('#about_tle').val('');
-                $('#about_h1').val('');
-                $('#about_h2').val('');
-                $('#about_ui').val('');
-                $('#about_li1').val('');
-                $('#about_li2').val('');
-                $('#about_li3').val('');
-                $('#about_li4').val('');
-                $('#about_pto1').attr('src','');
-                $('#oldabout_pto1').val('');
-                getabout();
-                // location.reload();
+                // $('#id_about').val('');
+                // $('#about_head').val('');
+                // $('#about_title').val('');
+                // $('#about_content').val('');
+                // $('#about_time').val('');
+                // $('#about_pto1').attr('src','');
+                // $('#oldabout_pto').val('');
+                // getabout();
+                location.reload();
               },
               error: function()
               {
@@ -120,5 +83,4 @@ $(function()
           }
     }));
   });
-});
 </script>

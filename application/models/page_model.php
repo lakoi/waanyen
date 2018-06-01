@@ -36,9 +36,9 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
-  public function getmotto()
+  public function getjoin()
   {
-      $query = $this->db->get('motto');
+      $query = $this->db->get('join');
       return $query->result();
   }
 

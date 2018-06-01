@@ -18,9 +18,9 @@ class Profiles extends CI_Controller
       $this->login_model->checker();
       $data ['query'] = $this->profile_model->pro_model();
         $this->login_model->check_status();
-      		$this->load->view('templates/header');
+      		$this->load->view('templates/back_header');
       		$this->load->view('login/profile_view', $data);
-      		$this->load->view('templates/footer');
+      		$this->load->view('templates/back_footer');
     }
 
     public function change_name()
@@ -28,9 +28,9 @@ class Profiles extends CI_Controller
         $this->login_model->checker();
         $UserID = $this->uri->segment('3');
     		$data['query'] = $this->profile_model->change_name_model($UserID);
-          $this->load->view('templates/header');
+          $this->load->view('templates/back_header');
           $this->load->view('login/change_name_view', $data);
-          $this->load->view('templates/footer');
+          $this->load->view('templates/back_footer');
     }
 
     public function save_change_name()
@@ -50,9 +50,9 @@ class Profiles extends CI_Controller
         $this->login_model->checker();
         $UserID = $this->uri->segment('3');
     		$data['query'] = $this->profile_model->change_pass_model($UserID);
-          $this->load->view('templates/header');
+          $this->load->view('templates/back_header');
           $this->load->view('login/change_password_view', $data);
-          $this->load->view('templates/footer');
+          $this->load->view('templates/back_footer');
     }
 
     public function save_change_pass()

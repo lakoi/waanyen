@@ -9,9 +9,7 @@
   </head>
     <body class="blockquote text-center bg-light">
 
-      <br>
-      
-        <div class="col-sm-6 offset-3 ">
+        <div class="container">
         <h3>Admin</h3>
       <?php if (isset($query)): ?>
       <table class="table table-hover" >

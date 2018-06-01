@@ -11,18 +11,17 @@
     <style>
         .qw:hover{
           background: rgba(42, 103, 183, 0.9);
-          /* opacity: 0.9; */
+          display: block;
         }
-        .we:hover{
-          visibility: show;
-        }
-        .as:hover{
+        .as:hover
+        {
           background-color: #d7efed;
           border-left: 4px solid #2a67b7;
           /* border-color: lime; */
         }
         body{
           color: black;
+          font-size: 1em;
         }
       .centre-img1
         {
@@ -93,29 +92,48 @@
           background: -moz-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1));
           background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
       }
+      .list-footer
+      {
+        color:white;
+        text-decoration: none;
+      }
+      .list-footer:hover
+      {
+        color:orange;
+        text-decoration: none;
+      }
+      .list-news
+      {
+        color:black;
+        text-decoration: none;
+      }
+      .list-news:hover
+      {
+        color:black;
+        text-decoration: none;
+      }
     </style>
   </head>
-  <body class="bg-light" >
-<div style="position:absolute ; z-index: 99; width:100vw;" >
-  <div class="col-sm-10 offset-2">
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="row">
-          <div>
-            <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="100" height="100" />
-          </div>
-          <div>
-            <br>
-              <b>มูลนิธิช่วยคนตาบอดแห่งประเทศไทย</b>
-            <br>ในพระบรมราชินูปถัมภ์
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-8">
-        <div class="offset-2 text-right">
+  <body>
+  <div style="position:absolute; z-index:99; width:100%">
+    <div class="container" style="position:relative; z-index:99; color:white;">
+      <div class="row">
+        <div class="col-sm-5" >
           <div class="row">
             <div>
-              <nav class="navbar navbar-light">
+              <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="100" height="100" />
+            </div>
+            <div>
+              <br>
+                <b>มูลนิธิช่วยคนตาบอดแห่งประเทศไทย</b>
+              <br>ในพระบรมราชินูปถัมภ์
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="row" style="float: right;">
+            <div>
+              <nav class="navbar navbar-light" >
                 <form class="form-inline">
                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -130,29 +148,28 @@
                   <input type="radio" name="options" id="option2" autocomplete="off"> TH
                 </label>
               </div>
-          </div>
+            </div>
+          <ul class="nav "style=" float: right;">
+            <li class="nav-item">
+              <a class="nav-link" href="#">หน้าแรก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">เกี่ยวกับเรา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ศูนย์ต่างๆ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ข่าวสาร</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">อาสาสมัคร</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">บริจาค</a>
+            </li>
+          </ul>
         </div>
-        <ul class="nav ">
-          <li class="nav-item">
-            <a class="nav-link" href="#">หน้าแรก</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">เกี่ยวกับเรา</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ศูนย์ต่างๆ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ข่าวสาร</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">อาสาสมัคร</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">บริจาค</a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
-</div>

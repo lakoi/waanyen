@@ -1,29 +1,32 @@
-<div class="col-sm-10 offset-1">
-  <?php if(isset($centre)):?>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Text_button</th>
-        <th>Photo</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach($centre as $r)
-      {?>
-        <tr>
-          <td><?php echo $r->centre_area1 ;?></td>
-          <td><?php echo $r->centre_area2 ;?></td>
-          <td><?php echo $r->centre_bt ;?></td>
-          <td><img src='<?php echo base_url(). 'img/'.$r->centre_pto ;?>' width="80" height="80"/></td>
-          <td><a id="<?php echo $r->id_centre;?>" name="edit" style="color: white;" class="btn btn-success edit" onclick="edit(<?php echo $r->id_centre;?>)">Edit</a></td>
+<div class="container">
+  <div class="row">
+    <?php if(isset($centre)):?>
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>Title</th>
+          <th>Content</th>
+          <th>Text_button</th>
+          <th>Photo</th>
+          <th>Edit</th>
         </tr>
-      <?php } ?>
-    </tbody>
-  </table>
-  <?php endif; ?>
+      </thead>
+      <tbody>
+        <?php foreach($centre as $r)
+        {?>
+          <tr>
+            <td><?php echo $r->centre_title ;?></td>
+            <td><?php echo $r->centre_content ;?></td>
+            <td><?php echo $r->centre_bt ;?></td>
+            <td><img src='<?php echo base_url(). 'img/'.$r->centre_pto ;?>' width="80" height="80"/></td>
+            <td class="text-center"><a id="<?php echo $r->id_centre;?>" name="edit" style="color: white;" class="btn btn-success edit" onclick="edit(<?php echo $r->id_centre;?>)">Edit</a>
+            <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->centre_time));?><span></div></td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+    <?php endif; ?>
+  </div>
 </div>
 
 <div class="modal fade" id="centre_modal" tabindex="-1" role="dialog">
@@ -49,11 +52,11 @@
           <table>
             <tr>
               <th>Title</th>
-              <td><textarea name="centre_area1" id="centre_area1" class="form-control" rows="2" cols="50"></textarea></td>
+              <td><textarea name="centre_title" id="centre_title" class="form-control" rows="2" cols="50"></textarea></td>
             </tr>
             <tr>
               <th>Content</th>
-              <td><textarea name="centre_area2" id="centre_area2" class="form-control" rows="2" cols="50"></textarea></td>
+              <td><textarea name="centre_content" id="centre_content" class="form-control" rows="2" cols="50"></textarea></td>
             </tr>
             <tr>
               <th>Button</th>
@@ -81,8 +84,8 @@ function edit(x)
          success: function(data)
          {
            $('[name="id_centre"]').val(data[0].id_centre);
-           $('[name="centre_area1"]').html(data[0].centre_area1);
-           $('[name="centre_area2"]').html(data[0].centre_area2);
+           $('[name="centre_title"]').html(data[0].centre_title);
+           $('[name="centre_content"]').html(data[0].centre_content);
            $('[name="centre_bt"]').val(data[0].centre_bt);
            $('[name="centre_pto"]').attr("src",'<?php echo base_url(). 'img/';?>'+data[0].centre_pto);
            $('[name="oldcentre_pto"]').val(data[0].centre_pto);

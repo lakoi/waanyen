@@ -59,8 +59,9 @@
       <br>
       <p>Copyright 	&copy; 2016 www.blind.or.th All right reserved.</p>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-center">
       <button class="btn btn-success" type="submit">save footer</button>
+      <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->footer_time));?><span></div>
     </div>
   </div>
   <?php };?>

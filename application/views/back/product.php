@@ -1,32 +1,35 @@
-<div class="col-sm-10 offset-1">
-  <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
-  <?php if(isset($product)):?>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>photo</th>
-        <th>product</th>
-        <th>price (baht)</th>
-        <th>product from</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($product as $r)
-    {?>
-      <tr>
-        <td><img src="<?php echo base_url(). 'img/'.$r->pd_pto;?>" width="200" height="120"></td>
-        <td><?php echo $r->pd_name;?></td>
-        <td><?php echo $r->pd_price;?></td>
-        <td><div class="asd"><?php echo $r->pd_from;?></div></td>
-        <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a></td>
-        <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-danger delete" >Edit</a></td>
-      </tr>
-    <?php };?>
-    </tbody>
-  </table>
-  <?php endif;?>
+<div class="container">
+  <div class="row">
+    <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
+    <?php if(isset($product)):?>
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>photo</th>
+          <th>product</th>
+          <th>price (baht)</th>
+          <th>product from</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach ($product as $r)
+      {?>
+        <tr>
+          <td><img src="<?php echo base_url(). 'img/'.$r->pd_pto;?>" width="200" height="120"></td>
+          <td><?php echo $r->pd_name;?></td>
+          <td><?php echo $r->pd_price;?></td>
+          <td><div class="asd"><?php echo $r->pd_from;?></div></td>
+          <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a></td>
+          <td class="text-center"><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-danger delete" >Edit</a>
+          <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->pd_time));?><span></div></td>
+        </tr>
+      <?php };?>
+      </tbody>
+    </table>
+    <?php endif;?>
+  </div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="product_modal" tabindex="-1" role="dialog">

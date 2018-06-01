@@ -124,17 +124,24 @@ class Back_model extends CI_Model
         }
   }
 
-  public function getmotto()
+  public function getjoin()
   {
-      $query = $this->db->get('motto');
+      $query = $this->db->get('join');
       return $query->result();
   }
 
-  public function save_motto($data, $id)
+  public function edit_join($id)
+  {
+        $query = $this->db->get_where("join",array("id_join"=>$id));
+        $data = $query->result();
+        return $data;
+  }
+
+  public function save_join($data, $id)
   {
         $this->db->set($data);
-        $this->db->where("id_motto", $id);
-        $this->db->update("motto");
+        $this->db->where("id_join", $id);
+        $this->db->update("join");
         return true;
   }
 

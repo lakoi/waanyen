@@ -9,46 +9,6 @@
 
     <title>waanyen</title>
     <style>
-      .centre-img1
-        {
-          margin: 10px 5px ;
-          /* background-color: #999; */
-          width: 330px;
-          height: 270px;
-          background-repeat : no-repeat;
-          background-position: top center;
-          border: 10px 0;
-          position: relative;
-        }
-        .centre-txt1
-        {
-          z-index: 1;
-          position: relative;
-          border: 10px 0;
-          width: 290px;
-          height: 230px;
-          display:table;
-          /* top:50%;
-          left:50%; */
-          margin: 20px;
-        }
-        .centre-txt1:hover
-        {
-          /* color: #FF6600; */
-          opacity: 0.9;
-          background-color: #aaa;
-        }
-        .centre-mid
-        {
-          display:table-cell;
-          vertical-align:middle;
-        }
-        .centre-pto
-        {
-          position: absolute;
-          left: 0; top: 0;
-          z-index: 0;
-        }
         .form-control
         {
           opacity: 0.9;
@@ -59,7 +19,7 @@
         }
         .asd
         {
-           width: 400px;
+           width: 300px;
            /* border:3px solid #00ACEE; */
            overflow: hidden;
            white-space: normal;
@@ -69,7 +29,7 @@
     </style>
   </head>
   <body class="bg-light">
-    <div class="btn-group-lg   text-left offset-1   " role="group" aria-label="Basic example">
+    <div class="btn-group-lg container" role="group" aria-label="Basic example">
     <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
     <!-- <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
     <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
@@ -80,7 +40,7 @@
     <a href="<?php echo base_url().'backs/centre';?>" class="btn primary ">centre</a>|
     <a href="<?php echo base_url().'backs/news';?>" class="btn primary ">news</a>|
     <a href="<?php echo base_url().'backs/product';?>" class="btn primary ">product</a>|
-    <a href="<?php echo base_url().'backs/motto';?>" class="btn primary ">motto</a>|
+    <a href="<?php echo base_url().'backs/join';?>" class="btn primary ">join</a>|
     <a href="<?php echo base_url().'backs/footer';?>" class="btn primary ">footer</a>|
     <a href="<?php echo base_url().'login/popup';?>" class="btn primary">popup</a>
     <hr>
