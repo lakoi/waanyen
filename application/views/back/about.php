@@ -16,7 +16,7 @@
           <input type="hidden" id="id_about" name="id_about" value="<?php echo $r->id_about;?>"/>
           <input type="hidden" id="oldabout_pto" name="oldabout_pto" value="<?php echo $r->about_pto;?>"/>
           <input type="file" id="showabout_pto" name="showabout_pto" style="display:none;" onchange="showabout1(this);"/>
-          <img src="<?php echo base_url().'img/'.$r->about_pto;?>" class="btn-upload border" height="200" id="about_pto" name="about_pto"/>
+          <img src="<?php echo base_url().'img/'.$r->about_pto;?>" class="btn-upload border" width="250" id="about_pto" name="about_pto"/>
         </div>
       </div>
       <div class="text-center">

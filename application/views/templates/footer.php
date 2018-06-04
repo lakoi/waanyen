@@ -1,5 +1,5 @@
       <br>
-      <div class="bg-secondary container-fluid" style="max-width:2000px;">
+      <div class="container-fluid" style="max-width:2000px; background-image:url('<?php echo base_url(). 'img/images/bg-footer.jpg';?>')">
         <?php if(isset($footer)):?>
           <?php foreach ($footer as $r)
           {?>
@@ -7,11 +7,11 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-sm-4">
-                  <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="80" height="80" />
+                <div class="col-sm-4 text-right">
+                  <img src="<?php echo base_url(). 'img/images/footer-logo.png';?>" wigth="80" height="80"/>
                   <!-- <img src="<?php echo base_url(). 'img/'.$r->footer_pto;?>" wigth="80" height="80" /> -->
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-8" style="color:white;">
                   <div>
                     <b><?php echo nl2br($r->footer_title);?></b>
                   </div>
@@ -21,9 +21,7 @@
                     โทรสาร : <span><?php echo $r->footer_fax;?></span><br>
                     อีเมล : <span><?php echo $r->footer_mail;?></span></p>
                     <div>
-                      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="35" height="35" />
-                      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="35" height="35" />
-                      <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="35" height="35" />
+                      <img src="<?php echo base_url(). 'img/images/social.png';?>" wigth="35" height="35" />
                     </div>
                   </div>
                 </div>
@@ -55,11 +53,9 @@
           <?php };?>
         <?php endif;?>
       </div>
-      <div class="text-center bg-success" style="position: relative; padding:10px;  ">
-        <div>
-          Copyright 	&copy; 2016 www.blind.or.th All right reserved.
+        <div class="text-center" style="color:white; position: relative; padding:10px; background-color: #165378; max-width:2000px; margin:auto;">
+            Copyright 	&copy; 2016 www.blind.or.th All right reserved.
         </div>
-      </div>
 
 
       <script type="text/javascript">

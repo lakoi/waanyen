@@ -14,7 +14,7 @@
               <?php foreach ($join as $r)
               {?>
                 <tr>
-                  <td><img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" width="200" height="120"></td>
+                  <td><img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" width="100" height="100" style="border-radius: 100%;"></td>
                   <td><?php echo $r->join_head;?></td>
                   <td><?php echo $r->join_title;?></td>
                   <td class="text-center"><a id="<?php echo $r->id_join;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_join;?>)">Edit</a>

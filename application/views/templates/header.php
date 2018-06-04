@@ -8,15 +8,120 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>waanyen</title>
+    <style> /*donate*/
+      .donate-frame
+      {
+        position: relative;
+        height: 540px;
+        max-width:2000px;
+        padding:0px;
+      }
+      .donate-item
+      {
+        height: 540px;
+      }
+      .donate-background
+      {
+        position:absolute;
+      }
+      .donate-content
+      {
+        color:white;
+        width:100%;
+        margin: auto;
+        position:absolute;
+        z-index:99;
+        top: 40%;
+      }
+      .donate-title
+      {
+        font-size: 24px;
+        border:2px solid #ffffff;
+        padding:10px;
+        max-width:500px;
+        float:center;
+        margin:auto;
+      }
+      .donate-text
+      {
+        font-size: 18px;
+      }
+      .donate-button
+      {
+        border-radius: 25px;
+      }
+    </style>
+    <style>/*about*/
+      .about-outside-frame
+      {
+        position: relative;
+        background-image:url('<?php echo base_url(). 'img/images/background2.jpg';?>');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        /* height:auto; */
+        padding:0px;
+        max-width:2000px;
+      }
+      .about-frame
+      {
+        position:relative;
+        padding:100px 0px 15px 0px;
+      }
+      .about-content-frame
+      {
+        position:relative;
+        background-color: #d7efed;
+        border-radius: 15px;
+        padding: 20px;
+      }
+      .about-head-frame
+      {
+        border-left: 4px solid #2a67b7;
+      }
+      .about-head
+      {
+        margin: 10px;
+      }
+      .about-image
+      {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 100%;
+        max-height: 300px;
+      }
+      .about-content
+      {
+        word-wrap:break-word;
+      }
+      .about-more
+      {
+        text-decoration: none;
+        color: white; font-size: 0.8em;
+        padding: 10px; margin-bottom: 20px;
+        background-color: #34a0e1;
+        position: relative;
+      }
+      .about-more:hover
+      {
+        text-decoration: none;
+        color: white; font-size: 1em;
+        padding: 10px; margin-bottom: 20px;
+        background-color: #34a0e1;
+        position: relative;
+      }
+    </style>
+    <style>/*news*/
+
+    </style>
     <style>
         .qw:hover{
-          background: rgba(42, 103, 183, 0.9);
+          background: rgba(22, 83, 120, 0.9);
           display: block;
         }
         .as:hover
         {
           background-color: #d7efed;
-          border-left: 4px solid #2a67b7;
+          border-left: 4px solid #165378;
           /* border-color: lime; */
         }
         body{
@@ -112,6 +217,48 @@
         color:black;
         text-decoration: none;
       }
+      .prev,
+      .next
+      {
+        height: 40px;
+        width: 40px;
+        outline: black;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 2px solid blue;
+        background-image: none;
+      }
+
+      .next:after
+      {
+        content: '>';
+        font-weight: bold;
+        font-size: 22px;
+        color: blue;
+      }
+
+      .prev:after
+      {
+        content: '<';
+        font-weight: bold;
+        font-size: 22px;
+        color: blue;
+      }
+      .header-nav
+      {
+        color:white;
+      }
+      .header-nav:hover
+      {
+        background-color: #007bff;
+        border-radius: 25px;
+        color:white;
+      }
+      .header-text::first-line
+      {
+        color: blue;
+        font-size:1.2em;
+      }
     </style>
   </head>
   <body>
@@ -120,13 +267,12 @@
       <div class="row">
         <div class="col-sm-5" >
           <div class="row">
-            <div>
-              <img src="<?php echo base_url(). 'img/show_photo.png';?>" wigth="100" height="100" />
+            <div class="col-md-3">
+              <img src="<?php echo base_url(). 'img/images/logo.png';?>" wigth="100" height="100" />
             </div>
-            <div>
-              <br>
-                <b>มูลนิธิช่วยคนตาบอดแห่งประเทศไทย</b>
-              <br>ในพระบรมราชินูปถัมภ์
+            <div class="col-md-9" style="font-size:1.1  em; padding:20px 0px;">
+                <p class="header-text">มูลนิธิช่วยคนตาบอดแห่งประเทศไทย<br>
+                ในพระบรมราชินูปถัมภ์<i class="fal fa-football-ball"></i></p>
             </div>
           </div>
         </div>
@@ -141,32 +287,32 @@
               </nav>
             </div>
               <div class="btn-group btn-group-toggle text-right" data-toggle="buttons">
-                <label class="btn btn-secondary ">
-                  <input type="radio" name="options" id="option1" autocomplete="off" checked> EN
+                <label class="btn btn-primary language">
+                  <input type="radio" class="language" name="options" id="option1" autocomplete="off" checked> EN
                 </label>
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> TH
+                <label class="btn btn-primary language focus active">
+                  <input type="radio" class="language" name="options" id="option2" autocomplete="off"> TH
                 </label>
               </div>
             </div>
           <ul class="nav "style=" float: right;">
             <li class="nav-item">
-              <a class="nav-link" href="#">หน้าแรก</a>
+              <a class="nav-link header-nav" href="#">หน้าแรก</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">เกี่ยวกับเรา</a>
+              <a class="nav-link header-nav" href="#">เกี่ยวกับเรา</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ศูนย์ต่างๆ</a>
+              <a class="nav-link header-nav" href="#">ศูนย์ต่างๆ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ข่าวสาร</a>
+              <a class="nav-link header-nav" href="#">ข่าวสาร</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">อาสาสมัคร</a>
+              <a class="nav-link header-nav" href="#">อาสาสมัคร</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">บริจาค</a>
+              <a class="nav-link header-nav" href="#">บริจาค</a>
             </li>
           </ul>
         </div>

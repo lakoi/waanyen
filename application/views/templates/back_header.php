@@ -33,8 +33,8 @@
     <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
     <!-- <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
     <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
-    <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
-    <a href="<?php echo base_url().'lists/domain';?>" class="btn primary">Domain</a>| -->
+    <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>| -->
+    <a href="<?php echo base_url().'lists/domain';?>" class="btn primary">Domain</a>|
     <a target="_top" href="<?php echo base_url().'backs/donate';?>" class="btn primary ">donate</a>|
     <a href="<?php echo base_url().'backs/about';?>" class="btn primary ">about</a>|
     <a href="<?php echo base_url().'backs/centre';?>" class="btn primary ">centre</a>|

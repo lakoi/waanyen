@@ -112,6 +112,7 @@ class Backs extends CI_Controller
 					'centre_title' => $this->input->post('centre_title'),
 					'centre_content' => $this->input->post('centre_content'),
 					'centre_bt' => $this->input->post('centre_bt'),
+					'centre_time' => date(Y_m_d_H_i_s),
 					'centre_pto' => $photo,
 				);
 				$id = $this->input->post('id_centre');

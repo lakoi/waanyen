@@ -23,9 +23,9 @@
           <td><?php echo $r->news_post;?></td>
           <td><div class="asd"><?php echo $r->news_content;?></div></td>
           <td><?php echo $r->news_bt;?></td>
-          <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a></td>
-          <td class="text-center"><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a>
+          <td class="text-center"><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a>
           <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->news_time));?><span></div></td>
+          <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a></td>
         </tr>
       <?php };?>
       </tbody>

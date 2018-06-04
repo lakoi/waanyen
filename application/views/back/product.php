@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
+    <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">Add product</button></div>
     <?php if(isset($product)):?>
     <table class="table">
       <thead>
@@ -21,9 +21,9 @@
           <td><?php echo $r->pd_name;?></td>
           <td><?php echo $r->pd_price;?></td>
           <td><div class="asd"><?php echo $r->pd_from;?></div></td>
-          <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a></td>
-          <td class="text-center"><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-danger delete" >Edit</a>
+          <td class="text-center"><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_product;?>)">Edit</a>
           <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->pd_time));?><span></div></td>
+          <td><a id="<?php echo $r->id_product;?>" style="color: white;" class="btn btn-danger delete" >Delete</a></td>
         </tr>
       <?php };?>
       </tbody>
