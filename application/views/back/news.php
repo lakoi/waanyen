@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button></div>
+      <div class="col-sm-12 text-right">
+        <button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add news</button>
+      </div>
     <?php if(isset($news)):?>
     <table class="table">
       <thead>
@@ -148,7 +150,7 @@ $(document).ready(function(e)
     $('#news_modal').modal('show');
     $('#news_form')[0].reset();
     $('.modal-title').text("add Image");
-    $('#id').val('');
+    $('#id_news').val('');
     $('.news_post').html('');
     $('#action').val("upload");
     $('#upload').val("Upload");
@@ -188,7 +190,7 @@ $(document).ready(function(e)
     }
   });
 
-  $('#news_form').on('submit',function(e)
+  $('#news_form').on('submit', function(e)
   {
     e.preventDefault();
     if(confirm("Are you sure update data?"))
@@ -201,7 +203,7 @@ $(document).ready(function(e)
             processData: false,
             success: function(data)
             {
-              alert('save success')
+              alert('save success');
               location.reload();
             },
             error: function()

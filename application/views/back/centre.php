@@ -18,7 +18,7 @@
             <td><?php echo $r->centre_title ;?></td>
             <td><?php echo $r->centre_content ;?></td>
             <td><?php echo $r->centre_bt ;?></td>
-            <td><img src='<?php echo base_url(). 'img/'.$r->centre_pto ;?>' width="80" height="80"/></td>
+            <td><img src='<?php echo base_url(). 'img/'.$r->centre_pto ;?>' width="90" height="120"/></td>
             <td class="text-center"><a id="<?php echo $r->id_centre;?>" name="edit" style="color: white;" class="btn btn-success edit" onclick="edit(<?php echo $r->id_centre;?>)">Edit</a>
             <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->centre_time));?><span></div></td>
           </tr>
@@ -45,7 +45,7 @@
             <input type="hidden" id="oldcentre_pto" name="oldcentre_pto"/>
             <input type="file" id="newcentre_pto" name="newcentre_pto" style="display:none;" onchange="newcentre(this);"/>
             <!-- <div class="border" id="centre_pto" style="width:330px; height: 270px;"> -->
-            <img name="centre_pto" id="centre_pto" src width="330" height="270"/>
+            <img name="centre_pto" id="centre_pto" src width="270" height="360"/>
             <!-- </div> -->
             <input type="hidden" id="id_centre" name="id_centre"/>
           </div>

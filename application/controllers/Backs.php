@@ -14,28 +14,84 @@ class Backs extends CI_Controller
       $this->load->helper('date');
 	}
 
-	public function donate()
+	public function slide()
 	{
 		$this->login_model->check_status();
-		$data ['donate'] = $this->back_model->getdonate();
+		$data ['slide'] = $this->back_model->getslide();
     $this->load->view('templates/back_header');
-    $this->load->view('back/donate', $data);
+    $this->load->view('back/slide', $data);
     $this->load->view('templates/back_footer');
 	}
 
-	public function save_donate()
+	public function edit_slide()
 	{
-			$data = array(
-			'donate_title' => $_POST['donate_title'],
-			'donate_text' => $_POST['donate_text'],
-			'donate_bt' => $_POST['donate_bt'],
-			'donate_time' => date(Y_m_d_H_i_s),
-			);
-			$id = $_POST['id_donate'];
-			$this->back_model->save_donate($data, $id);
-			echo json_encode($data);
-			return true;
+		$id = $this->input->post('id');
+		$edit_slide = $this->back_model->edit_slide($id);
+		echo json_encode($edit_slide);
 	}
+
+	public function save_slide()
+  {
+    if($_POST["action"] == "upload")
+    {
+    $config['upload_path']   = 'img/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 0;
+    $config['max_width']     = 0;
+    $config['max_height']    = 0;
+		$config['encrypt_name']  = true;
+      $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('newslide_pto'))
+      {
+        $photo = $this->input->post('oldslide_pto');
+      }
+      else
+      {
+				$photo = $this->upload->data('file_name');
+      }
+			$data = array(
+				'slide_title' => $this->input->post('slide_title'),
+				'slide_content' => $this->input->post('slide_content'),
+				'slide_pto' => $photo,
+				'slide_time' => date(Y_m_d_H_i_s),
+			);
+			$this->back_model->save_slide($data);
+			return true;
+    }
+    if($_POST["action"] == "update")
+    {
+      $config['upload_path']   = 'img/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size']      = 0;
+      $config['max_width']     = 0;
+      $config['max_height']    = 0;
+			$config['encrypt_name']  = true;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('newslide_pto'))
+        {
+          $photo = $this->input->post('oldslide_pto');
+        }
+        else
+        {
+          $photo = $this->upload->data('file_name');
+        }
+				$data = array(
+					'slide_title' => $this->input->post('slide_title'),
+					'slide_content' => $this->input->post('slide_content'),
+					'slide_pto' => $photo,
+					'slide_time' => date(Y_m_d_H_i_s),
+				);
+          $id = $this->input->post('id_slide');
+          $this->back_model->save_edit_slide($data,$id);
+          return true;
+    }
+    if($_POST["action"] == "delete")
+    {
+      $id = $this->input->post("id");
+      $this->back_model->delete_slide($id);
+      return true;
+    }
+  }
 
 	public function about()
 	{
@@ -318,8 +374,8 @@ class Backs extends CI_Controller
 				$photo = $this->upload->data('file_name');
 			}
 			$data = array(
-			'join_head' => $_POST['join_head'],
 			'join_title' => $_POST['join_title'],
+			'join_content' => $_POST['join_content'],
 			'join_time' => date(Y_m_d_H_i_s),
 			'join_pto' => $photo,
 			);

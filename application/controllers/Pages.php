@@ -17,7 +17,7 @@ class Pages extends CI_Controller
 	{
 		$status = "1";
 		$data ['popup'] = $this->page_model->on_popup_model($status);
-		$data ['donate'] = $this->page_model->getdonate();
+		$data ['slide'] = $this->page_model->getslide();
 		$data ['about'] = $this->page_model->getabout();
 		$data ['centre'] = $this->page_model->getcentre();
 		$data ['news'] = $this->page_model->getnews();
@@ -25,7 +25,7 @@ class Pages extends CI_Controller
 		$data ['join'] = $this->page_model->getjoin();
 		$data ['footer'] = $this->page_model->getfooter();
 
-    $this->load->view('templates/header');
+    $this->load->view('templates/header', $data);
     $this->load->view('home/index', $data);
     $this->load->view('templates/footer', $data);
 	}

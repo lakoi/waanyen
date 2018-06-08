@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>waanyen</title>
     <style>
+        body
+        {
+          font-family: "Kanit", sans-serif;
+          color: black;
+          font-weight: normal;
+        }
         .form-control
         {
           opacity: 0.9;
@@ -33,9 +39,9 @@
     <a href="<?php echo base_url().'login/home';?>" class="btn primary ">Home</a>|
     <!-- <a href="<?php echo base_url().'login/education';?>" class="btn primary">Education</a>|
     <a href="<?php echo base_url().'login/interest';?>" class="btn primary">Interest</a>|
-    <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>| -->
-    <a href="<?php echo base_url().'lists/domain';?>" class="btn primary">Domain</a>|
-    <a target="_top" href="<?php echo base_url().'backs/donate';?>" class="btn primary ">donate</a>|
+    <a href="<?php echo base_url().'login/job';?>" class="btn primary">Job</a>|
+    <a href="<?php echo base_url().'lists/domain';?>" class="btn primary">Domain</a>| -->
+    <a target="_top" href="<?php echo base_url().'backs/slide';?>" class="btn primary ">slide</a>|
     <a href="<?php echo base_url().'backs/about';?>" class="btn primary ">about</a>|
     <a href="<?php echo base_url().'backs/centre';?>" class="btn primary ">centre</a>|
     <a href="<?php echo base_url().'backs/news';?>" class="btn primary ">news</a>|

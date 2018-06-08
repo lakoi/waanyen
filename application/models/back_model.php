@@ -1,18 +1,41 @@
 <?php
 class Back_model extends CI_Model
 {
-  public function getdonate()
+  public function getslide()
   {
-      $query = $this->db->get('donate');
+      $query = $this->db->get('slide');
       return $query->result();
   }
 
-  public function save_donate($data, $id)
+  public function edit_slide($id)
+  {
+        $query = $this->db->get_where("slide",array("id_slide"=>$id));
+        $data = $query->result();
+        return $data;
+  }
+
+  public function save_slide($data)
+  {
+      if ($this->db->insert("slide", $data))
+      {
+        return true;
+      }
+  }
+
+  public function save_edit_slide($data, $id)
   {
         $this->db->set($data);
-        $this->db->where("id_donate", $id);
-        $this->db->update("donate");
+        $this->db->where("id_slide", $id);
+        $this->db->update("slide");
         return true;
+  }
+
+  public function delete_slide($id)
+  {
+        if ($this->db->delete("slide", "id_slide =".$id))
+        {
+          return true;
+        }
   }
 
   public function getabout()
@@ -52,7 +75,7 @@ class Back_model extends CI_Model
 
   public function getnews()
   {
-      $query = $this->db->get('news');
+      $query = $this->db->query(" select * from news order by id_news desc");
       return $query->result();
   }
 
@@ -89,7 +112,7 @@ class Back_model extends CI_Model
 
   public function getproduct()
   {
-      $query = $this->db->get('product');
+      $query = $this->db->query(" select * from product order by id_product desc");
       return $query->result();
   }
 

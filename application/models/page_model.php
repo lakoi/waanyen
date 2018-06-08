@@ -6,9 +6,9 @@ class Page_model extends CI_Model
     $query = $this->db->query("select * from popup where  status = '$status' ");
     return $query->result();
   }
-  public function getdonate()
+  public function getslide()
   {
-      $query = $this->db->get('donate');
+      $query = $this->db->get('slide');
       return $query->result();
   }
 

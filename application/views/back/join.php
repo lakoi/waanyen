@@ -15,8 +15,8 @@
               {?>
                 <tr>
                   <td><img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" width="100" height="100" style="border-radius: 100%;"></td>
-                  <td><?php echo $r->join_head;?></td>
                   <td><?php echo $r->join_title;?></td>
+                  <td><?php echo $r->join_content;?></td>
                   <td class="text-center"><a id="<?php echo $r->id_join;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_join;?>)">Edit</a>
                   <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->join_time));?><span></div></td>
                 </tr>
@@ -53,11 +53,11 @@
             </div>
             <div>
               <label>head</label>
-              <input type="text" name="join_head" id="join_head" type="text" class="form-control">
+              <input type="text" name="join_title" id="join_title" type="text" class="form-control">
             </div>
             <div>
               <label>title</label>
-              <textarea type="text" name="join_title" id="join_title" class="form-control" rows="3"></textarea>
+              <textarea type="text" name="join_content" id="join_content" class="form-control" rows="3"></textarea>
             </div>
           </div>
         </div>
@@ -81,8 +81,8 @@
            success: function(data)
            {
              $('[name="id_join"]').val(data[0].id_join);
-             $('[name="join_head"]').val(data[0].join_head);
              $('[name="join_title"]').val(data[0].join_title);
+             $('[name="join_content"]').val(data[0].join_content);
              $('[name="join_pto"]').attr("src",'<?php echo base_url(). 'img/';?>'+data[0].join_pto);
              $('[name="oldjoin_pto"]').val(data[0].join_pto);
            },

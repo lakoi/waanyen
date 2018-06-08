@@ -60,8 +60,16 @@
               <input type="text" name="pd_name" id="pd_name" type="text" class="form-control">
             </div>
             <div>
-              <label>price</label>
-              <td><input type="text" name="pd_price" id="pd_price" class="form-control"/></td>
+              <label>price</label><br>
+              <td>
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-2">ราคา</div>
+                    <div class="col-sm-6"><input type="text" name="pd_price" id="pd_price" class="form-control"/></div>
+                    <div class="col-sm-3">บาท</div>
+                  </div>
+                </div>
+              </td>
             </div>
             <div>
               <label>from</label>
