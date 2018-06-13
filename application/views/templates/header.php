@@ -399,13 +399,9 @@
       }
     </style>
     <style>/*head about*/
-    .head-about-list
-    {
-      padding:0px 10px 0px 10px;
-    }
     .head-about-list:hover
     {
-      padding:0px 10px 0px 10px; background-color: #3a99c4;
+      background-color: #3a99c4;
     }
     .head-about-link
     {
@@ -417,98 +413,107 @@
     }
 
     </style>
+    <style>
+    .date-news::first-line
+    {
+      color: #5dbfec;
+    }
+    </style>
   </head>
   <body class="body">
     <?php if(isset($slide)):?>
       <div style="position:absolute; z-index:99; width:100% ">
         <div class="container" style="position:relative; z-index:99; color:white;">
     <?php endif;?>
+
     <?php if(empty($slide)):?>
       <div class="container-fluid" style="position:relative; z-index:99; max-width:2000px; padding-left:0px; background-image:url('<?php echo base_url(). 'img/images/background.jpg';?>'); background-size:100% 300%;">
         <div class="row">
-        <div class="container" style="position:relative; z-index:99; color:white; ">
+          <div class="container" style="position:relative; z-index:99; color:white; ">
     <?php endif;?>
-          <div class="row">
-            <div class="col-lg-5 col-md-12 col-sm-12" >
-              <div class="row">
-                <div class="col-md-3">
-                  <img src="<?php echo base_url(). 'img/images/logo.png';?>" wigth="100" height="100" />
-                </div>
-                <div class="col-md-9" style="padding:20px 0px;">
+
+            <div class="row">
+              <div class="col-lg-5 col-md-12 col-sm-12" >
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="<?php echo base_url(). 'img/images/logo.png';?>" wigth="100" height="100" />
+                  </div>
+                  <div class="col-md-9" style="padding:20px 0px;">
                     <p class="header-text">มูลนิธิช่วยคนตาบอดแห่งประเทศไทย<br>
                     ในพระบรมราชินูปถัมภ์</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7 col-md-12 col-sm-12">
+                <div class="row" style="float: right;">
+                  <div class="col-md-10">
+                    <div class="header-toolbar col-md-12" style="background-image:url('<?php echo base_url(). 'img/images/toolbar.png';?>'); background-size:100% 100%; padding:5px 20px 5px 35px; width:420px;">
+                      <div class="row">
+                        <div>
+                          <span style="color:#227ea8;">ขนาดตัวหนังสือ</span>
+                          <a href="#"><i class="fas fa-font" style="font-size:12px;"></i></a>
+                          <a href="#"><i class="fas fa-font" style="font-size:16px;"></i></a>
+                          <a href="#"><i class="fas fa-font" style="font-size:18px;"></i></a>
+                        </div>
+                        <div style="border-left:1px solid #dddddd; margin:0px 20px 0px 5px; padding-left:5px; ">
+                          <span style="color:black">เปลี่ยนสี</span>
+                          <a href="#" style="opacity:0.3;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
+                          <a href="#" style="opacity:0.6;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
+                          <a href="#" style="opacity:1;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
+                        </div>
+                        <div>
+                          <a href="#"><i class="fas fa-search" style="color:white;"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-search" style="display:none">
+                      <nav class="navbar navbar-light" >
+                        <form class="form-inline">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="row text-center" style="font-family: 'normal', sans-serif;">
+                      <div class="" style="background-color:#227ea8;">
+                        <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">EN</a>
+                      </div>
+                      <div class="" style="background-color: black;">
+                        <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">TH</a>
+                      </div>
+                    </div>
+                  </div>
+                </div><br><br>
+                <div class="col-md-12" style="padding-top:20px;">
+                  <ul class="nav "style=" float: right; font-weight: lighter;">
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="<?php echo base_url().'';?>">หน้าแรก</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="<?php echo base_url().'about/about';?>">เกี่ยวกับเรา</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="<?php echo base_url().'centre/centre';?>">ศูนย์ต่างๆ</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="#">ข่าวสาร</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="#">อาสาสมัคร</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header-nav" href="#">บริจาค</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="col-lg-7 col-md-12 col-sm-12">
-              <div class="row" style="float: right;">
-                <div class="col-md-10">
-                  <div class="header-toolbar col-md-12" style="background-image:url('<?php echo base_url(). 'img/images/toolbar.png';?>'); background-size:100% 100%; padding:5px 20px 5px 35px; width:420px;">
-                    <div class="row">
-                      <div>
-                        <span style="color:#227ea8;">ขนาดตัวหนังสือ</span>
-                        <a href="#"><i class="fas fa-font" style="font-size:12px;"></i></a>
-                        <a href="#"><i class="fas fa-font" style="font-size:16px;"></i></a>
-                        <a href="#"><i class="fas fa-font" style="font-size:18px;"></i></a>
-                      </div>
-                      <div style="border-left:1px solid #dddddd; margin:0px 20px 0px 5px; padding-left:5px; ">
-                        <span style="color:black">เปลี่ยนสี</span>
-                        <a href="#" style="opacity:0.3;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
-                        <a href="#" style="opacity:0.6;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
-                        <a href="#" style="opacity:1;"><img src="<?php echo base_url(). 'img/images/change-color.png';?>"/></a>
-                      </div>
-                      <div>
-                        <a href="#"><i class="fas fa-search" style="color:white;"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="header-search" style="display:none">
-                    <nav class="navbar navbar-light" >
-                      <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                      </form>
-                    </nav>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="row font-normal">
-                    <div class="" style="background-color:#227ea8;">
-                      <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">EN</a>
-                    </div>
-                    <div class="" style="background-color: black;">
-                      <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">TH</a>
-                    </div>
-                  </div>
-                </div>
-              </div><br><br>
-              <div class="col-md-12" style="padding-top:20px;">
-                <ul class="nav "style=" float: right; font-weight: lighter;">
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="<?php echo base_url().'';?>">หน้าแรก</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="<?php echo base_url().'about/about';?>">เกี่ยวกับเรา</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="<?php echo base_url().'centre/centre';?>">ศูนย์ต่างๆ</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="#">ข่าวสาร</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="#">อาสาสมัคร</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link header-nav" href="#">บริจาค</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+
+          <?php if(empty($slide)):?>
           </div>
-    <?php if(empty($slide)):?>
         </div>
-      </div>
       </div>
       <div class="container-fluid" style="background-color:; max-width:2000px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
         <div class="container" >
@@ -520,7 +525,7 @@
         </div>
       </div>
     <?php endif;?>
-    <?php if(isset($slide)):?>
+          <?php if(isset($slide)):?>
+          </div>
         </div>
-      </div>
-    <?php endif;?>
+      <?php endif;?>

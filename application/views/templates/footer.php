@@ -1,3 +1,4 @@
+      <?php if(empty($slide)):?>
       <div class="container">
         <div class="row" style="margin:30px 0px 30px 0px;">
           <div class="col-md-6">
@@ -10,6 +11,7 @@
           </div>
         </div>
       </div>
+    <?php endif;?>
       <div class="container-fluid" style="max-width:2000px; background-image:url('<?php echo base_url(). 'img/images/bg-footer.jpg';?>')">
         <?php if(isset($footer)):?>
           <?php foreach ($footer as $r)

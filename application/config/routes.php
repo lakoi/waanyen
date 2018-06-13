@@ -93,5 +93,7 @@ $route['login/domain'] = 'Lists/domain/$1';
 
 // $route['login/delete_popup/(:num)'] = 'Lists/delete_popup/$1';
 
+$route['backs_centre/about/(:num)'] = 'backs_centre/about/$1';
+
 
 $route['default_controller'] = 'pages/view';

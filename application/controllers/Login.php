@@ -71,7 +71,8 @@ class Login extends CI_Controller
 
 	public function logout()
 	{
-		 session_destroy();
+		$arr = array("UserID","Email","Password","Name","Status");
+		$this->session->unset_userdata($arr);
 		 redirect(base_url() . 'login');
 	}
 

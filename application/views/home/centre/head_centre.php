@@ -3,28 +3,26 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12" style="margin-top:20px;">
-        <?php if(isset($centre)):?>
-          <?php foreach ($centre as $r) {?>
-      <p style="font-size:24px;"><?php echo $r->centre_title;?><p>
-      <?php };?>
-    <?php endif;?>
-      <hr style="margin:0px 0px 0px 0px; border:2px solid #3a99c4;">
+        <?php if(isset($head)):?>
+          <p style="font-size:24px;"><?php echo $head;?><p>
+        <?php endif;?>
+        <hr style="border:2px solid #3a99c4;">
         <div style="margin:10px 0px 10px 0px;">
           <ul class="nav">
             <li class="nav-item head-about-list">
-              <a class="nav-link head-about-link"  href="#">เกี่ยวกับเรา</a>
+              <a class="nav-link head-about-link" href="<?php echo base_url(). 'centre/about';?>">เกี่ยวกับเรา</a>
             </li>
             <li class="nav-item head-about-list">
-              <a class="nav-link head-about-link" href="#">ข่าวสาร</a>
+              <a class="nav-link head-about-link" href="<?php echo base_url(). 'centre/news';?>">ข่าวสาร</a>
             </li>
             <li class="nav-item head-about-list">
-              <a class="nav-link head-about-link" href="#">ผลิตภัณฑ์และบริการ</a>
+              <a class="nav-link head-about-link" href="<?php echo base_url(). 'centre/product';?>">ผลิตภัณฑ์และบริการ</a>
             </li>
             <li class="nav-item head-about-list">
-              <a class="nav-link head-about-link" href="#">บริจาคและอาสาสมัคร</a>
+              <a class="nav-link head-about-link" href="<?php echo base_url(). 'centre/donate';?>">บริจาคและอาสาสมัคร</a>
             </li>
             <li class="nav-item head-about-list">
-              <a class="nav-link head-about-link" href="#">ติดต่อเรา</a>
+              <a class="nav-link head-about-link" href="<?php echo base_url(). 'centre/contact';?>">ติดต่อเรา</a>
             </li>
           </ul>
         </div>

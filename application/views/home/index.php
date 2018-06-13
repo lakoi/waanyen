@@ -116,6 +116,7 @@
     <hr style="margin:-34px 0px 0px 7px; border:2px solid #5dbfec;">
     <div class="row justify-content-around">
         <?php if(isset($centre)):?>
+          <?php $n = "1";?>
           <?php foreach ($centre as $r)
           {?>
           <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6" >
@@ -125,13 +126,13 @@
                   <p style="word-wrap:break-word;"><?php echo $r->centre_title;?></p>
                   <div class="we<?php echo $r->id_centre;?> font-normal" id="<?php echo $r->id_centre;?>" style="display:none;">
                     <p style="font-size:0.8em; word-wrap:break-word; display:block;"><?php echo $r->centre_content;?></p>
-                    <a href="#" style="color:white; text-decoration: none; border: 2px solid #ffffff; padding:5px;"><?php echo $r->centre_bt;?></a>
+                    <a href="<?php echo base_url(). "centre/about/".$n;?>" style="color:white; text-decoration: none; border: 2px solid #ffffff; padding:5px;"><?php echo $r->centre_bt;?></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        <?php };?>
+        <?php $n++;};?>
       <?php endif;?>
     </div>
   </div>
