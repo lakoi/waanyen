@@ -203,8 +203,9 @@ $(document).ready(function(e)
               alert('save success')
               location.reload();
             },
-            error: function()
+            error: function(request, status, error)
             {
+               alert(request.responseText);
               alert('not save product');
             }
           });

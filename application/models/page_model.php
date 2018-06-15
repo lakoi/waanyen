@@ -30,6 +30,12 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
+  public function getallnews()
+  {
+      $query = $this->db->query(" select * from news order by id_news desc");
+      return $query->result();
+  }
+
   public function getproduct()
   {
       $query = $this->db->query(" select * from product order by id_product desc");

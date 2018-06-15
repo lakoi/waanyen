@@ -1,5 +1,5 @@
       <?php if(empty($slide)):?>
-      <div class="container">
+      <div class="container" style="padding:0px;">
         <div class="row" style="margin:30px 0px 30px 0px;">
           <div class="col-md-6">
             <div class="row">
@@ -16,7 +16,7 @@
         <?php if(isset($footer)):?>
           <?php foreach ($footer as $r)
           {?>
-        <div class="container" style="padding-top:50px; padding-bottom:50px;">
+        <div class="container" style="padding:50px 0px 50px 0px;">
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="row">

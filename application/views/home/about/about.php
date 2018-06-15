@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding:0px;">
   <div class="row">
     <div class="col-md-12">
       <div class="text-center" style="margin:0px 0px 40px 0px;">

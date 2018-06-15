@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" style="padding:0px;">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 font-normal">
       <?php if($this->session->userdata('donate')!=""):?>
         <?php foreach ($this->session->userdata('donate') as $r) {?>
           <div style="padding:10px 0px 10px 0px;">

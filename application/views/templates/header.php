@@ -423,13 +423,13 @@
   <body class="body">
     <?php if(isset($slide)):?>
       <div style="position:absolute; z-index:99; width:100% ">
-        <div class="container" style="position:relative; z-index:99; color:white;">
+        <div class="container" style="position:relative; z-index:99; color:white; padding:0px;">
     <?php endif;?>
 
     <?php if(empty($slide)):?>
       <div class="container-fluid" style="position:relative; z-index:99; max-width:2000px; padding-left:0px; background-image:url('<?php echo base_url(). 'img/images/background.jpg';?>'); background-size:100% 300%;">
         <div class="row">
-          <div class="container" style="position:relative; z-index:99; color:white; ">
+          <div class="container" style="position:relative; z-index:99; color:white; padding:0px;">
     <?php endif;?>
 
             <div class="row">
@@ -487,18 +487,18 @@
                   </div>
                 </div><br><br>
                 <div class="col-md-12" style="padding-top:20px;">
-                  <ul class="nav "style=" float: right; font-weight: lighter;">
+                  <ul class="nav" style=" float: right; font-weight: lighter;">
                     <li class="nav-item">
                       <a class="nav-link header-nav" href="<?php echo base_url().'';?>">หน้าแรก</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link header-nav" href="<?php echo base_url().'about/about';?>">เกี่ยวกับเรา</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                       <a class="nav-link header-nav" href="<?php echo base_url().'centre/centre';?>">ศูนย์ต่างๆ</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link header-nav" href="#">ข่าวสาร</a>
+                    <li class="nav-item ">
+                      <a class="nav-link header-nav" href="<?php echo base_url().'news/news';?>">ข่าวสาร</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link header-nav" href="#">อาสาสมัคร</a>
@@ -516,7 +516,7 @@
         </div>
       </div>
       <div class="container-fluid" style="background-color:; max-width:2000px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-        <div class="container" >
+        <div class="container" style="padding:0px;">
           <div class="row">
             <div class="col-md-12" style="padding:10px 0px 10px 15px;">
               <span >คุณอยู่ที่นี่ : หน้าแรก >> ศูนย์ต่างๆ</span>

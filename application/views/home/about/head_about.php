@@ -1,6 +1,6 @@
 
 <div class="container-fluid" style="background-color:rgba(250,250,250,0.5); max-width:2000px; margin-bottom:30px;">
-  <div class="container">
+  <div class="container" style="padding:0px;">
     <div class="row">
       <div class="col-md-12" style="margin-top:20px;">
       <p style="font-size:24px;">เกี่ยวกับเรา<p>

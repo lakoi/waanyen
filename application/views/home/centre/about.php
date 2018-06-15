@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding:0px;">
   <div class="row">
     <div class="col-md-12">
       <?php if(isset($about)):?>
@@ -114,7 +114,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="padding:0px;">
   <div class="row">
     <div class="col-md-12">
       <div style=" margin:20px 0px 20px 0px;">
@@ -140,7 +140,7 @@
     <div id="carouselExampleIndicators" class="carousel slide text-center" data-ride="carousel" data-interval="6000">
       <div class="carousel-inner container">
         <div class="row">
-          <div class="col-md-12">
+          <!-- <div class="col-md-12"> -->
             <?php $product_r =  array_chunk($product, 4, true);
             foreach ($product_r as $key) { ?>
               <?php if(isset($key[0]))
@@ -174,7 +174,6 @@
                 </div>
               </div>
             <?php };?>
-          </div>
         </div>
       </div>
       <a style="width:10%;" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
