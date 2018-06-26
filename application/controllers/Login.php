@@ -6,6 +6,7 @@ class Login extends CI_Controller
 					parent::__construct();
 					$this->load->model('login_model');
 					$this->load->model('list_model');
+					$this->load->model('back_model');
 					$this->load->helper('url_helper');
 					$this->load->database();
 					$this->load->helper('form');
@@ -13,13 +14,11 @@ class Login extends CI_Controller
 					$this->load->library('session');
 					$this->load->helper('date');
 	}
-	public function index()
+	public function login()
 	{
-
-			$data['title'] = 'Welcome';
 			// $this->load->view('templates/back_header');
-			$this->load->view('login/login_view', $data);
-			$this->load->view('templates/back_footer');
+			$this->load->view('login/login_view');
+			// $this->load->view('templates/back_footer');
 
 	}
 
@@ -46,26 +45,29 @@ class Login extends CI_Controller
 								'Status' => $row['Status']
 							);
 							$this->session->set_userdata($userdata);
-							$this->enter();
+							redirect(base_url()."login/home");
 					}
 					else
 					{
-						$this->session->set_flashdata('error', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
-						$this->index();
+						$this->session->set_flashdata('login_error', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+						// redirect(base_url() . 'login');
+						$this->login();
 						// redirect(base_url() . 'login/index');
 					}
  				}
  				else
 		 		{
-			 	$this->index();
+					$this->login();
+				 	// redirect(base_url() . 'login');
 		 		}
 	}
 
  	public function enter()
  	{
+				$data ['slide'] = $this->back_model->getslide();
 				$this->login_model->check_status();
 				$this->load->view('templates/back_header');
-				$this->load->view('login/list_view');
+				$this->load->view('login/list_view' ,$data);
 				$this->load->view('templates/back_footer');
  	}
 

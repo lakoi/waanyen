@@ -1,9 +1,47 @@
 <?php
 class Back_centre_model extends CI_Model
 {
+  public function getabout()
+  {
+    $s = $this->session->userdata('back');
+    switch($s)
+    {
+      case "1" :
+      {
+        $query = $this->db->get('centre_about1');
+        return $query->result();
+        break;
+      }
+      case "2" :
+      {
+        $query = $this->db->get('centre_about2');
+        return $query->result();
+        break;
+      }
+      case "3" :
+      {
+        $query = $this->db->get('centre_about3');
+        return $query->result();
+        break;
+      }
+      case "4" :
+      {
+        $query = $this->db->get('centre_about4');
+        return $query->result();
+        break;
+      }
+      case "5" :
+      {
+        $query = $this->db->get('centre_about5');
+        return $query->result();
+        break;
+      }
+    }
+  }
+
   public function edit_about($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -46,7 +84,7 @@ class Back_centre_model extends CI_Model
 
   public function save_edit_about($data, $id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -92,9 +130,47 @@ class Back_centre_model extends CI_Model
     }
   }
 
+  public function getnews_list()
+  {
+    $s = $this->session->userdata('back');
+    switch($s)
+    {
+      case "1" :
+      {
+        $query = $this->db->query(" select * from centre_news1 order by id_centre_news desc");
+        return $query->result();
+        break;
+      }
+      case "2" :
+      {
+        $query = $this->db->query(" select * from centre_news2 order by id_centre_news desc");
+        return $query->result();
+        break;
+      }
+      case "3" :
+      {
+        $query = $this->db->query(" select * from centre_news3 order by id_centre_news desc");
+        return $query->result();
+        break;
+      }
+      case "4" :
+      {
+        $query = $this->db->query(" select * from centre_news4 order by id_centre_news desc");
+        return $query->result();
+        break;
+      }
+      case "5" :
+      {
+        $query = $this->db->query(" select * from centre_news5 order by id_centre_news desc");
+        return $query->result();
+        break;
+      }
+    }
+  }
+
   public function edit_news($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -137,7 +213,7 @@ class Back_centre_model extends CI_Model
 
   public function save_news($data)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -185,7 +261,7 @@ class Back_centre_model extends CI_Model
 
   public function save_edit_news($data, $id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -233,7 +309,7 @@ class Back_centre_model extends CI_Model
 
   public function delete_news($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -279,9 +355,46 @@ class Back_centre_model extends CI_Model
     }
   }
 
+  public function getproduct()
+  {
+    $s = $this->session->userdata('back');
+    switch($s)
+    {
+      case "1" :
+      {
+        $query = $this->db->get('centre_product1');
+        return $query->result();
+      }
+      case "2" :
+      {
+        $query = $this->db->get('centre_product2');
+        return $query->result();
+        break;
+      }
+      case "3" :
+      {
+        $query = $this->db->get('centre_product3');
+        return $query->result();
+        break;
+      }
+      case "4" :
+      {
+        $query = $this->db->get('centre_product4');
+        return $query->result();
+        break;
+      }
+      case "5":
+      {
+        $query = $this->db->get('centre_product5');
+        return $query->result();
+        break;
+      }
+    }
+  }
+
   public function edit_product($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -324,7 +437,7 @@ class Back_centre_model extends CI_Model
 
   public function save_product($data)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -372,7 +485,7 @@ class Back_centre_model extends CI_Model
 
   public function save_edit_product($data, $id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -420,7 +533,7 @@ class Back_centre_model extends CI_Model
 
   public function delete_product($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -466,9 +579,47 @@ class Back_centre_model extends CI_Model
     }
   }
 
+  public function getdonate()
+  {
+    $s = $this->session->userdata('back');
+    switch($s)
+    {
+      case "1" :
+      {
+        $query = $this->db->get('centre_donate1');
+        return $query->result();
+        break;
+      }
+      case "2" :
+      {
+        $query = $this->db->get('centre_donate2');
+        return $query->result();
+        break;
+      }
+      case "3" :
+      {
+        $query = $this->db->get('centre_donate3');
+        return $query->result();
+        break;
+      }
+      case "4" :
+      {
+        $query = $this->db->get('centre_donate4');
+        return $query->result();
+        break;
+      }
+      case "5" :
+      {
+        $query = $this->db->get('centre_donate5');
+        return $query->result();
+        break;
+      }
+    }
+  }
+
   public function edit_donate($id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -511,7 +662,7 @@ class Back_centre_model extends CI_Model
 
   public function save_edit_donate($data, $id)
   {
-    $s = $this->session->userdata('id');
+    $s = $this->session->userdata('back');
     switch($s)
     {
       case "1" :
@@ -557,11 +708,33 @@ class Back_centre_model extends CI_Model
     }
   }
 
+  public function getcontact($id)
+  {
+    $query = $this->db->get_where("centre_contact",array("id_centre_contact"=>$id));
+    $data = $query->result();
+    return $data;
+  }
+
   public function save_edit_contact($data, $id)
   {
       $this->db->set($data);
       $this->db->where("id_centre_contact", $id);
       $this->db->update("centre_contact");
+      return true;
+  }
+
+  public function getservice($id)
+  {
+    $query = $this->db->get_where("centre_product_service",array("id_centre_product_service"=>$id));
+    $data = $query->result();
+    return $data;
+  }
+
+  public function save_service($data, $id)
+  {
+      $this->db->set($data);
+      $this->db->where("id_centre_product_service", $id);
+      $this->db->update("centre_product_service");
       return true;
   }
 

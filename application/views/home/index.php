@@ -1,4 +1,4 @@
-
+<title>มูลนิธิคนตาบอดแห่งประเทศไทย</title>
   <div id="carouselExampleFade" class="carousel slide carousel-fade container-fluid donate-frame" data-ride="carousel">
     <div class="carousel-inner">
       <?php if(isset($slide)):?>
@@ -11,10 +11,14 @@
           {
             echo "<div class='carousel-item donate-item'>";
           };?>
-            <img class="d-block w-100 h-100" src="<?php echo base_url(). 'img/'.$r->slide_pto;?>">
+            <img class="d-block w-100 h-100" src="<?php echo base_url(). 'img/'.$r->slide_pto;?>" alt="slide" title=""/>
             <div class="text-center donate-content">
-              <?php echo $r->slide_title;?>
-              <?php echo $r->slide_content;?>
+              <div>
+                <?php echo $r->slide_title;?>
+              </div>
+              <div>
+                <?php echo $r->slide_content;?>
+              </div>
             </div>
           </div>
         <?php };?>
@@ -44,7 +48,7 @@
               </div>
             </div>
             <div class="about-image">
-              <img class="w-100" src="<?php echo base_url(). 'img/'.$r->about_pto;?>"/>
+              <img class="w-100" src="<?php echo base_url(). 'img/'.$r->about_pto;?>" alt="<?php echo $r->about_title;?>" title=""/>
             </div>
             <p class="about-title"><?php echo $r->about_title;?></p><br>
             <p class="about-content"><?php echo $r->about_content;?></p>
@@ -62,13 +66,13 @@
                 <div class="col-sm-6">
                   <br>
                   <div style="background-image: url('<?php echo base_url(). 'img/images/news/head-news.png';?>'); background-size: 100% 100%; padding: 10px; color: white;">
-                    <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" style="padding-bottom:3px;"/>ข่าวสารต่างๆ
+                    <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" alt="ข่าวสารต่างๆ" title="" style="padding-bottom:3px;"/>ข่าวสารต่างๆ
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 text-right">
                   <br>
                   <br>
-                  <a href="#" style="text-decoration: none;">ข่าวทั้งหมด <i class="fas fa-caret-right" style="font-size:1.1em; margin-bottom:-2px;"></i></a>
+                  <a href="<?php echo base_url().'news/news';?>" style="text-decoration: none;">ข่าวทั้งหมด <i class="fas fa-caret-right" style="font-size:1.1em; margin-bottom:-2px;"></i></a>
                 </div>
               </div>
             </div>
@@ -84,7 +88,7 @@
                 <div class="col-md-12" style="padding: 10px;">
                   <div class="row">
                     <div class="col-sm-4" style="padding-right: 10px;">
-                      <img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="130" height="130" >
+                      <img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" alt="<?php echo $r->news_title;?>" title="" width="130" height="130" >
                     </div>
                     <div class="col-sm-8" style="word-wrap:break-word; width: 100%;">
                       <div style="font-weight:bold; font-size:1.1em; white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;">
@@ -111,7 +115,7 @@
 
   <div class="container" style="position:relative; padding:100px 0px 100px 0px;">
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" style="background-image:url('<?php echo base_url(). 'img/images/centre/head-centre.png';?>'); background-size: 100% 100%; padding: 10px; margin-bottom:30px; color: white;">
-      <img src="<?php echo base_url(). 'img/images/centre/icon-centre.png';?>" style="padding-bottom:3px;"/>ศูนย์ต่างๆ
+      <img src="<?php echo base_url(). 'img/images/centre/icon-centre.png';?>" alt="ศูนย์ต่างๆ" title="" style="padding-bottom:3px;"/>ศูนย์ต่างๆ
     </div>
     <hr style="margin:-34px 0px 0px 7px; border:2px solid #5dbfec;">
     <div class="row justify-content-around">
@@ -126,7 +130,7 @@
                   <p style="word-wrap:break-word;"><?php echo $r->centre_title;?></p>
                   <div class="we<?php echo $r->id_centre;?> font-normal" id="<?php echo $r->id_centre;?>" style="display:none;">
                     <p style="font-size:0.8em; word-wrap:break-word; display:block;"><?php echo $r->centre_content;?></p>
-                    <a href="<?php echo base_url(). "centre/about/".$n;?>" style="color:white; text-decoration: none; border: 2px solid #ffffff; padding:5px;"><?php echo $r->centre_bt;?></a>
+                    <a href="<?php echo base_url(). "centre/about/".$n;?>" style="color:white; text-decoration: none; border: 2px solid #ffffff; padding:5px;">เพิ่มเติม</a>
                   </div>
                 </div>
               </div>
@@ -139,7 +143,7 @@
 
   <div class="container-fluid" style="background-image: url('<?php echo base_url().'img/images/product/background3.jpg';?>'); background-size: 100%; padding-top:80px; padding-bottom:80px; max-width:2000px;">
     <div class="text-center">
-      <img src="<?php echo base_url(). 'img/images/product/icon-product.png';?>" wigth="80" height="80" /><br>
+      <img src="<?php echo base_url(). 'img/images/product/icon-product.png';?>" alt="ผลิตภัณฑ์และบริการ" title="" wigth="80" height="80" /><br>
       <a href="#" class="head-product">ผลิตภัณฑ์และบริการ</a><br>
       <span>"การสนับสนุนผลิตภัณฑ์ฝีมือคนตาบอด เป็นการสร้างอาชีพและให้อนาคต"</span>
     </div>
@@ -162,7 +166,7 @@
               <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " style="margin-top:10px;">
                 <div class="bg-white card-product" style="width: ; height: 420px; ">
                   <a href="#">
-                    <img class="card-img-top" src="<?php echo base_url(). 'img/'.$arr->pd_pto;?>" height="230">
+                    <img class="card-img-top" src="<?php echo base_url(). 'img/'.$arr->pd_pto;?>" alt="<?php echo $arr->pd_name;?>" title="" height="230">
                   </a>
                   <div class="card-body">
                     <div style="font-weight:bold; white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;">
@@ -201,7 +205,7 @@
         <p class="head-join" style="color:#5dbfec; font-size:1.8em;">ร่วมเป็นส่วนหนึ่ง<i class="fas fa-arrow-circle-right" style="color:#5193ca; font-size:2em;"></i><br>
         ในการช่วยเหลือผู้พิการทางสายตา</p>
         <div class="">
-          <img src="<?php echo base_url(). 'img/images/join/join.png';?>" class="w-100" style="padding-top:-30px;"/>
+          <img src="<?php echo base_url(). 'img/images/join/join.png';?>" alt="โลโก้ ร่วมเป็นส่วนหนึ่งในการช่วยเหลือผู้พิการทางสายตา" class="w-100" style="padding-top:-30px;"/>
         </div>
       </div>
       <div class="col-sm-6">
@@ -214,24 +218,10 @@
                     }
                     else
                     {
-                      if($r->id_join == "2")
-                        {
-                          echo "<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12 text-center' style='height:300px; display:table; '>";
-                        }
-                        else
-                        {
-                          if($r->id_join == "4")
-                          {
-                            echo "<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12 text-center' style='height:300px; display:table; '>";
-                          }
-                          else
-                          {
-                            echo "<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12 text-center' style='height:300px; display:table; '>";
-                          }
-                        }
+                      echo "<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12 text-center' style='height:300px; display:table; '>";
                     };?>
                 <div style="text-align:center; display:table-cell; vertical-align:middle; ">
-                  <img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" width="120" height="120" style="border-radius: 100%;"/>
+                  <img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" alt="<?php echo $r->join_title;?>" title="" width="120" height="120" style="border-radius: 100%;"/>
                   <div style="padding-top:10px;">
                     <a href="#" class="join-title"><?php echo $r->join_title;?></a>
                     <p class="font-normal"><?php echo $r->join_content;?></p>
@@ -259,7 +249,7 @@
             <?php foreach($popup as $r)
             {
               echo "<div class='text-center'>";
-              echo  "<div><img src=" .base_url()."img/".$r->photo." width='300' hight='300' id='photo'/></div>";
+              echo  "<div><img src=" .base_url()."img/".$r->photo." alt='.$r->title.' title='' width='300' hight='300' id='photo'/></div>";
               echo  "<div id='title'>".$r->title."</div>";
               echo  "</div>";
             }

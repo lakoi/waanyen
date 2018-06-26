@@ -22,7 +22,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div style="">
-                      <img src="<?php echo base_url(). "img/".$r->centre_product_pto;?>" class="w-100 h-100">
+                      <img src="<?php echo base_url(). "img/".$r->centre_product_pto;?>" alt="<?php echo $r->centre_product_name;?>" title="" class="w-100 h-100">
                     </div>
                   </div>
                   <div class="col-md-9">

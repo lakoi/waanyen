@@ -14,12 +14,16 @@ class Centre extends CI_Controller
       $this->load->library('form_validation');
       $this->load->helper('date');
       $this->load->library('session');
+      $lang = $this->session->userdata('lang');
+      $this->lang->load($lang,$lang);
   }
 
   public function centre()
   {
     $data ['footer'] = $this->page_model->getfooter();
     $data ['centre'] = $this->centre_model->getcentre();
+    $lang = $this->session->userdata('lang');
+    $this->lang->load($lang,$lang);
 
     $this->load->view('templates/header');
     $this->load->view('home/centre/centre', $data);
@@ -30,7 +34,7 @@ class Centre extends CI_Controller
   {
     if($this->uri->segment('3')=="")
     {
-      $num = $this->session->userdata('num');
+      $num = $this->session->userdata('home');
     }
     else
     {
@@ -38,23 +42,47 @@ class Centre extends CI_Controller
     }
 
     $data = array(
-      "num" => $num
+      "home" => $num
     );
     $this->session->set_userdata($data);
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
-      $data ['query'] = "1";
-      $data ['about'] = $this->centre_model->getabout1();
+
+    $about = $this->session->userdata('home');
+		switch($about)
+		{
+			case "1" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
+      $data ['about'] = $this->centre_model->getabout();
       $data ['footer'] = $this->page_model->getfooter();
-      $data ['news_h'] = $this->centre_model->getnews1_h();
-      $data ['news'] = $this->centre_model->getnews1();
-      $data ['news_list'] = $this->centre_model->getnews1_list();
-      $data ['product'] = $this->centre_model->getproduct1();
-      $data ['donate'] = $this->centre_model->getdonate1();
-      $page1 = array(
-        "head" => $data['head'],
-        "query" => $data['query'],
+      $data ['news_h'] = $this->centre_model->getnews_h();
+      $data ['news'] = $this->centre_model->getnews();
+      $data ['news_list'] = $this->centre_model->getnews_list();
+      $data ['product'] = $this->centre_model->getproduct();
+      $data ['donate'] = $this->centre_model->getdonate();
+      $page = array(
         "about" => $data['about'],
         "news_h" => $data['news_h'],
         "news" => $data['news'],
@@ -62,144 +90,44 @@ class Centre extends CI_Controller
         "product" => $data['product'],
         "donate" => $data['donate'],
       );
-      $this->session->set_userdata($page1);
+      $this->session->set_userdata($page);
     $this->load->view('templates/header');
     $this->load->view('home/centre/head_centre', $data);
     $this->load->view('home/centre/about', $data);
     $this->load->view('templates/footer', $data);
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-      $data ['query'] = "2";
-      $data ['about'] = $this->centre_model->getabout2();
-      $data ['footer'] = $this->page_model->getfooter();
-      $data ['news_h'] = $this->centre_model->getnews2_h();
-      $data ['news'] = $this->centre_model->getnews2();
-      $data ['news_list'] = $this->centre_model->getnews2_list();
-      $data ['product'] = $this->centre_model->getproduct2();
-      $data ['donate'] = $this->centre_model->getdonate2();
-      $page2 = array(
-        "head" => $data['head'],
-        "query" => $data['query'],
-        "about" => $data['about'],
-        "news_h" => $data['news_h'],
-        "news" => $data['news'],
-        "news_list" => $data['news_list'],
-        "product" => $data['product'],
-        "donate" => $data['donate'],
-      );
-      $this->session->set_userdata($page2);
-      $this->load->view('templates/header');
-      $this->load->view('home/centre/head_centre', $data);
-      $this->load->view('home/centre/about', $data);
-      $this->load->view('templates/footer', $data);
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-      $data ['query'] = "3";
-      $data ['about'] = $this->centre_model->getabout3();
-      $data ['footer'] = $this->page_model->getfooter();
-      $data ['news_h'] = $this->centre_model->getnews3_h();
-      $data ['news'] = $this->centre_model->getnews3();
-      $data ['news_list'] = $this->centre_model->getnews3_list();
-      $data ['product'] = $this->centre_model->getproduct3();
-      $data ['donate'] = $this->centre_model->getdonate3();
-      $page3 = array(
-        "head" => $data['head'],
-        "query" => $data['query'],
-        "about" => $data['about'],
-        "news_h" => $data['news_h'],
-        "news" => $data['news'],
-        "news_list" => $data['news_list'],
-        "product" => $data['product'],
-        "donate" => $data['donate'],
-      );
-      $this->session->set_userdata($page3);
-      $this->load->view('templates/header');
-      $this->load->view('home/centre/head_centre', $data);
-      $this->load->view('home/centre/about', $data);
-      $this->load->view('templates/footer', $data);
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-      $data ['query'] = "4";
-      $data ['about'] = $this->centre_model->getabout4();
-      $data ['footer'] = $this->page_model->getfooter();
-      $data ['news_h'] = $this->centre_model->getnews4_h();
-      $data ['news'] = $this->centre_model->getnews4();
-      $data ['news_list'] = $this->centre_model->getnews4_list();
-      $data ['product'] = $this->centre_model->getproduct4();
-      $data ['donate'] = $this->centre_model->getdonate4();
-      $page4 = array(
-        "head" => $data['head'],
-        "query" => $data['query'],
-        "about" => $data['about'],
-        "news_h" => $data['news_h'],
-        "news" => $data['news'],
-        "news_list" => $data['news_list'],
-        "product" => $data['product'],
-        "donate" => $data['donate'],
-      );
-      $this->session->set_userdata($page4);
-      $this->load->view('templates/header');
-      $this->load->view('home/centre/head_centre', $data);
-      $this->load->view('home/centre/about', $data);
-      $this->load->view('templates/footer', $data);
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
-      $data ['query'] = "5";
-      $data ['about'] = $this->centre_model->getabout5();
-      $data ['footer'] = $this->page_model->getfooter();
-      $data ['news_h'] = $this->centre_model->getnews5_h();
-      $data ['news'] = $this->centre_model->getnews5();
-      $data ['news_list'] = $this->centre_model->getnews5_list();
-      $data ['product'] = $this->centre_model->getproduct5();
-      $data ['donate'] = $this->centre_model->getdonate5();
-      $page5 = array(
-        "head" => $data['head'],
-        "query" => $data['query'],
-        "about" => $data['about'],
-        "news_h" => $data['news_h'],
-        "news" => $data['news'],
-        "news_list" => $data['news_list'],
-        "product" => $data['product'],
-        "donate" => $data['donate'],
-      );
-      $this->session->set_userdata($page5);
-      $this->load->view('templates/header');
-      $this->load->view('home/centre/head_centre', $data);
-      $this->load->view('home/centre/about', $data);
-      $this->load->view('templates/footer', $data);
-    }
   }
 
   public function about_show()
   {
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
-    }
+    $about = $this->session->userdata('home');
+		switch($about)
+		{
+			case "1" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
     $data ['footer'] = $this->page_model->getfooter();
 
     $this->load->view('templates/header');
@@ -210,26 +138,35 @@ class Centre extends CI_Controller
 
   public function news()
   {
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "ข่าวสาร - โรงเรียนสอนคนตาบอดกรุงเทพ";
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "ข่าวสาร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "ข่าวสาร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "ข่าวสาร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "ข่าวสาร - ศูนย์พัฒนาอาชีพคนตาบอด";
-    }
+    $news = $this->session->userdata('home');
+		switch($news)
+		{
+			case "1" :
+			{
+				$data ['head'] = "ข่าวสาร - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "ข่าวสาร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "ข่าวสาร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "ข่าวสาร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "ข่าวสาร - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
     $data ['footer'] = $this->page_model->getfooter();
 
     $this->load->view('templates/header');
@@ -240,26 +177,35 @@ class Centre extends CI_Controller
 
   public function product()
   {
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "ผลิตภัณฑ์และบริการ - โรงเรียนสอนคนตาบอดกรุงเทพ";
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาอาชีพคนตาบอด";
-    }
+    $product = $this->session->userdata('home');
+		switch($product)
+		{
+			case "1" :
+			{
+				$data ['head'] = "ผลิตภัณฑ์และบริการ - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
     $id = $this->session->userdata('num');
     $data['service'] = $this->centre_model->getservice($id);
     $data ['footer'] = $this->page_model->getfooter();
@@ -272,26 +218,35 @@ class Centre extends CI_Controller
 
   public function donate()
   {
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "บริจาคและอาสาสมัคร - โรงเรียนสอนคนตาบอดกรุงเทพ";
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาอาชีพคนตาบอด";
-    }
+    $donate = $this->session->userdata('home');
+		switch($donate)
+		{
+			case "1" :
+			{
+				$data ['head'] = "บริจาคและอาสาสมัคร - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
 
     $data ['footer'] = $this->page_model->getfooter();
 
@@ -303,27 +258,36 @@ class Centre extends CI_Controller
 
   public function contact()
   {
-    if($this->session->userdata('num')=="1")
-    {
-      $data ['head'] = "ติดต่อเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
-    }
-    if($this->session->userdata('num')=="2")
-    {
-      $data ['head'] = "ติดต่อเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-    }
-    if($this->session->userdata('num')=="3")
-    {
-      $data ['head'] = "ติดต่อเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-    }
-    if($this->session->userdata('num')=="4")
-    {
-      $data ['head'] = "ติดต่อเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-    }
-    if($this->session->userdata('num')=="5")
-    {
-      $data ['head'] = "ติดต่อเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
-    }
-    $id = $this->session->userdata('num');
+    $contact = $this->session->userdata('home');
+		switch($contact)
+		{
+			case "1" :
+			{
+				$data ['head'] = "ติดต่อเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
+				break;
+			}
+			case "2" :
+			{
+				$data ['head'] = "ติดต่อเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
+				break;
+			}
+			case "3" :
+			{
+				$data ['head'] = "ติดต่อเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
+				break;
+			}
+			case "4" :
+			{
+				$data ['head'] = "ติดต่อเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
+				break;
+			}
+			case "5" :
+			{
+				$data ['head'] = "ติดต่อเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
+				break;
+			}
+		}
+    $id = $this->session->userdata('home');
     $data['contact'] = $this->centre_model->getcontact($id);
     $data ['footer'] = $this->page_model->getfooter();
 

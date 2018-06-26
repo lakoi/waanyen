@@ -25,9 +25,25 @@ class Pages extends CI_Controller
 		$data ['join'] = $this->page_model->getjoin();
 		$data ['footer'] = $this->page_model->getfooter();
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('home/index', $data);
-    $this->load->view('templates/footer', $data);
+	if($this->session->userdata('lang')==NULL){
+		$lang = "thai";
+		$this->session->set_userdata('lang',$lang);
+	}else{
+		$lang = $this->session->userdata('lang');
+	}
+
+	$this->lang->load($lang,$lang);
+	$this->load->view('templates/header', $data);
+	$this->load->view('home/index', $data);
+	$this->load->view('templates/footer', $data);
+}
+
+	public function changeLang()
+	{
+		$lang = $this->input->post('id');
+
+		$this->session->set_userdata('lang',$lang);
+		return true;
 	}
 
 

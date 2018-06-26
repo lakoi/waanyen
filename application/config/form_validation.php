@@ -1,3 +1,3 @@
 <?php
-$config['error_prefix'] = '<div class="alert alert-light text-danger bg-light border-light" role="alert">';
-$config['error_suffix'] = '</div>';
+$config['error_prefix'] = '<p class="alert text-danger" style="padding:0px;" role="alert">';
+$config['error_suffix'] = '</p>';

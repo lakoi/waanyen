@@ -11,27 +11,21 @@ class Register_model extends CI_Model
           $this->load->library('form_validation');
   }
 
-			public  function create_register()
+			public  function create_register($data)
 	{
 					$query = $this->db->query(" select * from member where Email = '".$this->input->post('Email')."'");
-
-
 					if ($query->num_rows()>0)
 					{
-							$this->load->view('login/unsuccess');
+						return false;
 					}
 					else
 					{
-							$this->load->view('login/success');
+						if($this->db->insert('member', $data))
+						{
+							return true;
+						}
 
-							$data = array(
-							'Email' => $this->input->post('Email'),
-							'Password' => md5($this->input->post('Password')),
-							'Name' => $this->input->post('Name'),
-							'Status' => $this->input->post('Status')
-							);
 
-							return $this->db->insert('member', $data);
 					}
 	}
 }

@@ -8,7 +8,7 @@
             <hr style="margin:0px; border:1px solid black;">
             <div class="col-md-8" style="margin:30px 0px 30px 0px;">
               <div style="width:100%; height:400px;">
-                <img src=""  class="w-100 h-100">
+                <img src="" alt="" title="" class="w-100 h-100">
               </div>
             </div>
           </div>

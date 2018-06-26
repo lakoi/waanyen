@@ -7,7 +7,7 @@
             <div><a id="<?php echo $r->id_centre_donate;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_centre_donate;?>);">Edit donate</a></div>
           </div>
           <div>
-            <?php echo $r->centre_donate_code;?>
+            <?php echo $r->centre_donate_thai;?>
           </div>
         <?php };?>
       <?php endif;?>
@@ -28,7 +28,7 @@
         <div class="modal-body">
           <div class="row" style="padding:0px 15px 0px 15px;">
             <input type="hidden" id="id_centre_donate" name="id_centre_donate">
-            <textarea type="text" class="form-control" id="centre_donate_code" name="centre_donate_code" rows="50"></textarea>
+            <textarea type="text" class="form-control" id="centre_donate_thai" name="centre_donate_thai" rows="50"></textarea>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -52,7 +52,7 @@ function action(x)
             success: function(data)
             {
               console.log(data);
-              $('[name="centre_donate_code"]').html(data[0].centre_donate_code);
+              $('[name="centre_donate_thai"]').html(data[0].centre_donate_thai);
               $('[name="id_centre_donate"]').val(data[0].id_centre_donate);
             },
             error: function()

@@ -12,6 +12,7 @@ class Admins_model extends CI_Model
 
   public function admin_model()
   {
+      // $this->db->not_like('Status', 'HIGH_ADMIN');
       $query = $this->db->get('member');
       return $query->result();
   }

@@ -51,8 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['login/edit_popup'] = 'Lists/test/$1';
 $route['login/login'] = 'login/index/$1';
-$route['login/register'] = 'Register/create/$1';
-$route['register'] = 'Register/create/$1';
+// $route['login/register'] = 'Register/create/$1';
+// $route['register'] = 'Register/create/$1';
 
 $route['login/add_domain'] = 'Lists/add_do/$1';
 $route['login/search_domain'] = 'Lists/search_do/$1';
@@ -65,29 +65,16 @@ $route['login/edit_status_admin/(:num)'] = 'Admins/edit_status_ad/$1';
 $route['login/change_name'] = 'Profiles/change_name/$1';
 $route['login/change_password'] = 'Profiles/change_pass/$1';
 
-$route['login/add_education'] = 'Lists/add_edu/$1';
-$route['login/edit_education/(:num)'] = 'Lists/edit_edu/$1';
-
-
-$route['login/add_interest'] = 'Lists/add_int/$1';
-$route['login/edit_interest/(:num)'] = 'Lists/edit_int/$1';
-
-
-$route['login/add_job'] = 'Lists/add_j/$1';
-$route['login/edit_job/(:num)'] = 'Lists/edit_j/$1';
-
-
 $route['login/popup'] = 'Lists/save_popup/$1';
 $route['Lists/save_edit_popup'] = 'Lists/save_edit_popup/$1';
+$route['login'] = 'login/login/$1';
 // $route['login/showAllEmployee'] = 'Lists/showAllEmployee/$1';
 
 // $route['login/edit_pop/(:num)'] = 'Lists/edit_pop/$1';
 
 $route['login/home'] = 'login/enter/$1';
+
 $route['login/profile'] = 'Profiles/index/$1';
-$route['login/education'] = 'Lists/edu/$1';
-$route['login/interest'] = 'Lists/int/$1';
-$route['login/job'] = 'Lists/j/$1';
 $route['login/popup'] = 'Lists/popup/$1';
 $route['login/domain'] = 'Lists/domain/$1';
 

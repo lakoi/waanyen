@@ -12,7 +12,7 @@
             <div class="col-md-4" style="margin:30px 0px 0px 0px; ">
               <div class="border" style="width:330px; height:420px;">
                 <div style="height:250px; ">
-                  <img src="<?php echo base_url().'img/'.$r->centre_pto;?>" class="w-100 h-100" >
+                  <img src="<?php echo base_url().'img/'.$r->centre_pto;?>" alt="<?php echo $r->centre_title;?>" title="" class="w-100 h-100" >
                 </div>
                 <div class="text-center" style="padding:15px 10px 0px 10px;">
                   <p style="font-size:18px;"><?php echo $r->centre_title;?></p>

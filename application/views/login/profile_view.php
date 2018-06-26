@@ -8,7 +8,8 @@
           <input type="hidden" name="UserID" value="<?php echo $query[0]->UserID ;?>"></input>
             <tr>
               <th><label>Email</label></th>
-              <td><span><?php echo $this->session->userdata('Email'); ?></span></td><td></td>
+              <td><span><?php echo $this->session->userdata('Email'); ?></span></td>
+              <td><?php echo $this->session->userdata('Status'); ?></td>
             </tr>
             <tr>
               <th><label> Password</label></th>

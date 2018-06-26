@@ -17,7 +17,7 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div style="">
-                      <img src="<?php echo base_url(). "img/".$r->centre_news_pto;?>" class="w-100 h-100">
+                      <img src="<?php echo base_url(). "img/".$r->centre_news_pto;?>" alt="<?php echo $r->centre_news_title;?>" title="" class="w-100 h-100">
                     </div>
                   </div>
                   <div class="col-md-9">

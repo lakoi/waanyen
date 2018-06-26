@@ -16,7 +16,7 @@
           <input type="hidden" id="id_about" name="id_about" value="<?php echo $r->id_about;?>"/>
           <input type="hidden" id="oldabout_pto" name="oldabout_pto" value="<?php echo $r->about_pto;?>"/>
           <input type="file" id="showabout_pto" name="showabout_pto" style="display:none;" onchange="showabout1(this);"/>
-          <img src="<?php echo base_url().'img/'.$r->about_pto;?>" class="btn-upload border" width="250" id="about_pto" name="about_pto"/>
+          <img src="<?php echo base_url().'img/'.$r->about_pto;?>" alt="<?php echo $r->about_title;?>" title="" class="btn-upload border" width="250" id="about_pto" name="about_pto"/>
         </div>
       </div>
       <div class="text-center">
@@ -65,14 +65,6 @@ function showabout1(input)
               success: function(data)
               {
                 alert('save success.');
-                // $('#id_about').val('');
-                // $('#about_head').val('');
-                // $('#about_title').val('');
-                // $('#about_content').val('');
-                // $('#about_time').val('');
-                // $('#about_pto1').attr('src','');
-                // $('#oldabout_pto').val('');
-                // getabout();
                 location.reload();
               },
               error: function()

@@ -20,7 +20,7 @@
               </div>
               <div class="col-md-4" >
                 <div class="border" style="height:250px;">
-                  <img src="<?php echo base_url(). "img/".$r->centre_about_pto;?>" class="w-100 h-100">
+                  <img src="<?php echo base_url(). "img/".$r->centre_about_pto;?>" alt="<?php echo $r->centre_about_title;?>" title="" class="w-100 h-100">
                 </div>
               </div>
             </div>
@@ -33,7 +33,7 @@
           <div class="col-sm-3">
             <br>
             <div style="background-image: url('<?php echo base_url(). 'img/images/news/head-news.png';?>'); background-size: 100% 100%; padding: 10px; color: white;">
-              <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" style="padding-bottom:3px;"/>ข่าวสารต่างๆ
+              <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" alt="ข่าวสารต่างๆ" title="" style="padding-bottom:3px;"/>ข่าวสารต่างๆ
             </div>
           </div>
           <div class="col-sm-9 text-right" style="margin:30px 0px 20px 0px;">
@@ -57,7 +57,7 @@
               <div class="text-center" style="position:absolute; margin-left:10px; padding-top:5px; width:60px; height:90px; background-color:rgba(34,126,168,0.95);">
                 <p class="date-news" style="color:white;"><?php echo "<span style='font-size:24px; line-height: 1.2; '>".$d."<br> ".$m."</span><br> ".$y;?></p>
               </div>
-              <img class="w-100" src="<?php echo base_url(). 'img/'.$r->centre_news_pto;?>"/>
+              <img class="w-100" src="<?php echo base_url(). 'img/'.$r->centre_news_pto;?>" alt="<?php echo $r->centre_news_title;?>" title=""/>
 
             </div>
             <p class="about-title"><?php echo $r->centre_news_title;?></p>
@@ -89,7 +89,7 @@
                 <div class="col-md-12" style="padding: 10px;">
                   <div class="row">
                     <div class="col-sm-4" style="padding-right: 10px;">
-                      <img src="<?php echo base_url(). 'img/'.$r->centre_news_pto;?>" width="130" height="130" >
+                      <img src="<?php echo base_url(). 'img/'.$r->centre_news_pto;?>" alt="<?php echo $r->centre_news_title;?>" title="" width="130" height="130" >
                     </div>
                     <div class="col-sm-8" style="word-wrap:break-word; width: 100%;">
                       <div style="font-weight:bold; font-size:1.1em; white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;">
@@ -122,7 +122,7 @@
           <div class="col-sm-3">
             <br>
             <div style="background-image: url('<?php echo base_url(). 'img/images/news/head-news.png';?>'); background-size: 100% 100%; padding: 10px; color: white;">
-              <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" style="padding-bottom:3px;"/>ผลิตภัณฑ์
+              <img src="<?php echo base_url(). 'img/images/news/icon-news.png';?>" alt="ผลิตภัณฑ์" title="" style="padding-bottom:3px;"/>ผลิตภัณฑ์
             </div>
           </div>
           <div class="col-sm-9 text-right" style="margin:30px 0px 20px 0px;">
@@ -156,7 +156,7 @@
                     <div class=" col-md-3 col-sm-6 col-xs-12 " style="margin-top:10px;">
                       <div class="bg-white card-product" style="width: ; height: 420px; ">
                         <a href="#">
-                          <img class="card-img-top" src="<?php echo base_url(). 'img/'.$arr->centre_product_pto;?>" height="230">
+                          <img class="card-img-top" src="<?php echo base_url(). 'img/'.$arr->centre_product_pto;?>" alt="<?php echo $arr->centre_product_name;?>" title="" height="230">
                         </a>
                         <div class="card-body">
                           <div style="font-weight:bold; white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;">

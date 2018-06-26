@@ -22,25 +22,25 @@ class Admins extends CI_Controller
       $this->load->view('templates/back_footer');
   }
 
-  public function edit_name_ad()
-  {
-      $this->login_model->checker();
-      $UserID = $this->uri->segment('3');
-      $data['query'] = $this->admins_model->edit_name_ad_model($UserID);
-      $this->load->view('templates/back_header');
-      $this->load->view('login/edit_name_admin', $data);
-      $this->load->view('templates/back_footer');
-  }
-
-  public function save_edit_name_ad()
-  {
-      $data = array(
-      'Name' => $this->input->post('Name')
-      );
-      $UserID = $this->input->post('UserID');
-      $this->admins_model->save_edit_name_ad_model($data,$UserID);
-      $this->admin();
-  }
+  // public function edit_name_ad()
+  // {
+  //     $this->login_model->checker();
+  //     $UserID = $this->uri->segment('3');
+  //     $data['query'] = $this->admins_model->edit_name_ad_model($UserID);
+  //     $this->load->view('templates/back_header');
+  //     $this->load->view('login/edit_name_admin', $data);
+  //     $this->load->view('templates/back_footer');
+  // }
+  //
+  // public function save_edit_name_ad()
+  // {
+  //     $data = array(
+  //     'Name' => $this->input->post('Name')
+  //     );
+  //     $UserID = $this->input->post('UserID');
+  //     $this->admins_model->save_edit_name_ad_model($data,$UserID);
+  //     $this->admin();
+  // }
 
   public function edit_status_ad()
   {

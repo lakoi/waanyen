@@ -7,7 +7,7 @@
     <div class="col-sm-6">
       <input type="hidden" name="oldfooter_pto" id="oldfooter_pto" value="<?php echo $r->footer_pto;?>"/>
       <input type="file" id="newfooter_pto" name="newfooter_pto" style="display: none;" onchange="showphoto(this);"/>
-      <img name="footer_pto" id="footer_pto" src="<?php echo base_url(). 'img/'.$r->footer_pto;?>" wigth="150" height="150" style="padding: 10px;" /><br>
+      <img name="footer_pto" id="footer_pto" src="<?php echo base_url(). 'img/'.$r->footer_pto;?>" alt="<?php echo $r->footer_title;?>" title="" wigth="150" height="150" style="padding: 10px;" /><br>
       <input type="hidden" name="id_footer" id="id_footer" value="<?php echo $r->id_footer;?>"/>
       <button class="btn btn-primary" type="button" id="add_photo" >add  photo</button>
       <br>

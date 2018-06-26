@@ -1,6 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
+      <?php if($this->session->userdata('b_service')!=""):?>
+        <?php foreach ($this->session->userdata('b_service') as $r) {?>
+          <form method="post" name="service_form" id="service_form">
+            <div class="row" style="margin:15px 0px 15px 0px; padding:0px;">
+              <div class="col-sm-10">
+                <input type="hidden" name="id_centre_product_service" value="<?php echo $r->id_centre_product_service;?>">
+                <input type="text" class="form-control" name="centre_product_service_text" value="<?php echo $r->centre_product_service_text;?>">
+              </div>
+              <div>
+                <input type="submit" class="btn btn-warning" value="edit service"/>
+              </div>
+            </div>
+          </form>
+        <?php };?>
+      <?php endif;?>
       <?php if($this->session->userdata('b_product')!=""):?>
         <div><button id="add" type="button" class="btn btn-primary" onclick="action('upload');">Add product</button></div>
       <table class="table">
@@ -17,7 +32,7 @@
         <tbody>
         <?php foreach ($this->session->userdata('b_product') as $r) {?>
           <tr>
-            <td><img src="<?php echo base_url(). 'img/'.$r->centre_product_pto;?>" height="100"></td>
+            <td><img src="<?php echo base_url(). 'img/'.$r->centre_product_pto;?>" alt="<?php echo $r->centre_product_name;?>" title="" height="100"></td>
             <td><?php echo $r->centre_product_name;?></td>
             <td><?php echo $r->centre_product_price;?></td>
             <td><div class="asd"><?php echo $r->centre_product_from;?></div></td>
@@ -48,7 +63,7 @@
           <div class="col-sm-6">
             <input type="hidden" id="oldcentre_product_pto" name="oldcentre_product_pto"/>
             <input type="file" id="newcentre_product_pto" name="newcentre_product_pto" style="display:none;" onchange="newpd(this);"/>
-            <img name="centre_product_pto" id="centre_product_pto" src width="330" height="270"/>
+            <img name="centre_product_pto" id="centre_product_pto" alt="" src width="330" height="270"/>
             <input type="hidden" id="id_centre_product" name="id_centre_product"/>
             <input type="hidden" name="action" id="action" value="upload"/>
           </div>
@@ -195,6 +210,31 @@ $(document).ready(function(e)
     $.ajax({
             method: 'POST',
             url: "<?php echo base_url(). 'Backs_centre/save_product';?>",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+              alert('save success')
+              location.reload();
+            },
+            error: function(request, status, error)
+            {
+               alert(request.responseText);
+              alert('not save product');
+            }
+          });
+        }
+  });
+
+  $('#service_form').on('submit',function(e)
+  {
+    e.preventDefault();
+    if(confirm("Are you sure update data?"))
+    {
+    $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url(). 'Backs_centre/save_service';?>",
             data: new FormData(this),
             contentType: false,
             processData: false,

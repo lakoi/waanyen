@@ -1,12 +1,6 @@
 <html>
   <body>
 <style>
-    .fa
-    {
-      position: fixed;
-      top: 0;
-      z-index: 2;
-    }
     .dropbtn {
     background-color: #f8f9fa;
     color: white;
@@ -15,7 +9,7 @@
     border: none;
     }
 
-    .dropdown {
+    /* .dropdown {
     position: relative;
     display: inline-block;
     }
@@ -25,16 +19,10 @@
     position: absolute;
     background-color: #f8f9fa;
     min-width: 160px;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
     }
 
-    .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
+
 
     .dropdown-content a:hover {background-color: #f8f9fa; color: #007bff;}
 
@@ -44,8 +32,14 @@
 
     .dropdown:hover .dropbtn {
     background-color: #f8f9fa;
+    } */
+    .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     }
-  .xxx
+  .btn
   {
       border: none;
       color: white;
@@ -57,24 +51,25 @@
   .primary:hover {background-color: #f8f9fa; color: #007bff;}
 </style>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="dropdown offset-10">
-      <div class="fa" style="position:relative; float:right;">
-        <button style="float:right;" type="button" href="<?php echo base_url(). 'login/profile';?>" class="xxx primary btn-lg dropbtn dropdown-toggle">
-          <?php echo $this->session->userdata('Email'); ?>
-        </button>
-        </div>
-        <div class="dropdown-content">
-        <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
-        <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
-        <a class="dropdown-item" href="<?php echo base_url(). 'login/admin';?>">จัดการผู้ใช้</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
+    <div class="col-sm-12 text-right">
+      <div class="dropdown">
+          <button type="button" class="btn primary btn-lg dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo $this->session->userdata('Email'); ?>
+          </button>
+
+        <div class="dropdown-menu dropdown-menu-right text-right">
+          <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
+          <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
+          <a class="dropdown-item" href="<?php echo base_url(). 'login/admin';?>">จัดการผู้ใช้</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 </body>
 </html>

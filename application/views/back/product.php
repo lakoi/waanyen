@@ -17,7 +17,7 @@
       <?php foreach ($product as $r)
       {?>
         <tr>
-          <td><img src="<?php echo base_url(). 'img/'.$r->pd_pto;?>" width="200" height="120"></td>
+          <td><img src="<?php echo base_url(). 'img/'.$r->pd_pto;?>" alt="<?php echo $r->pd_name;?>" title="" width="200" height="120"></td>
           <td><?php echo $r->pd_name;?></td>
           <td><?php echo $r->pd_price;?></td>
           <td><div class="asd"><?php echo $r->pd_from;?></div></td>
@@ -47,7 +47,7 @@
           <div class="col-sm-6">
             <input type="hidden" id="oldpd_pto" name="oldpd_pto"/>
             <input type="file" id="newpd_pto" name="newpd_pto" style="display:none;" onchange="newpd(this);"/>
-            <img name="pd_pto" id="pd_pto" src width="330" height="270"/>
+            <img name="pd_pto" id="pd_pto" alt="" src width="330" height="270"/>
             <input type="hidden" id="id_product" name="id_product"/>
             <input type="hidden" name="action" id="action" value="upload"/>
           </div>

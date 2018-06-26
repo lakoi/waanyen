@@ -24,8 +24,9 @@ function action(x)
               $('[name="id_centre_about"]').val(data[0].id_centre_about);
               $('[name="oldcentre_about_pto"]').val(data[0].centre_about_pto);
             },
-            error: function()
+            error: function(request, status, error)
             {
+                 alert(request.responseText);
               alert('click error');
             }
           });
@@ -88,7 +89,7 @@ function action(x)
 </script>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding:0px;">
       <?php if($this->session->userdata('b_about')!=""):?>
         <table class="table">
           <thead>
@@ -102,7 +103,7 @@ function action(x)
         <tbody>
           <?php foreach ($this->session->userdata('b_about') as $r) {?>
             <tr>
-              <td><img src="<?php echo base_url(). "img/".$r->centre_about_pto;?>" height="100"/></td>
+              <td><img src="<?php echo base_url(). "img/".$r->centre_about_pto;?>" alt="" height="100"/></td>
               <td><?php echo $r->centre_about_title;?></td>
               <td><input type="text" class="form-control-plaintext" value="<?php echo $r->centre_about_code;?>" readonly /></td>
               <td class="text-center"><a id="<?php echo $r->id_centre_about;?>" class="btn btn-success edit" onclick="javascript:action(<?php echo $r->id_centre_about;?>);">Edit</a>
@@ -143,7 +144,7 @@ function action(x)
             <div class="col-sm-5">
               <input type="hidden" id="oldcentre_about_pto" name="oldcentre_about_pto"/>
               <input type="file" id="newcentre_about_pto" name="newcentre_about_pto" style="display:none;" onchange="newabout(this);"/>
-              <img name="centre_about_pto" id="centre_about_pto" src class="w-100"/>
+              <img name="centre_about_pto" id="centre_about_pto" alt="" src class="w-100"/>
               <input type="hidden" id="id_centre_about" name="id_centre_about"/>
               <input type="hidden" name="action" id="action" value="upload"/>
             </div>

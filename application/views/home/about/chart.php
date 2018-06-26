@@ -5,7 +5,7 @@
         แผนผังของคณะกรรมการมูลนิธิช่วยคนตาบอดแห่งประเทศไทย ในพระบรมราชินูปถัมภ์
       </div>
       <div class="text-center">
-        <img src="" height="600" width="700">
+        <img src="" alt="" height="600" width="700">
       </div>
     </div>
   </div>

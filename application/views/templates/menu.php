@@ -1,9 +1,4 @@
     <style>
-    .fa
-    {
-      position: fixed;
-      z-index: 2;
-    }
     .dropbtn {
     background-color: #f8f9fa;
     color: white;
@@ -12,35 +7,35 @@
     border: none;
     }
 
-    .dropdown {
+    /* .dropdown {
     position: relative;
     display: inline-block;
     }
 
-    .dropdown-content {
+    .dropdown-menu {
     display: none;
     position: absolute;
     background-color: #f8f9fa;
     min-width: 160px;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
     }
 
-    .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
 
-    .dropdown-content a:hover {background-color: #f8f9fa; color: #007bff;}
 
-    .dropdown:hover .dropdown-content {
+    .dropdown-menu a:hover {background-color: #f8f9fa; color: #007bff;}
+
+    .dropdown:hover .dropdown-menu {
     display: block;
     }
 
     .dropdown:hover .dropbtn {
     background-color: #f8f9fa;
+    } */
+    .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     }
   .btn
   {
@@ -53,16 +48,21 @@
   .primary {background-color: #f8f9fa; color: #000;}
   .primary:hover {background-color: #f8f9fa; color: #007bff;}
     </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-right">
+          <div class="dropdown">
+            <button type="button" class="btn primary btn-lg dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php echo $this->session->userdata('Email'); ?>
+            </button>
 
-    <div class="dropdown col-sm-3 offset-10">
-      <div class="fa">
-    <button type="button" class="btn primary btn-lg dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('Email'); ?></button>
-
-    <div class="dropdown-content">
-    <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
-    <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
-    </div>
-    </div>
+            <div class="dropdown-menu dropdown-menu-right text-right">
+              <a class="dropdown-item" href="<?php echo base_url().'login/home';?>">Home</a>
+              <a class="dropdown-item" href="<?php echo base_url(). 'login/profile';?>">Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo base_url().'login/logout';?>">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>

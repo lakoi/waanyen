@@ -11,7 +11,6 @@
           <th>title</th>
           <th>post by</th>
           <th>content</th>
-          <th>text button</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -20,11 +19,10 @@
       <?php foreach ($news as $r)
       {?>
         <tr>
-          <td><img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" width="200" height="120"></td>
+          <td><img src="<?php echo base_url(). 'img/'.$r->news_pto;?>" alt="<?php echo nl2br($r->news_title);?>"  title="" width="200" height="120"></td>
           <td><div class="asd"><?php echo nl2br($r->news_title);?></div></td>
           <td><?php echo $r->news_post;?></td>
           <td><div class="asd"><?php echo $r->news_content;?></div></td>
-          <td><?php echo $r->news_bt;?></td>
           <td class="text-center"><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_news;?>)">Edit</a>
           <div>แก้ไขล่าสุด เมื่อ<br><span><?php echo date('d/m/Y',strtotime($r->news_time));?><span></div></td>
           <td><a id="<?php echo $r->id_news;?>" style="color: white;" class="btn btn-danger delete" >Delete</a></td>
@@ -51,7 +49,7 @@
             <div class="col-sm-6">
               <input type="hidden" id="oldnews_pto" name="oldnews_pto"/>
               <input type="file" id="newnews_pto" name="newnews_pto" style="display:none;" onchange="newnews(this);"/>
-              <img name="news_pto" id="news_pto" src width="330"/>
+              <img name="news_pto" id="news_pto" alt="" src width="330"/>
               <input type="hidden" id="id_news" name="id_news"/>
               <input type="hidden" name="action" id="action" value="upload"/>
             </div>

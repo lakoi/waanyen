@@ -1,8 +1,65 @@
   <div class="container">
-    <div class="col-sm-12 text-right">
-      <button id="add" type="button" class="btn btn-primary" onclick="action('upload');">add slide</button>
+    <!-- <div class="col-sm-12 text-right">
+      <?php if(isset($slide)):?>
+      <div class="border col-sm-12" style="height:500px; padding:0px;">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="position:relative; height:500px; margin-bottom:15px;">
+          <div class="carousel-inner">
+            <?php foreach ($slide as $r) {?>
+              <?php if($r->id_slide == "1")
+              {
+                echo "<div class='carousel-item active'>";
+              }
+              else
+              {
+                echo "<div class='carousel-item'>";
+              };?>
+              <img class="d-block w-100 h-100" src="<?php echo base_url(). "img/".$r->slide_pto;?>" alt="slide" title="">
+              <div class="col-sm-12" style="display:table; height:500px; position:absolute; width:100%; margin: auto; padding:0px; z-index:9; top:0%;">
+                <div class="text-center" style="color:white; width:100%; margin: auto; position:absolute; z-index:8; top:40%;">
+                  <div>
+                    <?php echo $r->slide_title;?>
+                  </div>
+                  <div>
+                    <?php echo $r->slide_content;?>
+                  </div>
+                </div>
+                <div style="margin: auto; text-align:center; display:table-cell; position:absolute;  z-index:18; height:100%; width:100%; vertical-align:middle; background-color:rgba(0,0,0,0.6);">
+                  <a class="btn btn-outline edit" id="<?php echo $r->id_slide;?>" onclick="action(<?php echo $r->id_slide;?>)" style="font-size:82px; color:white;">[ Edit ]</a>
+                  <a style="font-size:82px;">_</a>
+                  <a id="<?php echo $r->id_slide;?>" style=" font-size:82px; color:white;" class="btn btn-outline delete">[ Delete ]</a>
+                </div>
+              </div>
+            </div>
+          <?php };?>
+        <div class="carousel-item">
+        <img class="d-block h-100" src="<?php echo base_url(). "img/show_photo.png";?>" alt="" style="margin:auto;" alt="First slide">
+        <div class="col-sm-12" style="display:table; height:500px; position:absolute; color:white; width:100%; margin: auto; padding:0px; z-index:9; top:0%;">
+          <div style="margin: auto; text-align:center; display:table-cell; position:absolute;  z-index:18; height:100%; width:100%; vertical-align:middle; background-color:rgba(0,0,0,0.6);">
+            <a class="btn btn-outline" id="add" onclick="action('upload')" style="font-size:82px; ">[ Add ]</a>
+          </div>
+        </div>
+      </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+          <?php endif;?>
     </div>
+  </div> -->
+
     <?php if(isset($slide)):?>
+      <div class="col-sm-12">
+        <div >
+          <button class="btn btn-primary" id="add" onclick="action('upload')" >Add slide</button>
+        </div>
+      </div>
       <table class="table">
         <thead>
           <th>photo</th>
@@ -14,7 +71,7 @@
         <tbody>
           <?php foreach ($slide as $r) {?>
             <tr class="text-center">
-              <td><img class="d-block" src="<?php echo base_url(). 'img/'.$r->slide_pto;?>" width="160" height="80"></td>
+              <td><img class="d-block" src="<?php echo base_url(). 'img/'.$r->slide_pto;?>" alt="" width="160" height="80"></td>
               <td style="width:400px;"><?php echo $r->slide_title;?></td>
               <td style="width:380px;"><?php echo $r->slide_content;?></td>
               <td class="text-center"><a id="<?php echo $r->id_slide;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_slide;?>)">Edit</a>
@@ -41,7 +98,7 @@
               <div class="col-sm-12">
                 <input type="hidden" id="oldslide_pto" name="oldslide_pto"/>
                 <input type="file" id="newslide_pto" name="newslide_pto" style="display:none;" onchange="newslide(this);"/>
-                <img name="slide_pto" id="slide_pto" src class="w-100"/>
+                <img name="slide_pto" id="slide_pto" alt="" src class="w-100"/>
                 <input type="hidden" id="id_slide" name="id_slide"/>
                 <input type="hidden" name="action" id="action" value="upload"/>
                 <div style="margin:10px 0px 10px 0px;">
@@ -72,7 +129,7 @@
   {
     if(x == 'upload')
     {
-      $("[name='slide_pto']").attr('src','<?php echo base_url(). 'img/show_photo.png';?>');
+      $("[name='slide_pto']").hide();
       $("[name='slide_title']").val('');
       $("[name='slide_content']").val('');
     }
@@ -86,6 +143,7 @@
               success: function(data)
               {
                 // console.log(data);
+                $("[name='slide_pto']").show();
                 $('[name="slide_pto"]').attr("src",'<?php echo base_url(). 'img/';?>'+data[0].slide_pto);
                 $('[name="slide_title"]').val(data[0].slide_title);
                 $('[name="slide_content"]').val(data[0].slide_content);
@@ -107,7 +165,8 @@
        var reader = new FileReader();
        reader.onload = function (e)
        {
-           $('#slide_pto').attr('src', e.target.result);
+         $("[name='slide_pto']").show();
+         $('#slide_pto').attr('src', e.target.result);
        }
        reader.readAsDataURL(input.files[0]);
     }

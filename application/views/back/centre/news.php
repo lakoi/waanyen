@@ -16,7 +16,7 @@
           <tbody>
         <?php foreach ($this->session->userdata('b_news_list') as $r) {?>
           <tr>
-            <td><img src="<?php echo base_url(). "img/".$r->centre_news_pto;?>" height="100"/></td>
+            <td><img src="<?php echo base_url(). "img/".$r->centre_news_pto;?>" alt="<?php echo $r->centre_news_title;?>" title="" height="100"/></td>
             <td style="max-width:200px; word-wrap:break-word;"><?php echo $r->centre_news_title;?></td>
             <td style="max-width:300px; word-wrap:break-word;"><?php echo $r->centre_news_content;?></td>
             <td class="text-center"><a id="<?php echo $r->id_centre_news;?>" class="btn btn-success edit" onclick="javascript:action(<?php echo $r->id_centre_news;?>);">Edit</a>
@@ -49,7 +49,7 @@
             <div class="col-sm-5">
               <input type="hidden" id="oldcentre_news_pto" name="oldcentre_news_pto"/>
               <input type="file" id="newcentre_news_pto" name="newcentre_news_pto" style="display:none;" onchange="newnews(this);"/>
-              <img name="centre_news_pto" id="centre_news_pto" src class="w-100"/>
+              <img name="centre_news_pto" id="centre_news_pto" alt="" src class="w-100"/>
               <input type="hidden" id="id_centre_news" name="id_news"/>
               <input type="hidden" name="action" id="action" value="upload"/>
             </div>

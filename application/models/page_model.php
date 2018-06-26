@@ -30,11 +30,35 @@ class Page_model extends CI_Model
       return $query->result();
   }
 
-  public function getallnews()
+  public function getnews_5item()
   {
-      $query = $this->db->query(" select * from news order by id_news desc");
+      $query = $this->db->query("select * from news order by id_news desc limit 0,5");
       return $query->result();
   }
+
+  public function getallnews()
+  {
+      $query = $this->db->query("select * from news order by id_news desc");
+      return $query->result();
+  }
+
+  public function record_count_news(){
+  return $this->db->count_all("news");
+}
+
+public function fetch_news($limit, $start) {
+      $this->db->order_by('id_news', 'desc');
+      $this->db->limit($limit, $start);
+      $query = $this->db->get("news");
+
+      if ($query->num_rows() > 0) {
+          foreach ($query->result() as $row) {
+              $data[] = $row;
+          }
+          return $data;
+      }
+      return false;
+ }
 
   public function getproduct()
   {

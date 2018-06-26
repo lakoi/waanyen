@@ -22,7 +22,7 @@ class Login_model extends CI_Model
 
   public function check_status()
   {
-    if($this->session->userdata('Status')=="ADMIN")
+    if($this->session->userdata('Status')=="HIGH_ADMIN")
     {
       $this->load->view('templates/admin');
     }

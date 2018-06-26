@@ -9,52 +9,53 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <title>Waanyen</title>
 </head>
-<body class="blockquote  bg-light">
-  <!-- <div>
-    <h1 class="text-primary offset-1">Wannyen</h1>
-  </div> -->
+<body class="bg-light">
   <?php echo form_open('login/login_valid'); ?>
 <form method="post" action="<?php echo base_url(). 'Login/login_valid' ;?>" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-top:30px;">
+        <div class="row">
+          <div class="col-sm-6">
 
-  <div class="text-center">
-      <h4 class="blockquote">Login</h4><br>
-      <div class="col-sm-6 col-sm-12">
-        <div class="btn btn-disabled">
-          <table class="blockquote text-center">
-            <tbody>
-              <tr>
-                <label class="text-danger"><?php echo $this->session->flashdata("error"); ?></label>
-                <td> &nbsp;Email</td>
-                <td><input class="form-control btn btn-outline-light bg-white border" name="Email" type="email" id="txtUsername" value="<?php echo $this->input->post('Email');?>"></td></tr>
-                <tr><td></td><td><?php echo form_error('Email');?></td></tr>
-              </tr>
-              <tr>
-                <td> &nbsp;Password</td>
-                <td><input class="form-control btn btn-outline-light bg-white border" name="Password" type="password" id="txtPassword"></td></tr>
-                <tr><td></td><td><?php echo form_error('Password');?></td></tr>
-              </tr>
-            </tbody>
-          </table>
+          </div>
+          <div class="col-sm-6">
+            <h3>Login</h3>
+            <div style="margin:15px 0px 15px 0px;">
+              <label class="text-danger"><?php echo $this->session->flashdata("login_error"); ?></label>
+              <p>Email</p>
+              <input class="form-control" name="Email" type="email" id="txtUsername" value="<?php echo $this->input->post('Email');?>">
+              <span><?php echo form_error('Email');?></span>
+            </div>
+            <div style="margin:15px 0px 15px 0px;">
+              <p>Password</p>
+              <input class="form-control" name="Password" type="password" id="txtPassword">
+              <span><?php echo form_error('Password');?></span>
+            </div>
+            <div class="form-check" style="margin:15px 0px 15px 0px;">
+              <input type="checkbox" class="form-check-input" id="dropdownCheck">
+              <label class="form-check-label btn btn-light text-warning" for="dropdownCheck">
+                Remember me
+              </label>
+            </div>
+            <div class="col-sm-12" style="margin:15px 0px 15px 0px;">
+            <div class="row justify-content-between">
+              <div>
+                <a class="btn btn-outline-primary " href="<?php echo base_url();?>" role="button">home</a>
+              </div>
+              <div>
+                <a class="btn btn-outline-primary " href="<?php echo base_url()."register/index";?>" role="button">Register</a>
+                <input class="btn btn-outline-success" type="submit" name="submit" value="LOGIN">
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
+      </div>
     </div>
-  <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="dropdownCheck">
-      <label class="form-check-label btn btn-light text-warning" for="dropdownCheck">
-        Remember me
-      </label>
-    </div>
-  <br>
-  <div>
-  <input class="btn btn-outline-success" type="submit" name="submit" value="LOGIN">
-</div>
-<br>
-<div>
-  <a class="btn btn-outline-primary " href="register" role="button">Register</a>
-  <a class="btn btn-outline-primary " href="<?php echo base_url();?>" role="button">home</a>
-</div>
-</div>
-
+  </div>
 </form>
+
 <style>
 .form-control{color:#0066ff !important}
 </style>

@@ -8,8 +8,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-    <title>waanyen</title>
+
     <style> /*donate*/
+      .page-news > a {
+        text-decoration: none;
+      	color: #227ea8;
+      	background-color: transparent;
+      	font-weight: normal;
+        margin: 1px;
+        /* border: 1px solid #000000; */
+        padding: 10px 15px 10px 15px;
+      }
+      .page-news > a:hover {
+        text-decoration: none;
+        color: white;
+        background-color: #227ea8;
+        font-weight: normal;
+        margin: 1px;
+        /* border: 1px solid #000000; */
+        padding: 10px 15px 10px 15px;
+      }
+      .page-news > strong {
+        text-decoration: none;
+        color: white;
+        background-color: #227ea8;
+        font-weight: normal;
+        margin: 1px;
+        /* border: 1px solid #000000; */
+        padding: 10px 15px 10px 15px;
+      }
       .donate-frame
       {
         position: relative;
@@ -299,7 +326,7 @@
           z-index: 0;
         }
           .boxnews{
-          font-s/ize: 1em;
+          font-size: 1em;
           /* padding-top: 7px; */
           /* padding-bottom: 5px; */
           text-indent: 25px;
@@ -478,10 +505,10 @@
                   <div class="col-md-2">
                     <div class="row text-center" style="font-family: 'normal', sans-serif;">
                       <div class="" style="background-color:#227ea8;">
-                        <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">EN</a>
+                        <a  class="btn" onclick="action('english')" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">EN</a>
                       </div>
                       <div class="" style="background-color: black;">
-                        <a href="#" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">TH</a>
+                        <a class="btn" onclick="action('thai')" style="color:white; text-decoration: none; padding:5px 2px 5px 2px;">TH</a>
                       </div>
                     </div>
                   </div>
@@ -489,22 +516,22 @@
                 <div class="col-md-12" style="padding-top:20px;">
                   <ul class="nav" style=" float: right; font-weight: lighter;">
                     <li class="nav-item">
-                      <a class="nav-link header-nav" href="<?php echo base_url().'';?>">หน้าแรก</a>
+                      <a class="nav-link header-nav" href="<?php echo base_url().'';?>"><?php echo $this->lang->line("home"); ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link header-nav" href="<?php echo base_url().'about/about';?>">เกี่ยวกับเรา</a>
+                      <a class="nav-link header-nav" href="<?php echo base_url().'about/about';?>"><?php echo $this->lang->line("about us"); ?></a>
                     </li>
                     <li class="nav-item ">
-                      <a class="nav-link header-nav" href="<?php echo base_url().'centre/centre';?>">ศูนย์ต่างๆ</a>
+                      <a class="nav-link header-nav" href="<?php echo base_url().'centre/centre';?>"><?php echo $this->lang->line("center"); ?></a>
                     </li>
                     <li class="nav-item ">
-                      <a class="nav-link header-nav" href="<?php echo base_url().'news/news';?>">ข่าวสาร</a>
+                      <a class="nav-link header-nav" href="<?php echo base_url().'news/news';?>"><?php echo $this->lang->line("news"); ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link header-nav" href="#">อาสาสมัคร</a>
+                      <a class="nav-link header-nav" href="<?php echo base_url().'volunteer/index';?>"><?php echo $this->lang->line("volunteer"); ?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link header-nav" href="#">บริจาค</a>
+                      <a class="nav-link header-nav" href="#"><?php echo $this->lang->line("donate"); ?></a>
                     </li>
                   </ul>
                 </div>

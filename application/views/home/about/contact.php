@@ -1,3 +1,4 @@
+<title>ติดต่อเรา</title>
 <div class="container" style="padding:0px;">
   <div class="row">
     <div class="col-md-12">
@@ -10,7 +11,7 @@
             โทรสาร :<br>
             อีเมล :</p>
             <div style="width:100%; height:450px;">
-              <img src=""  class="w-100 h-100">
+              <img src="" alt="" class="w-100 h-100">
             </div>
             <div class="alert alert-danger" role="alert" style="margin:20px 0px 20px 0px;">
               <i class="fas fa-exclamation-triangle"></i> ช่องที่มีเครื่องหมาย * หมายถึงช่องที่จำเป็นต้องกรอกข้อมูล

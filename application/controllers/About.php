@@ -12,13 +12,14 @@ class About extends CI_Controller
       $this->load->helper('html');
       $this->load->library('form_validation');
       $this->load->helper('date');
+			$lang = $this->session->userdata('lang');
+			$this->lang->load($lang,$lang);
 	}
 
   public function about()
   {
     // $data ['about'] = $this->about_model->about();
     $data ['footer'] = $this->page_model->getfooter();
-
     $this->load->view('templates/header');
     $this->load->view('home/about/head_about');
     $this->load->view('home/about/about', $data);

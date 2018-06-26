@@ -13,68 +13,58 @@ class Backs_centre extends CI_Controller
       $this->load->helper('html');
       $this->load->library('form_validation');
       $this->load->helper('date');
+			$this->login_model->checker();
 	}
 
   public function about()
   {
     if($this->uri->segment('3')=="")
     {
-      $id = $this->session->userdata('id');
+      $id = $this->session->userdata('back');
     }
     else
     {
       $id = $this->uri->segment('3');
     }
     $iddata = array(
-      "id" => $id,
+      "back" => $id,
     );
     $this->session->set_userdata($iddata);
 
-		$about = $this->session->userdata('id');
+		$about = $this->session->userdata('back');
 		switch($about)
 		{
 			case "1" :
 			{
 				$data ['head'] = "เกี่ยวกับเรา - โรงเรียนสอนคนตาบอดกรุงเทพ";
-				$data ['about'] = $this->centre_model->getabout1();
-				$back1 = array("b_about" => $data['about']);
-				$this->session->set_userdata($back1);
 				break;
 			}
 			case "2" :
 			{
 				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-				$data ['about'] = $this->centre_model->getabout2();
-				$back2 = array("b_about" => $data['about']);
-				$this->session->set_userdata($back2);
 				break;
 			}
 			case "3" :
 			{
 				$data ['head'] = "เกี่ยวกับเรา - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-				$data ['about'] = $this->centre_model->getabout3();
-				$back3 = array("b_about" => $data['about']);
-				$this->session->set_userdata($back3);
 				break;
 			}
 			case "4" :
 			{
 				$data ['head'] = "เกี่ยวกับเรา - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-				$data ['about'] = $this->centre_model->getabout4();
-				$back4 = array("b_about" => $data['about']);
-				$this->session->set_userdata($back4);
 				break;
 			}
 			case "5" :
 			{
 				$data ['head'] = "เกี่ยวกับเรา - ศูนย์พัฒนาอาชีพคนตาบอด";
-				$data ['about'] = $this->centre_model->getabout5();
-				$back5 = array("b_about" => $data['about']);
-				$this->session->set_userdata($back5);
 				break;
 			}
 		}
-    $this->login_model->check_status();
+		$data ['about'] = $this->back_centre_model->getabout();
+		$back = array("b_about" => $data['about']);
+		$this->session->set_userdata($back);
+
+		$this->login_model->check_status();
     $this->load->view('templates/back_header');
     $this->load->view('back/centre/head_centre', $data);
     $this->load->view('back/centre/about', $data);
@@ -118,51 +108,40 @@ class Backs_centre extends CI_Controller
 
   public function news()
   {
-		$product = $this->session->userdata('id');
-		switch($product)
+		$news = $this->session->userdata('back');
+		switch($news)
 		{
 			case "1" :
 			{
 				$data ['head'] = "ข่าวสาร - โรงเรียนสอนคนตาบอดกรุงเทพ";
-	      $data ['news_list'] = $this->centre_model->getnews1_list();
-	      $news1 = array("b_news_list" => $data['news_list'],);
-	      $this->session->set_userdata($news1);
 				break;
 			}
 			case "2" :
 			{
 				$data ['head'] = "ข่าวสาร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-				$data ['news_list'] = $this->centre_model->getnews2_list();
-				$news2 = array("b_news_list" => $data['news_list'],);
-				$this->session->set_userdata($news2);
 				break;
 			}
 			case "3" :
 			{
 				$data ['head'] = "ข่าวสาร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-				$data ['news_list'] = $this->centre_model->getnews3_list();
-				$news3 = array("b_news_list" => $data['news_list'],);
-				$this->session->set_userdata($news3);
 				break;
 			}
 			case "4" :
 			{
 				$data ['head'] = "ข่าวสาร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-				$data ['news_list'] = $this->centre_model->getnews4_list();
-				$news4 = array("b_news_list" => $data['news_list'],);
-				$this->session->set_userdata($news4);
 				break;
 			}
 			case "5" :
 			{
 				$data ['head'] = "ข่าวสาร - ศูนย์พัฒนาอาชีพคนตาบอด";
-				$data ['news_list'] = $this->centre_model->getnews5_list();
-				$news5 = array("b_news_list" => $data['news_list'],);
-				$this->session->set_userdata($news5);
 				break;
 			}
 		}
-    $this->login_model->check_status();
+		$data ['news_list'] = $this->back_centre_model->getnews_list();
+		$news1 = array("b_news_list" => $data['news_list'],);
+		$this->session->set_userdata($news1);
+
+		$this->login_model->check_status();
     $this->load->view('templates/back_header');
     $this->load->view('back/centre/head_centre', $data);
     $this->load->view('back/centre/news', $data);
@@ -241,51 +220,42 @@ class Backs_centre extends CI_Controller
 
   public function product()
   {
-		$product = $this->session->userdata('id');
+		$product = $this->session->userdata('back');
 		switch($product)
 		{
 			case "1" :
 			{
 				$data ['head'] = "ผลิตภัณฑ์และบริการ - โรงเรียนสอนคนตาบอดกรุงเทพ";
-				$data ['product'] = $this->centre_model->getproduct1();
-				$back1 = array("b_product" => $data['product']);
-				$this->session->set_userdata($back1);
 				break;
 			}
 			case "2" :
 			{
 				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-				$data ['product'] = $this->centre_model->getproduct2();
-				$back2 = array("b_product" => $data['product']);
-				$this->session->set_userdata($back2);
 				break;
 			}
 			case "3" :
 			{
 				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-				$data ['product'] = $this->centre_model->getproduct3();
-				$back3 = array("b_product" => $data['product']);
-				$this->session->set_userdata($back3);
 				break;
 			}
 			case "4" :
 			{
 				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-				$data ['product'] = $this->centre_model->getproduct4();
-				$back4 = array("b_product" => $data['product']);
-				$this->session->set_userdata($back4);
 				break;
 			}
 			case "5" :
 			{
 				$data ['head'] = "ผลิตภัณฑ์และบริการ - ศูนย์พัฒนาอาชีพคนตาบอด";
-				$data ['product'] = $this->centre_model->getproduct5();
-				$back5 = array("b_product" => $data['product']);
-				$this->session->set_userdata($back5);
 				break;
 			}
 		}
-    $this->login_model->check_status();
+		$id = $this->session->userdata('back');
+		$data ['product'] = $this->back_centre_model->getproduct();
+		$data ['service'] = $this->back_centre_model->getservice($id);
+		$back1 = array("b_product" => $data['product'],"b_service" => $data['service']);
+		$this->session->set_userdata($back1);
+
+		$this->login_model->check_status();
     $this->load->view('templates/back_header');
     $this->load->view('back/centre/head_centre', $data);
     $this->load->view('back/centre/product', $data);
@@ -297,6 +267,17 @@ class Backs_centre extends CI_Controller
 		$id = $this->input->post('id');
 		$edit_product = $this->back_centre_model->edit_product($id);
 		echo json_encode($edit_product);
+	}
+
+	public function save_service()
+	{
+		$data = array(
+			'centre_product_service_text' => $this->input->post('centre_product_service_text'),
+			'centre_product_service_time' => date(Y_m_d_H_i_s),
+		);
+		$id = $this->input->post('id_centre_product_service');
+		$this->back_centre_model->save_service($data,$id);
+		return true;
 	}
 
 	public function save_product()
@@ -366,51 +347,40 @@ class Backs_centre extends CI_Controller
 
   public function donate()
   {
-		$donate = $this->session->userdata('id');
+		$donate = $this->session->userdata('back');
 		switch($donate)
 		{
 			case "1" :
 			{
 				$data ['head'] = "บริจาคและอาสาสมัคร - โรงเรียนสอนคนตาบอดกรุงเทพ";
-				$data ['donate'] = $this->centre_model->getdonate1();
-				$back1 = array("b_donate" => $data['donate']);
-				$this->session->set_userdata($back1);
 				break;
 			}
 			case "2" :
 			{
 				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาสมรรถภาพคนตาบอด";
-				$data ['donate'] = $this->centre_model->getdonate2();
-				$back2 = array("b_donate" => $data['donate']);
-				$this->session->set_userdata($back2);
 				break;
 			}
 			case "3" :
 			{
 				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด";
-				$data ['donate'] = $this->centre_model->getdonate3();
-				$back3 = array("b_donate" => $data['donate']);
-				$this->session->set_userdata($back3);
 				break;
 			}
 			case "4" :
 			{
 				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน";
-				$data ['donate'] = $this->centre_model->getdonate4();
-				$back4 = array("b_donate" => $data['donate']);
-				$this->session->set_userdata($back4);
 				break;
 			}
 			case "5" :
 			{
 				$data ['head'] = "บริจาคและอาสาสมัคร - ศูนย์พัฒนาอาชีพคนตาบอด";
-				$data ['donate'] = $this->centre_model->getdonate5();
-				$back5 = array("b_donate" => $data['donate']);
-				$this->session->set_userdata($back5);
 				break;
 			}
 		}
-    $this->login_model->check_status();
+		$data ['donate'] = $this->back_centre_model->getdonate();
+		$back1 = array("b_donate" => $data['donate']);
+		$this->session->set_userdata($back1);
+
+		$this->login_model->check_status();
     $this->load->view('templates/back_header');
     $this->load->view('back/centre/head_centre', $data);
     $this->load->view('back/centre/donate', $data);
@@ -427,7 +397,7 @@ class Backs_centre extends CI_Controller
 	public function save_edit_donate()
 	{
 		$data = array(
-			'centre_donate_code' => $this->input->post('centre_donate_code'),
+			'centre_donate_thai' => $this->input->post('centre_donate_thai'),
 			'centre_donate_time' => date(Y_m_d_H_i_s),
 		);
 		$id = $this->input->post('id_centre_donate');
@@ -437,7 +407,7 @@ class Backs_centre extends CI_Controller
 
   public function contact()
   {
-		$contact = $this->session->userdata('id');
+		$contact = $this->session->userdata('back');
 		switch($contact)
 		{
 			case "1" :
@@ -466,10 +436,10 @@ class Backs_centre extends CI_Controller
 				break;
 			}
 		}
-		$id = $this->session->userdata('id');
-		$data['b_contact'] = $this->centre_model->getcontact($id);
+		$id = $this->session->userdata('back');
+		$data['b_contact'] = $this->back_centre_model->getcontact($id);
 
-    $this->login_model->check_status();
+		$this->login_model->check_status();
     $this->load->view('templates/back_header');
     $this->load->view('back/centre/head_centre', $data);
     $this->load->view('back/centre/contact', $data);

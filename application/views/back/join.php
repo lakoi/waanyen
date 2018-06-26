@@ -14,7 +14,7 @@
               <?php foreach ($join as $r)
               {?>
                 <tr>
-                  <td><img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" width="100" height="100" style="border-radius: 100%;"></td>
+                  <td><img src="<?php echo base_url(). 'img/'.$r->join_pto;?>" alt="<?php echo $r->join_title;?>" title="" width="100" height="100" style="border-radius: 100%;"></td>
                   <td><?php echo $r->join_title;?></td>
                   <td><?php echo $r->join_content;?></td>
                   <td class="text-center"><a id="<?php echo $r->id_join;?>" style="color: white;" class="btn btn-success edit" onclick="action(<?php echo $r->id_join;?>)">Edit</a>
@@ -44,7 +44,7 @@
           <div class="col-sm-6">
             <input type="hidden" id="oldjoin_pto" name="oldjoin_pto"/>
             <input type="file" id="newjoin_pto" name="newjoin_pto" style="display:none;" onchange="newjoin(this);"/>
-            <img name="join_pto" id="join_pto" src style="width:100%; padding:10px;"/>
+            <img name="join_pto" id="join_pto" alt="" src style="width:100%; padding:10px;"/>
             <input type="hidden" id="id_join" name="id_join"/>
           </div>
           <div class="col-sm-6">

@@ -12,12 +12,19 @@
     <body class="blockquote bg-light">
 
   <form action="<?php echo base_url(). 'Admins/save_edit_status_ad' ;?>" method="post" accept-charset="utf-8">
+    <h5><?php echo $query[0]->Email ;?></h5>
     <input type="hidden" name="UserID" value="<?php echo $query[0]->UserID ;?>">
     <br>
     <label>Status</label>
     <select name="Status">
 <option selected>select status</option>
-<option value="ADMIN">ADMIN</option>
+<option value="HIGH_ADMIN">HIGH_ADMIN</option>
+<option value="ADMIN_FONT">ADMIN_FONT</option>
+<option value="ADMIN(โรงเรียนสอนคนตาบอดกรุงเทพ)">ADMIN โรงเรียนสอนคนตาบอดกรุงเทพ</option>
+<option value="ADMIN(ศูนย์พัฒนาสมรรถภาพคนตาบอด)">ADMIN ศูนย์พัฒนาสมรรถภาพคนตาบอด</option>
+<option value="ADMIN(ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด)">ADMIN ศูนย์เทคโนโลยีการศึกษาเพื่อคนตาบอด</option>
+<option value="ADMIN(ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน)">ADMIN ศูนย์ฝึกอาชีพหญิงตาบอดสามพราน</option>
+<option value="ADMIN(ศูนย์พัฒนาอาชีพคนตาบอด)">ADMIN ศูนย์พัฒนาอาชีพคนตาบอด</option>
 <option value="USER">USER</option>
 </select>
     <span>your status <?php echo $query[0]->Status ;?></span>

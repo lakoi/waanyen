@@ -84,6 +84,23 @@
 
 
       <script type="text/javascript">
+      function action(x)
+    {
+      $.ajax({
+              method: 'POST',
+              url: "<?php echo base_url(). 'Pages/changeLang';?>",
+              data: 'id='+x,
+              success: function(data)
+              {
+                location.reload();
+              },
+              error: function()
+              {
+                alert('not change lang');
+              }
+            });
+    }
+
       $(function(){
         if($('#title').text() == '')
         {
@@ -113,6 +130,8 @@
       $('.we'+id).css({"display":"none"});
     });
       });
+
+
       </script>
 
 

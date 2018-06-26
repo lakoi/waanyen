@@ -9,7 +9,7 @@
                 <div style="margin:15px;">
                   <input type="hidden" id="oldcentre_contact_pto" name="oldcentre_contact_pto" value="<?php echo $r->centre_contact_pto;?>"/>
                   <input type="file" id="newcentre_contact_pto" name="newcentre_contact_pto" style="display:none;" onchange="newcontact(this);"/>
-                  <img src="<?php echo base_url(). 'img/'.$r->centre_contact_pto;?>" name="centre_contact_pto" id="centre_contact_pto" height="200">
+                  <img src="<?php echo base_url(). 'img/'.$r->centre_contact_pto;?>" alt="" name="centre_contact_pto" id="centre_contact_pto" height="200">
                   <input type="hidden" id="id_centre_contact" name="id_centre_contact" value="<?php echo $r->id_centre_contact;?>"/>
                 </div>
                 <div>
