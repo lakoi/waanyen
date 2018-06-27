@@ -6,7 +6,7 @@
         <table class="table table-hover" id="table_popup">
           <thead>
             <tr>
-              <th><center>no</center></th>
+              <th><center>switch</center></th>
               <th><center>photo</center></th>
               <th><center>title</center></th>
               <th><center>edit</center></th>

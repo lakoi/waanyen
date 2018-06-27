@@ -13,7 +13,12 @@ class News extends CI_Controller
           $this->load->library('form_validation');
           $this->load->library('pagination');
           $this->load->helper('date');
-          $lang = $this->session->userdata('lang');
+          if($this->session->userdata('lang')==NULL){
+            $lang = "thai";
+            $this->session->set_userdata('lang',$lang);
+          }else{
+            $lang = $this->session->userdata('lang');
+          }
           $this->lang->load($lang,$lang);
   }
 

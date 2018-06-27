@@ -92,7 +92,7 @@
 </script> -->
 
 <style>
-/* .form-control{color:#0066ff} */
+.form-control{color:#0066ff}
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
